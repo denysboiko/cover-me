@@ -26,7 +26,7 @@
       <file leaf-file-name="index.ejs" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="30" selection-start="60" selection-end="60" vertical-scroll-proportion="0.09453782" vertical-offset="0" max-vertical-offset="476">
+            <state line="4" column="38" selection-start="99" selection-end="99" vertical-scroll-proportion="0.12605043" vertical-offset="0" max-vertical-offset="476">
               <folding />
             </state>
           </provider>
@@ -107,7 +107,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="1" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1" splitterProportion="0.5">
@@ -347,7 +347,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="30" selection-start="60" selection-end="60" vertical-scroll-proportion="0.09453782" vertical-offset="0" max-vertical-offset="476">
+        <state line="4" column="38" selection-start="99" selection-end="99" vertical-scroll-proportion="0.12605043" vertical-offset="0" max-vertical-offset="476">
           <folding />
         </state>
       </provider>
