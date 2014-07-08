@@ -279,7 +279,11 @@
       <created>1404850303930</created>
       <updated>1404850303930</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="bootstrap">
+      <created>1404850313153</created>
+      <updated>1404850313153</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
