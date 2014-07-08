@@ -2,6 +2,28 @@
 <html>
 <head>
     <title><%- body %></title>
+
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+
     <link rel='stylesheet' href='/css/style.css' />
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -9,11 +31,19 @@
 <h1><%- body %></h1>
 <p>Хлеб всему <b><%- body %></b></p>
 
-<script>
-    for(i=1;i<30;i++){
-        document.write('<img alt="" src="img/img-'+i+'.jpg" id="'+i+'">');
-    }
-</script>
+
+
+
+<div class="container">
+    <ul class="row">
+    <script>
+        for(i=1;i<30;i++){
+            document.write('<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img alt="" src="img/img-'+i+'.jpg" id="'+i+'"></li>');
+        }
+    </script>
+    </ul>
+</div>
+
 
 
 
