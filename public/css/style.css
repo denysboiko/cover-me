@@ -1,5 +1,6 @@
 body {
-  padding: 50px;
+  padding: 0;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,6 +8,6 @@ img {
     display: block;
     text-align: center;
     margin: 0;
-    max-width: 200px;
+    max-width: 12.5%;
     float: left
 }
