@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var config = require('config');
+var fs = require('fs');
 var log = require('libs/log')(module);
 
 var app = express();
@@ -20,11 +21,7 @@ app.use(express.cookieParser());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res, next) {
-    res.render("index", {
-        brand: 'Cover Me'
-    });
-});
+
 
 app.use(function(err, req, res, next) {
     // NODE_ENV = 'production'
@@ -80,6 +77,34 @@ app.get('/users', user.list);
 
 
 */
+
+var dir="./public/img/";
+
+function getFiles(dir,files_){
+    files_ = files_ || [];
+    if (typeof files_ === 'undefined') files_=[];
+    var files = fs.readdirSync(dir);
+    for(var i in files){
+        if (!files.hasOwnProperty(i)) continue;
+        var name = 'img/'+files[i];
+        files_.push(name);
+        /*if (fs.statSync(name).isDirectory()){
+            getFiles(name,files_);
+        } else {
+            files_.push(name);
+
+        }*/
+    }
+    return files_;
+}
+
+
+app.get('/', function(req, res, next) {
+    res.render("index", {
+        brand: "Cover Me",
+        files: getFiles(dir)
+    });
+});
 
 http.createServer(app).listen(config.get('port'), function(){
   log.info('Express server listening on port ' + app.get('port'));

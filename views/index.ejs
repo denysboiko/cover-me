@@ -94,13 +94,9 @@
 
 <div class="container">
     <ul class="row">
-    <script>
-        for(i=1;i<30;i++){
-            document.write('<li class="col-lg-2 col-md-3 col-sm-3 col-xs-4"><figure class="cover-item"><img alt="img-'+i+'" src="img/img-'+i+'.jpg" id="'+i+'"><figcaption>A picture of a hat</figcaption></figure></li>');
-        }
-    </script>
-
-
+        <% for(var i=0; i<files.length; i++) {%>
+        <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4"><figure class="cover-item"><img alt="img-'+i+'" src="<%= files[i] %>"><figcaption>A picture of a hat</figcaption></figure></li>
+        <% } %>
     </ul>
 </div>
 
