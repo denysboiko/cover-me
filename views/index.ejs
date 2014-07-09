@@ -42,14 +42,6 @@
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
-<h1><%- body %></h1>
-<p>Хлеб всему <b><%- body %></b></p>
-
-
-
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -71,14 +63,33 @@
 </div>
 
 
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Cover me</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search cover">
+                </div>
+                <!--<button type="submit" class="btn btn-default">Submit</button>-->
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
 
 <div class="container">
-
-    <form class="form-search">
-        <input type="text" class="input-medium search-query">
-        <button type="submit" class="btn">Найти</button>
-    </form>
-
     <ul class="row">
     <script>
         for(i=1;i<30;i++){
