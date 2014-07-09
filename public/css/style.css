@@ -33,3 +33,25 @@ ul li img {
     margin: 0;
     width: 100%;
 }
+
+
+.cover-item {
+    position: relative;
+}
+.cover-item figcaption {
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in;
+    -moz-transition: opacity .5s ease-in;
+    -o-transition: opacity .5s ease-in;
+    transition: opacity .5s ease-in;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #222;
+    color: #ffffff;
+}
+
+.cover-item:hover figcaption {
+    opacity: 0.6;
+}
