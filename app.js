@@ -2,8 +2,8 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var config = require('config');
-var fs = require('fs');
 var log = require('libs/log')(module);
+var coverinfo = require('./coverInfo');
 
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -77,51 +77,24 @@ app.use(function (err, req, res, next) {
 
  */
 
-var dir = "./public/img/";
-
-function getFiles(dir, files_) {
-    files_ = files_ || [];
-    if (typeof files_ === 'undefined') files_ = [];
-    var files = fs.readdirSync(dir);
-    for (var i in files) {
-        if (!files.hasOwnProperty(i)) continue;
-        var name = 'img/' + files[i];
-        files_.push(name);
-        /*if (fs.statSync(name).isDirectory()){
-         getFiles(name,files_);
-         } else {
-         files_.push(name);
-
-         }*/
-    }
-    return files_;
-}
-
-var allcovers = getFiles(dir);
-
-function outputNames() {
-
-
-    var artist = new Array(allcovers.length)
-    var album = new Array(allcovers.length)
-
-    for (var i = 0; i < allcovers.length; i++) {
-        var split = allcovers[i].split(' - ');
-        artist[i] = (split[0].split('/'))[1];
-        album[i] = (split[1].split('.'))[0];
-    }
-    return [album, artist];
-}
-
-
-
 app.get('/', function (req, res, next) {
     res.render("index", {
         brand: "Cover Me",
-        files: allcovers,
-        names: outputNames()
+        files: coverinfo.allcovers,
+        names: coverinfo.AlbumInfo
     });
 });
+
+
+var Cover = require('models/cover').Cover;
+
+app.get('/covers', function (req, res, next) {
+    Cover.find({}, function (err, covers) {
+        if (err) return next(err);
+        res.json(covers);
+    })
+});
+
 
 http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + app.get('port'));
