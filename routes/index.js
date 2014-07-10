@@ -1,3 +1,3 @@
 module.exports = function(app) {
-    app.get('/main', require('./main').get);
+    app.get('/', require('./main').get);
 };

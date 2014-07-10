@@ -3,7 +3,6 @@ var http = require('http');
 var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
-var coverinfo = require('./coverInfo');
 
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -17,6 +16,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.use(express.cookieParser());
+
+
+
+app.use(require('middleware/getInfo'));
 
 app.use(app.router);
 
@@ -82,13 +85,13 @@ app.use(function (err, req, res, next) {
  */
 
 
-app.get('/', function (req, res, next) {
+/*app.get('/', function (req, res, next) {
     res.render("index", {
         brand: "Cover Me",
         files: coverinfo.allcovers,
         names: coverinfo.AlbumInfo
     });
-});
+});*/
 
 
 var Cover = require('models/cover').Cover;
