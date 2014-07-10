@@ -19,6 +19,10 @@ app.use(express.urlencoded());
 app.use(express.cookieParser());
 
 app.use(app.router);
+
+require('routes')(app);
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -77,6 +81,7 @@ app.use(function (err, req, res, next) {
 
  */
 
+
 app.get('/', function (req, res, next) {
     res.render("index", {
         brand: "Cover Me",
@@ -87,13 +92,20 @@ app.get('/', function (req, res, next) {
 
 
 var Cover = require('models/cover').Cover;
-
 app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
-        res.json(covers);
+       res.json(covers);
     })
 });
+
+
+/*app.get('/covers', function (req, res, next) {
+    Cover.find({}, function (err, covers) {
+        if (err) return next(err);
+ req.send(covers);
+ })
+});*/
 
 
 http.createServer(app).listen(config.get('port'), function () {
