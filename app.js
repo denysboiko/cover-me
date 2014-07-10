@@ -22,8 +22,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // NODE_ENV = 'production'
     if (app.get('env') == 'development') {
         var errorHandler = express.errorHandler();
@@ -34,15 +33,15 @@ app.use(function(err, req, res, next) {
 });
 // development only
 /*
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
+ if ('development' == app.get('env')) {
+ app.use(express.errorHandler());
+ }
 
-var routes = require('./routes');
-var user = require('./routes/user');
+ var routes = require('./routes');
+ var user = require('./routes/user');
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+ app.get('/', routes.index);
+ app.get('/users', user.list);
 
 
  app.use(function(req, res, next) {
@@ -76,55 +75,54 @@ app.get('/users', user.list);
  app.use(express.static(path.join(__dirname, 'public')));
 
 
-*/
+ */
 
-var dir="./public/img/";
+var dir = "./public/img/";
 
-function getFiles(dir,files_){
+function getFiles(dir, files_) {
     files_ = files_ || [];
-    if (typeof files_ === 'undefined') files_=[];
+    if (typeof files_ === 'undefined') files_ = [];
     var files = fs.readdirSync(dir);
-    for(var i in files){
+    for (var i in files) {
         if (!files.hasOwnProperty(i)) continue;
-        var name = 'img/'+files[i];
+        var name = 'img/' + files[i];
         files_.push(name);
         /*if (fs.statSync(name).isDirectory()){
-            getFiles(name,files_);
-        } else {
-            files_.push(name);
+         getFiles(name,files_);
+         } else {
+         files_.push(name);
 
-        }*/
+         }*/
     }
     return files_;
 }
-var allcovers=getFiles(dir);
 
-function outputNames(){
+var allcovers = getFiles(dir);
 
-    var split = allcovers[0].split(' - ');
-    var artist = (split[0].split('/'))[1];
-    var album = (split[1].split('.'))[0];
-    return artist+' - '+album;
+function outputNames() {
 
-    /*for(var i=0; i<allcovers.length; i++) {
-        var split = 'john smith~123 Street~Apt 4~New York~NY~12345'.split('~');
 
-        var name = split[0];
-        var street = split[1];
+    var artist = new Array(allcovers.length)
+    var album = new Array(allcovers.length)
 
-    }*/
+    for (var i = 0; i < allcovers.length; i++) {
+        var split = allcovers[i].split(' - ');
+        artist[i] = (split[0].split('/'))[1];
+        album[i] = (split[1].split('.'))[0];
+    }
+    return [album, artist];
 }
 
-console.log(outputNames())
 
 
-app.get('/', function(req, res, next) {
+app.get('/', function (req, res, next) {
     res.render("index", {
         brand: "Cover Me",
-        files: getFiles(dir)
+        files: allcovers,
+        names: outputNames()
     });
 });
 
-http.createServer(app).listen(config.get('port'), function(){
-  log.info('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(config.get('port'), function () {
+    log.info('Express server listening on port ' + app.get('port'));
 });

@@ -95,7 +95,7 @@
 <div class="container">
     <ul class="row">
         <% for(var i=0; i<files.length; i++) {%>
-        <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4"><figure class="cover-item"><img alt="img-'+i+'" src="<%= files[i] %>"><figcaption>A picture of a hat</figcaption></figure></li>
+        <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4"><figure class="cover-item"><img alt="img-'+i+'" src="<%= files[i] %>"><figcaption><%= names[1][i]+' - '+names[0][i] %></figcaption></figure></li>
         <% } %>
     </ul>
 </div>
