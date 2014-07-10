@@ -97,6 +97,25 @@ function getFiles(dir,files_){
     }
     return files_;
 }
+var allcovers=getFiles(dir);
+
+function outputNames(){
+
+    var split = allcovers[0].split(' - ');
+    var artist = (split[0].split('/'))[1];
+    var album = (split[1].split('.'))[0];
+    return artist+' - '+album;
+
+    /*for(var i=0; i<allcovers.length; i++) {
+        var split = 'john smith~123 Street~Apt 4~New York~NY~12345'.split('~');
+
+        var name = split[0];
+        var street = split[1];
+
+    }*/
+}
+
+console.log(outputNames())
 
 
 app.get('/', function(req, res, next) {
