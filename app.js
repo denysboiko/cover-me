@@ -100,14 +100,6 @@ app.get('/covers', function (req, res, next) {
 });
 
 
-/*app.get('/covers', function (req, res, next) {
-    Cover.find({}, function (err, covers) {
-        if (err) return next(err);
- req.send(covers);
- })
-});*/
-
-
 http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + app.get('port'));
 });
