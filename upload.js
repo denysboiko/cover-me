@@ -5,6 +5,7 @@ var express = require("express"),
     fs   = require('fs-extra'),
     qt   = require('quickthumb'),
     easyimg = require("easyimage");
+var gm = require('gm').subClass({ imageMagick: true });
 
 // Use quickthumb
 app.use(qt.static(__dirname + '/'));
@@ -36,12 +37,13 @@ app.post('/upload', function (req, res){
 });
 
 
-/*
-easyimg.info('/uploads/Ace Frehley - Ace Frehley.jpeg', function(err, stdout, stderr) {
+
+/*easyimg.info('./uploads/90125.jpeg', function(err, stdout, stderr) {
     if (err) throw err;
     console.log(stdout);
-});
-*/
+});*/
+
+
 
 // Show the upload form
 app.get('/', function (req, res){
@@ -50,7 +52,16 @@ app.get('/', function (req, res){
     form = '<form action="/upload" enctype="multipart/form-data" method="post">' + '<input name="title" type="text" />' + '<input multiple="multiple" name="upload" type="file" />' + '<input type="submit" value="Upload" />' + '</form>';
     res.end(form);
 });
+
 app.listen(3001);
 
 
+
+gm('./uploads/90125.jpeg')
+    .resize(300, 300)
+    .write('./uploads/small/90125-300x300.jpeg', function (err) {
+        if (err) throw err
+        else
+        console.log(' hooray! ');
+    });
 
