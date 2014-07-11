@@ -4,8 +4,6 @@
     <title><%- brand %></title>
 
 
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,26 +20,9 @@
 
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function(){
-    $('li img').on('click',function(){
-    var src = $(this).attr('src');
-    var img = '<img src="' + src + '" class="img-responsive"/>';
 
-    $('#myModal').modal();
-    $('#myModal').on('shown.bs.modal', function(){
-    $('#myModal .modal-body').html(img);
-    $('#myModal .modal-footer a').attr("href", src);
-    });
-    $('#myModal').on('hidden.bs.modal', function(){
-    $('#myModal .modal-body').html('');
-    });
-    });
-    })
-
-</script>
-    <link rel='stylesheet' href='/css/style.css' />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel='stylesheet' href='/css/style.css'/>
+    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
 
@@ -51,15 +32,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Album title</h4>
             </div>
             <div class="modal-body">
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="" class="btn btn-primary" role="button" download="img.jpg">Download <span class="glyphicon glyphicon-download"></span></a>
+                <a href="" class="btn btn-primary" role="button" download="img.jpg">Download <span
+                            class="glyphicon glyphicon-download"></span></a>
             </div>
         </div>
     </div>
@@ -70,7 +53,8 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -87,20 +71,48 @@
                 </div>
                 <!--<button type="submit" class="btn btn-default">Submit</button>-->
             </form>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
 </nav>
 
 
 <div class="container">
     <ul class="row">
-        <% for(var i=0; i<covers.length; i++) {%>
-        <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4"><figure class="cover-item"><img alt="img-'+i+'" src="<%=covers[i].get('bPicture')%>"><figcaption><%=covers[i].get('artist')%> - <%=covers[i].get('album')%></figcaption></figure></li>
+        <% for(var i = 0; i < covers.length; i++) { %>
+        <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+            <figure class="cover-item"><img alt="<%= covers[i].get('album') %>" src="<%= covers[i].get('sPicture') %>" bigimg="<%= covers[i].get('bPicture') %>">
+                <figcaption><span class="album-title"><%= covers[i].get('album') %></span><br>
+                    by <span class="artist-name"><%= covers[i].get('artist') %></span></figcaption>
+            </figure>
+        </li>
         <% } %>
     </ul>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $('li img').on('click', function () {
+            var src = $(this).attr('bigimg');
+            var img = '<img src="' + src + '" class="img-responsive"/>';
+            var album = $(this).attr('alt');
 
+            $('#myModal').modal();
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myModal #myModalLabel').html(album);
+                $('#myModal .modal-body').html(img);
+                $('#myModal .modal-footer a').attr("href", src);
+            });
+            $('#myModal').on('hidden.bs.modal', function () {
+                $('#myModal #myModalLabel').html('Album Title');
+                $('#myModal .modal-body').html('');
+                $('#myModal .modal-footer a').attr("href", "#");
+            });
+        });
+    })
+
+</script>
 
 
 </body>
