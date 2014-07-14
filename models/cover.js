@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 var mongoose = require('libs/mongoose');
 var Schema = mongoose.Schema;
 var textSearch = require('mongoose-text-search');
+=======
+var mongoose = require('libs/mongoose'),
+    Schema = mongoose.Schema;
+var mongoosePaginate = require('mongoose-paginate');
+>>>>>>> FETCH_HEAD
 
 var schema = new Schema({
     artist: {
@@ -34,7 +40,13 @@ var schema = new Schema({
     }
 });
 
+<<<<<<< HEAD
 schema.plugin(textSearch);
 schema.index({ artist: 'text' });
 
 exports.Cover = mongoose.model('Cover', schema);
+=======
+schema.plugin(mongoosePaginate);
+
+exports.Cover = mongoose.model('Cover', schema);
+>>>>>>> FETCH_HEAD
