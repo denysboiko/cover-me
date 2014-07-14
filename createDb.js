@@ -1,6 +1,6 @@
 var mongoose = require('libs/mongoose');
-var async = require('async');
 var coverinfo = require('./coverInfo');
+var async = require('async');
 
 //console.log(AlbumInfo[1]);
 /*var cover = new Cover({

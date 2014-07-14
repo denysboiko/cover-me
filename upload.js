@@ -57,6 +57,7 @@ app.listen(3001);
 
 
 
+/*
 gm('./uploads/90125.jpeg')
     .resize(300, 300)
     .write('./uploads/small/90125-300x300.jpeg', function (err) {
@@ -64,4 +65,5 @@ gm('./uploads/90125.jpeg')
         else
         console.log(' hooray! ');
     });
+*/
 

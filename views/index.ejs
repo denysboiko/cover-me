@@ -80,11 +80,11 @@
 
 <div class="container">
     <ul class="row">
-        <% for(var i = 0; i < covers.length; i++) { %>
+        <% for(var i = 0; i < cvrs.length; i++) { %>
         <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
-            <figure class="cover-item"><img alt="<%= covers[i].get('album') %>" src="<%= covers[i].get('sPicture') %>" bigimg="<%= covers[i].get('bPicture') %>">
-                <figcaption><span class="album-title"><%= covers[i].get('album') %></span><br>
-                    by <span class="artist-name"><%= covers[i].get('artist') %></span></figcaption>
+            <figure class="cover-item"><img alt="<%= cvrs[i].get('album') %>" src="<%= cvrs[i].get('sPicture') %>" bigimg="<%= cvrs[i].get('bPicture') %>">
+                <figcaption><span class="album-title"><%= cvrs[i].get('album') %></span><br>
+                    by <span class="artist-name"><%= cvrs[i].get('artist') %></span></figcaption>
             </figure>
         </li>
         <% } %>
