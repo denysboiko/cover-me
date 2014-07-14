@@ -1,5 +1,6 @@
-var mongoose = require('libs/mongoose'),
-    Schema = mongoose.Schema;
+var mongoose = require('libs/mongoose');
+var Schema = mongoose.Schema;
+var textSearch = require('mongoose-text-search');
 
 var schema = new Schema({
     artist: {
@@ -32,5 +33,8 @@ var schema = new Schema({
         default: Date.now
     }
 });
+
+schema.plugin(textSearch);
+schema.index({ artist: 'text' });
 
 exports.Cover = mongoose.model('Cover', schema);
