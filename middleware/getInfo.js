@@ -13,3 +13,13 @@ Cover.find({}).sort({'created': -1}).skip(30).limit(30).exec(function(err, cover
     //console.log(arguments)
 
 }
+
+
+Cover.paginate({}, 2, 30, function(error, pageCount, paginatedResults, itemCount) {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('Pages:', pageCount);
+        console.log(paginatedResults);
+    }
+});

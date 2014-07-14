@@ -1,5 +1,6 @@
 var mongoose = require('libs/mongoose'),
     Schema = mongoose.Schema;
+var mongoosePaginate = require('mongoose-paginate');
 
 var schema = new Schema({
     artist: {
@@ -32,5 +33,7 @@ var schema = new Schema({
         default: Date.now
     }
 });
+
+schema.plugin(mongoosePaginate);
 
 exports.Cover = mongoose.model('Cover', schema);
