@@ -3,10 +3,15 @@ var http = require('http');
 var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
+var paginate = require('express-paginate')
+
 
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+app.use(paginate.middleware(10, 50))
 
 
 //app.use(express.favicon());
@@ -67,9 +72,7 @@ app.use(function (err, req, res, next) {
  }
  });
 
- app.use(function(req, res) {
- res.send(404, "Page Not Found Sorry");
- });
+
 
  app.use(express.favicon());
  app.use(express.logger('dev'));
@@ -93,6 +96,53 @@ app.use(function (err, req, res, next) {
     });
 });*/
 
+
+
+
+
+
+
+
+
+/*app.get('/users', function(req, res, next) {
+
+    // This example assumes you've previously defined `Users`
+    // as `var Users = db.model('Users')` if you are using `mongoose`
+    // and that you've added the Mongoose plugin `mongoose-paginate`
+    // to the Users model via `User.plugin(require('mongoose-paginate'))`
+    Users.paginate({}, req.query.page, req.query.limit, function(err, pageCount, users, itemCount) {
+
+        if (err) return next(err)
+
+        res.format({
+            html: function() {
+                res.render('users', {
+                    users: users,
+                    pageCount: pageCount,
+                    itemCount: itemCount
+                })
+            },
+            json: function() {
+                // inspired by Stripe's API response for list objects
+                res.json({
+                    object: 'list',
+                    has_more: paginate.hasNextPages(req)(pageCount),
+                    data: users
+                })
+            }
+        })
+
+    })
+
+})*/
+
+
+
+
+
+app.use(function(req, res) {
+    res.send(404, "Page Not Found Sorry");
+});
 
 var Cover = require('models/cover').Cover;
 app.get('/covers', function (req, res, next) {

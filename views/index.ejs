@@ -40,7 +40,7 @@
                     $('#myModal .modal-footer a').attr("href", "#");
                 });
             });
-        })
+        });
     </script>
 
     <!-- Bootstrap -->
@@ -104,17 +104,22 @@
 
 
 <div class="container" id="container">
+    <% if (cvrs.length) { %>
     <ul class="row">
-        <% for(var i = 0; i < cvrs.length; i++) { %>
+        <% cvrs.forEach(function(cover){ %>
         <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
-            <figure class="cover-item"><img alt="<%= cvrs[i].get('album') %>" src="<%= cvrs[i].get('sPicture') %>"
-                                            bigimg="<%= cvrs[i].get('bPicture') %>">
-                <figcaption><span class="album-title"><%= cvrs[i].get('album') %></span><br>
-                    by <span class="artist-name"><%= cvrs[i].get('artist') %></span></figcaption>
+
+            <figure class="cover-item"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
+                                            bigimg="<%= cover.get('bPicture') %>">
+                <figcaption><span class="album-title"><%= cover.get('album') %></span><br>
+                    by <span class="artist-name"><%= cover.get('artist') %></span></figcaption>
+
             </figure>
         </li>
-        <% } %>
+        <% }) %>
     </ul>
+    <% } %>
+    <% include pagination %>
 </div>
 
 </body>
