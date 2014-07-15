@@ -21,6 +21,27 @@
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
 
+    <script src="https://github.com/paulirish/infinite-scroll/blob/master/jquery.infinitescroll.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#content').infinitescroll({
+                navSelector: "#next:last",
+                nextSelector: "#next:last",
+                itemSelector: "#content",
+                debug: false,
+                dataType: 'html',
+                maxPage: 4,
+                path: function(index) {
+                    return "index" + index + ".html";
+                }
+                // appendCallback   : false, // USE FOR PREPENDING
+            }, function(newElements, data, url){
+                // used for prepending data
+                // $(newElements).css('background-color','#ffef00');
+                // $(this).prepend(newElements);
+            });
+        });
+    </script>
     <link rel='stylesheet' href='/css/style.css'/>
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -83,10 +104,12 @@
     <ul class="row">
         <% cvrs.forEach(function(cover){ %>
         <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+
             <figure class="cover-item"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
                                             bigimg="<%= cover.get('bPicture') %>">
                 <figcaption><span class="album-title"><%= cover.get('album') %></span><br>
                     by <span class="artist-name"><%= cover.get('artist') %></span></figcaption>
+
             </figure>
         </li>
         <% }) %>
@@ -95,7 +118,59 @@
     <% include pagination %>
 </div>
 
+<table class="errors">
+    <tbody>
+    <tr>
+        <td><span class="label label-error" >ERROR</span></td>
+        <td class="collapse"><span class="label label-warning" >Warning</span></td>
+        <td class="collapse">example error</td>
+        <td class="date collapse">2013-05-26 23:54:19</td>
+    </tr>
+    </tbody>
+</table>
 <script>
+    function element_in_scroll(elem)
+    {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+    $(document).scroll(function(e){
+        if (element_in_scroll(".errors tbody tr:last")) {
+            $(document).unbind('scroll');
+            $.ajax({
+                type: "POST",
+                url: document.location.href,
+                data: { text_filter:  $('#text_filter').attr('value'), index_count:$('#index_count').attr('value'),json: "true" }
+            }).done(function( msg ) {
+                        $(".errors tbody ").append(msg.html);
+                        $('#index_count').attr('value',msg.index_count);
+                        if (msg.count != 0) {
+                            $(document).scroll(function(e){
+                                scroll_element_ajax();
+                            })
+                        }
+                    });
+        };
+    });
+</script>
+<div id="posts">
+    <div class="post">...</div>
+    <div class="post">...</div>
+</div>
+
+<div id="pagination">
+    <a href="/main" class="next">next</a>
+</div>
+
+
+<script>
+
     $(document).ready(function () {
         $('li img').on('click', function () {
             var src = $(this).attr('bigimg');

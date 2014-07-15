@@ -15,7 +15,8 @@ async.series([
     open,
     dropDatabase,
     requireModels,
-    createCovers
+    createCovers,
+    syncCovers
 ], function (err) {
     console.log(arguments);
     mongoose.disconnect();
