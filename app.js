@@ -29,7 +29,7 @@ app.use(require('middleware/getInfo'));
 
 app.use(app.router);
 
-//require('routes')(app);
+require('routes')(app);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -97,18 +97,16 @@ app.use(function (err, req, res, next) {
     });
 });*/
 
-app.locals(require('express-pagination'));
+//app.locals(require('express-pagination'));
 
-app.get('/', function(req, res, next) {
+/*app.get('/', function(req, res, next) {
 
 
-    Cover.paginate({}, 2, 10, function(error, pageCount, paginatedResults, itemCount) {
-        if (error) console.error(error);
-    });
+
     res.render('index', {
         brand: "Cover Me"
     })
-/*    Cover.paginate({}, 30, 30, function(err, pageCount, paginatedResults, itemCount) {
+*//*    Cover.paginate({}, 30, 30, function(err, pageCount, paginatedResults, itemCount) {
         if (err) return next(err);
 
         res.format({
@@ -129,9 +127,9 @@ app.get('/', function(req, res, next) {
 
         })
 console.log(pageCount)
-    })*/
+    })*//*
 
-});
+});*/
     /*
 
 
