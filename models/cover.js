@@ -1,7 +1,7 @@
 var mongoose = require('libs/mongoose');
 var Schema = mongoose.Schema;
-var textSearch = require('mongoose-text-search');
 var mongoosePaginate = require('mongoose-paginate');
+var elmongo = require('elmongo');
 
 
 var schema = new Schema({
@@ -36,10 +36,7 @@ var schema = new Schema({
     }
 });
 
-
-schema.plugin(textSearch);
-schema.index({ artist: 'text' });
-
+schema.plugin(elmongo);
 schema.plugin(mongoosePaginate);
 
 exports.Cover = mongoose.model('Cover', schema);
