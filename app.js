@@ -3,7 +3,8 @@ var http = require('http');
 var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
-var paginate = require('express-paginate')
+//var paginate = require('express-paginate');
+var Cover = require('./models/cover').Cover;
 
 
 var app = express();
@@ -11,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.use(paginate.middleware(10, 50))
+//app.use(paginate.middleware(30, 30));
 
 
 //app.use(express.favicon());
@@ -28,7 +29,7 @@ app.use(require('middleware/getInfo'));
 
 app.use(app.router);
 
-require('routes')(app);
+//require('routes')(app);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -96,7 +97,46 @@ app.use(function (err, req, res, next) {
     });
 });*/
 
+app.locals(require('express-pagination'));
 
+app.get('/', function(req, res, next) {
+
+
+    Cover.paginate({}, 2, 10, function(error, pageCount, paginatedResults, itemCount) {
+        if (error) console.error(error);
+    });
+    res.render('index', {
+        brand: "Cover Me"
+    })
+/*    Cover.paginate({}, 30, 30, function(err, pageCount, paginatedResults, itemCount) {
+        if (err) return next(err);
+
+        res.format({
+            html: function() {
+                res.render('index', {
+                    brand: "Cover Me",
+                    pageCount: pageCount,
+                    itemCount: itemCount
+                })
+            },
+            json: function() {
+                res.json({
+                    object: 'list',
+                    has_more: paginate.hasNextPages(req)(pageCount),
+                    data: cvrs
+                })
+            }
+
+        })
+console.log(pageCount)
+    })*/
+
+});
+    /*
+
+
+
+*/
 
 
 
@@ -144,7 +184,6 @@ app.use(function(req, res) {
     res.send(404, "Page Not Found Sorry");
 });
 
-var Cover = require('models/cover').Cover;
 app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
