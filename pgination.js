@@ -23,7 +23,7 @@ app.get('/', pagination, function(req, res) {
     db.logs.update({}, {$inc:{count:1}});
     db.articles.find({}, {'snippet':1,'images':1,'date':1,'title':1}, {limit:limit, sort: [['date','desc']]}, function(err, cursor) {
         cursor.toArray(function(err, articles) {
-            res.render('home.html', {
+            res.render('index', {
                 articles: articles
             });
         });

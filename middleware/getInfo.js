@@ -2,23 +2,24 @@ var Cover = require('../models/cover').Cover;
 
 module.exports = function(req, res, next) {
 
-Cover.find({}).sort({'created': -1}).exec(function(err, covers) {
+/*Cover.find({}).sort({'created': -1}).exec(function(err, covers) {
         if (err) return next(err);
         res.locals.cvrs=covers;
-    console.log(covers)
+    console.log(covers);
         next();
     });
+}*/
 
+    Cover.paginate({}, 2, 30, function (error, pageCount, paginatedResults, itemCount) {
+        if (error) console.log(error);
+        res.locals.cvrs = paginatedResults;
+        console.log(paginatedResults);
+        next();
+    });
 }
 
-/*    Cover.paginate({}, 2, 10, function (error, pageCount, paginatedResults, itemCount) {
-        if (error) console.error(error);
-        res.locals.cvrs = paginatedResults;
-        console.log(paginatedResults)
-    });
-}*/
-/*
 
+/*
 Cover.paginate({}, 2, 30, function(err, pageCount, paginatedResults, itemCount) {
     if (err) return next(err);
         console.log('Pages:', pageCount);

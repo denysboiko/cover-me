@@ -38,6 +38,7 @@ var schema = new Schema({
 
 
 schema.plugin(textSearch);
+
 schema.index({ artist: 'text' });
 
 schema.plugin(mongoosePaginate);
