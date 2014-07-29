@@ -5,7 +5,7 @@ var config = require('config');
 var log = require('libs/log')(module);
 //var paginate = require('express-paginate');
 var Cover = require('./models/cover').Cover;
-
+var url = require('url');
 
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -13,9 +13,8 @@ app.set('view engine', 'ejs');
 
 
 //app.use(paginate.middleware(30, 30));
-
-
 //app.use(express.favicon());
+
 app.use(express.logger('dev'));
 app.use(express.json());
 
@@ -44,6 +43,7 @@ app.use(function (err, req, res, next) {
         res.send(500);
     }
 });
+
 // development only
 /*
  if ('development' == app.get('env')) {
@@ -84,57 +84,14 @@ app.use(function (err, req, res, next) {
  app.use(express.session());
  app.use(app.router);
  app.use(express.static(path.join(__dirname, 'public')));
-
-
  */
-
-
-/*app.get('/', function (req, res, next) {
-    res.render("index", {
-        brand: "Cover Me",
-        files: coverinfo.allcovers,
-        names: coverinfo.AlbumInfo
-    });
-});*/
 
 //app.locals(require('express-pagination'));
 
-/*app.get('/', function(req, res, next) {
+app.get('/mama', function(req, res, next) {
 
 
-
-    res.render('index', {
-        brand: "Cover Me"
-    })
-*//*    Cover.paginate({}, 30, 30, function(err, pageCount, paginatedResults, itemCount) {
-        if (err) return next(err);
-
-        res.format({
-            html: function() {
-                res.render('index', {
-                    brand: "Cover Me",
-                    pageCount: pageCount,
-                    itemCount: itemCount
-                })
-            },
-            json: function() {
-                res.json({
-                    object: 'list',
-                    has_more: paginate.hasNextPages(req)(pageCount),
-                    data: cvrs
-                })
-            }
-
-        })
-console.log(pageCount)
-    })*//*
-
-});*/
-    /*
-
-
-
-*/
+});
 
 
 
@@ -174,10 +131,6 @@ console.log(pageCount)
 
 })*/
 
-
-
-
-
 app.use(function(req, res) {
     res.send(404, "Page Not Found Sorry");
 });
@@ -190,6 +143,35 @@ app.get('/covers', function (req, res, next) {
 });
 
 
+
+/*
+function start(route) {
+    function onRequest(request, response) {
+        var pathname = url.parse(request.url).pathname;
+        console.log("Request for " + pathname + " received.");
+
+        route(pathname);
+
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("Hello World");
+        response.end();
+    }
+}
+
+console.log(app.route);
+*/
+
+/*
+app.get('/:page', function (req, res, next) {
+    Cover.paginate({}, req.params.page, req.query.limit, function (error, pageCount, paginatedResults, itemCount) {
+        if (error) console.log(error);
+        res.locals.cvrs = paginatedResults;
+        res.render('index',{brand: "Cover Me"});
+        next();
+    });
+
+});*/
+
 http.createServer(app).listen(config.get('port'), function () {
-    log.info('Express server listening on port ' + app.get('port'));
+    log.info('Express server listening on port ' + config.get('port'));
 });
