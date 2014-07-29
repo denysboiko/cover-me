@@ -17,7 +17,8 @@
     <![endif]-->
 
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+    <script src="/js/jquery-1.8.3.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/jquery.infinitescroll.min.js"></script>
 
@@ -106,7 +107,7 @@
     <% if (cvrs.length) { %>
     <ul class="row">
         <% cvrs.forEach(function(cover){ %>
-        <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+        <li class="col-md-2 col-sm-2 col-xs-3">
 
             <figure class="cover-item"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
                                             bigimg="<%= cover.get('bPicture') %>">

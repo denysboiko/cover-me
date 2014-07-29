@@ -5,7 +5,6 @@ var config = require('config');
 var log = require('libs/log')(module);
 //var paginate = require('express-paginate');
 var Cover = require('./models/cover').Cover;
-var url = require('url');
 
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -23,8 +22,8 @@ app.use(express.urlencoded());
 app.use(express.cookieParser());
 
 
-
 app.use(require('middleware/getInfo'));
+
 
 app.use(app.router);
 
@@ -88,17 +87,6 @@ app.use(function (err, req, res, next) {
 
 //app.locals(require('express-pagination'));
 
-app.get('/mama', function(req, res, next) {
-
-
-});
-
-
-
-
-
-
-
 /*app.get('/users', function(req, res, next) {
 
     // This example assumes you've previously defined `Users`
@@ -142,28 +130,10 @@ app.get('/covers', function (req, res, next) {
     })
 });
 
-
-
-/*
-function start(route) {
-    function onRequest(request, response) {
-        var pathname = url.parse(request.url).pathname;
-        console.log("Request for " + pathname + " received.");
-
-        route(pathname);
-
-        response.writeHead(200, {"Content-Type": "text/plain"});
-        response.write("Hello World");
-        response.end();
-    }
-}
-
-console.log(app.route);
-*/
-
 /*
 app.get('/:page', function (req, res, next) {
-    Cover.paginate({}, req.params.page, req.query.limit, function (error, pageCount, paginatedResults, itemCount) {
+
+    Cover.paginate({}, req.params.page, *//*req.query.limit*//*30, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
         res.locals.cvrs = paginatedResults;
         res.render('index',{brand: "Cover Me"});

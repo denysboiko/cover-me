@@ -36,15 +36,14 @@ var schema = new Schema({
     }
 });
 
-<<<<<<< HEAD
-schema.plugin(elmongo);
-=======
 
-schema.plugin(textSearch);
+schema.plugin(elmongo);
+
+
+//schema.plugin(textSearch);
 
 schema.index({ artist: 'text' });
 
->>>>>>> FETCH_HEAD
 schema.plugin(mongoosePaginate);
 
 exports.Cover = mongoose.model('Cover', schema);
