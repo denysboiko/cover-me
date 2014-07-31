@@ -1,6 +1,5 @@
-var mongoose = require('libs/mongoose');
-var elmongo = require('node_modules/elmongo');
 var Cover = require('models/cover').Cover;
+var elmongo = require('elmongo');
 
 Cover.sync(function (err, numSynced) {
     // all covers are now searchable in elasticsearch

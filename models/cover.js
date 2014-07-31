@@ -39,11 +39,6 @@ var schema = new Schema({
 
 schema.plugin(elmongo);
 
-
-//schema.plugin(textSearch);
-
-schema.index({ artist: 'text' });
-
 schema.plugin(mongoosePaginate);
 
 exports.Cover = mongoose.model('Cover', schema);

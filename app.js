@@ -5,6 +5,8 @@ var config = require('config');
 var log = require('libs/log')(module);
 //var paginate = require('express-paginate');
 var Cover = require('./models/cover').Cover;
+var mongoose = require('libs/mongoose');
+
 
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +30,7 @@ app.use(require('middleware/getInfo'));
 app.use(app.router);
 
 require('routes')(app);
+
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -130,17 +133,29 @@ app.get('/covers', function (req, res, next) {
     })
 });
 
-/*
+
 app.get('/:page', function (req, res, next) {
 
-    Cover.paginate({}, req.params.page, *//*req.query.limit*//*30, function (error, pageCount, paginatedResults, itemCount) {
+    Cover.paginate({}, req.query.page, 30, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
         res.locals.cvrs = paginatedResults;
         res.render('index',{brand: "Cover Me"});
         next();
     });
+});
 
-});*/
+var elmongo = require('elmongo');
+
+app.get('/:p', function (req, res, next) {
+
+    Cover.sync(function (err, numSynced) {
+    });
+
+    Cover.search({ query: "yes", fuzziness: 0.5 }, function (err, results) {
+        console.log('search results', results);
+        return results;
+    });
+});
 
 http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + config.get('port'));
