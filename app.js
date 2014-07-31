@@ -151,7 +151,7 @@ app.get('/:p', function (req, res, next) {
     Cover.sync(function (err, numSynced) {
     });
 
-    Cover.search({ query: "yes", fuzziness: 0.5 }, function (err, results) {
+    Cover.search({ query: req.query.search, fuzziness: 0.5 }, function (err, results) {
         console.log('search results', results);
         return results;
     });
