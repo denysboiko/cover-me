@@ -144,15 +144,14 @@ app.get('/:page', function (req, res, next) {
     });
 });
 
-var elmongo = require('elmongo');
 
 app.get('/:p', function (req, res, next) {
 
     Cover.sync(function (err, numSynced) {
     });
 
-    Cover.search({ query: "yes", fuzziness: 0.5 }, function (err, results) {
-        console.log('search results', results);
+    Cover.search({ query: req.query.search, fuzziness: 0.5 }, function (err, results) {
+        console.log('search results', results.__id);
         return results;
     });
 });

@@ -1,5 +1,6 @@
+
 var Cover = require('models/cover').Cover;
-var elmongo = require('elmongo');
+
 
 Cover.sync(function (err, numSynced) {
     // all covers are now searchable in elasticsearch
