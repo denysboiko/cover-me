@@ -144,7 +144,6 @@ app.get('/:page', function (req, res, next) {
     });
 });
 
-var elmongo = require('elmongo');
 
 app.get('/:p', function (req, res, next) {
 
@@ -152,7 +151,11 @@ app.get('/:p', function (req, res, next) {
     });
 
     Cover.search({ query: req.query.search, fuzziness: 0.5 }, function (err, results) {
+<<<<<<< HEAD
         console.log('search results', results);
+=======
+        console.log('search results', results.__id);
+>>>>>>> FETCH_HEAD
         return results;
     });
 });
