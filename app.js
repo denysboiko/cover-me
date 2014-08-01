@@ -152,9 +152,9 @@ app.get('/search', function (req, res, next) {
 
     Cover.search({ query: req.query.q, fuzziness: 0.5, hydrate: true}, function (err, results) {
         /*console.log('search results', results.hits);*/
-            res.locals.cvrs = results.hits;
+            //res.locals.cvrs = results.hits;
 
-        res.render('main');
+        res.render('main', {seqrchresults: results.hits});
         return results;
     });
 });
