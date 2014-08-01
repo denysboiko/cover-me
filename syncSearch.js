@@ -7,6 +7,7 @@ Cover.sync(function (err, numSynced) {
 });
 
 Cover.search({ query: 'black sabbath', fuzziness: 0.5 }, function (err, results) {
-    console.log('search results', results);
+    console.log('search results', results.hits.get('_id'));
+    Cover.findById(results);
     return results;
 });

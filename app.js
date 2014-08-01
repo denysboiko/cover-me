@@ -150,8 +150,11 @@ app.get('/:p', function (req, res, next) {
     Cover.sync(function (err, numSynced) {
     });
 
-    Cover.search({ query: req.query.search, fuzziness: 0.5 }, function (err, results) {
-        console.log('search results', results);
+    Cover.search({ query: req.query.search, fuzziness: 0.5, hydrate: true}, function (err, results) {
+        /*console.log('search results', results.hits);*/
+        for(var i=0; i<results.hits.length; i++) {
+            console.log(results.hits[i]._source._id);
+        }
         return results;
     });
 });
