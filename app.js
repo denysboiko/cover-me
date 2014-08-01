@@ -136,7 +136,7 @@ app.get('/covers', function (req, res, next) {
 
 app.get('/:page', function (req, res, next) {
 
-    Cover.paginate({}, req.query.page, 30, function (error, pageCount, paginatedResults, itemCount) {
+    Cover.paginate({}, req.params.page, 30, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
         res.locals.cvrs = paginatedResults;
         res.render('index',{brand: "Cover Me"});
@@ -145,16 +145,16 @@ app.get('/:page', function (req, res, next) {
 });
 
 
-app.get('/:p', function (req, res, next) {
+app.get('/search', function (req, res, next) {
 
     Cover.sync(function (err, numSynced) {
     });
 
-    Cover.search({ query: req.query.search, fuzziness: 0.5, hydrate: true}, function (err, results) {
+    Cover.search({ query: req.query.q, fuzziness: 0.5, hydrate: true}, function (err, results) {
         /*console.log('search results', results.hits);*/
-        for(var i=0; i<results.hits.length; i++) {
-            console.log(results.hits[i]._source._id);
-        }
+            res.locals.cvrs = results.hits;
+
+        res.render('main');
         return results;
     });
 });
