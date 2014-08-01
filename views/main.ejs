@@ -1,6 +1,6 @@
 <% for(var i=0; i<cvrs.length; i++) {%>
-<img src="<%=cvrs[i].get('bPicture')%>" style="width: 200px"><br>
-<span><%=cvrs[i].get('artist')%></span> -
-<span><%=cvrs[i].get('album')%></span><br>
+<img src="<%=cvrs[i]._source.bPicture%>" style="width: 200px"><br>
+<span><%=cvrs[i]._source.artist%></span> -
+<span><%=cvrs[i]._source.album%></span><br>
 
-<% } %>
+<% } %>q
