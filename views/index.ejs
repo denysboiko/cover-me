@@ -104,17 +104,9 @@
 
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-<<<<<<< HEAD
-                    <input id="searchBox" type="text" placeholder="Search cover"/>
-=======
-                    <input class="form-control" type="text" placeholder="Search cover"/>
->>>>>>> FETCH_HEAD
+                    <input  id="searchBox" class="form-control" type="text" placeholder="Search cover"/>
                     <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
                 </div>
-                <!-- <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search cover">
-                </div>-->
-                <!--<button type="submit" class="btn btn-default">Submit</button>-->
             </form>
 
             <script>
@@ -122,23 +114,12 @@
                     location.href = this.href + ('/search?q=') + $('#searchBox').val();
                     return false;
                 });
-
                 $("#searchBox").keypress(function(event){
                     if(event.keyCode == 13){
                         event.preventDefault();
                         $("#searchButton").click();
                     }
                 });
-
-
-
-                /*    $('.input').keypress(function (e) {
-                        if (e.which == 13) {
-                            $('form#login').submit();
-                            return false;    //<---- Add this line
-                        }
-                    });
-    */
             </script>
 
 
