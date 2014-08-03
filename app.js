@@ -133,8 +133,6 @@ app.get('/covers', function (req, res, next) {
     })
 });
 
-
-
 app.get('/page', function (req, res, next) {
 
     Cover.paginate({}, req.query.n, 30, function (error, pageCount, paginatedResults, itemCount) {
@@ -144,7 +142,6 @@ app.get('/page', function (req, res, next) {
         next();
     });
 });
-
 
 
 app.get('/search', function (req, res, next) {
@@ -158,7 +155,7 @@ app.get('/search', function (req, res, next) {
            // res.locals.cvrs = results.hits;
 
         res.render('main', {seqrchresults: results.hits});
-        return results;
+        //return results;
     });
 });
 
