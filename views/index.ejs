@@ -92,9 +92,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <form class="navbar-form navbar-right" role="search">
+            <form class="navbar-form navbar-right">
                 <div class="form-group">
-                    <input name="KeywordBox" class="form-control" type="text" placeholder="Search cover"/>
+                    <input id="searchBox" type="text" placeholder="Search cover"/>
                     <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
                 </div>
                 <!-- <div class="form-group">
@@ -109,13 +109,21 @@
                     return false;
                 });
 
-            /*    $('.input').keypress(function (e) {
-                    if (e.which == 13) {
-                        $('form#login').submit();
-                        return false;    //<---- Add this line
+                $("#searchBox").keydown(function(event){
+                    if(event.keyCode == 13){
+                            location.href = this.href + ('/search?q=') + $('.form-control').val();
                     }
                 });
-*/
+
+
+
+                /*    $('.input').keypress(function (e) {
+                        if (e.which == 13) {
+                            $('form#login').submit();
+                            return false;    //<---- Add this line
+                        }
+                    });
+    */
             </script>
 
 
