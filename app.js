@@ -133,16 +133,31 @@ app.get('/covers', function (req, res, next) {
     })
 });
 
-app.get('/page', function (req, res, next) {
-    var currentPage = req.query.n;
+
+app.get('/', function (req, res, next) {
+    var currentPage = 1;
+    var nextPageURL="";
     Cover.paginate({}, currentPage, 30, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
         if (currentPage<pageCount) {
-            var nextPageURL = "/page?n=".concat(parseInt(currentPage)+1);
+            nextPageURL = "/page?n=".concat(parseInt(currentPage)+1);
         }
-        else {
-            nextPageURL = "";
+        res.locals.cvrs = paginatedResults;
+        res.render('index',{brand: "Cover Me", next: nextPageURL, cvrs: paginatedResults});
+
+        next();
+    });
+});
+
+app.get('/page', function (req, res, next) {
+    var currentPage = req.query.n;
+    var nextPageURL="";
+    Cover.paginate({}, currentPage, 30, function (error, pageCount, paginatedResults, itemCount) {
+        if (error) console.log(error);
+        if (currentPage<pageCount) {
+            nextPageURL = "/page?n=".concat(parseInt(currentPage)+1);
         }
+
         res.locals.cvrs = paginatedResults;
         res.render('index',{brand: "Cover Me", next: nextPageURL, cvrs: paginatedResults});
 
