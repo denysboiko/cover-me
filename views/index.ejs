@@ -92,7 +92,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <form class="navbar-form navbar-right">
+            <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
                     <input id="searchBox" type="text" placeholder="Search cover"/>
                     <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
@@ -105,13 +105,14 @@
 
             <script>
                 $('#searchButton').click(function() {
-                    location.href = this.href + ('/search?q=') + $('.form-control').val();
+                    location.href = this.href + ('/search?q=') + $('#searchBox').val();
                     return false;
                 });
 
-                $("#searchBox").keydown(function(event){
+                $("#searchBox").keypress(function(event){
                     if(event.keyCode == 13){
-                            location.href = this.href + ('/search?q=') + $('.form-control').val();
+                        event.preventDefault();
+                        $("#searchButton").click();
                     }
                 });
 
