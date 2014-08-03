@@ -28,30 +28,10 @@
             pagination: '#pagination',
             next:       '.next'
         });
-        ias.extension(new IASSpinnerExtension());
+        //ias.extension(new IASSpinnerExtension());
     </script>
 
-    <script>
-        $('.row').on('click', '.cover', function () {
-            $('li img').on('click', function () {
-                var src = $(this).attr('bigimg');
-                var img = '<img src="' + src + '" class="img-responsive"/>';
-                var album = $(this).attr('alt');
 
-                $('#myModal').modal();
-                $('#myModal').on('shown.bs.modal', function () {
-                    $('#myModal #myModalLabel').html(album);
-                    $('#myModal .modal-body').html(img);
-                    $('#myModal .modal-footer a').attr("href", src);
-                });
-                $('#myModal').on('hidden.bs.modal', function () {
-                    $('#myModal #myModalLabel').html('Album Title');
-                    $('#myModal .modal-body').html('');
-                    $('#myModal .modal-footer a').attr("href", "#");
-                });
-            });
-        });
-    </script>
 
 
     <!-- Bootstrap -->
@@ -89,29 +69,18 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="#"><img src="coverme.svg" class="logo" alt="<%- brand %>"/></a>
         </div>
+        <div class="vert-sep"></div>
+        <form role="search">
+            <div class="searchForm">
+                <input  id="searchBox" type="text" placeholder="Search cover"/><!--class="form-control" -->
+                <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
+            </div>
+        </form>
+
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-<<<<<<< HEAD
-                    <input class="form-control" id="searchBox" type="text" placeholder="Search cover"/>
-=======
-                    <input  id="searchBox" class="form-control" type="text" placeholder="Search cover"/>
->>>>>>> FETCH_HEAD
-                    <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
-                </div>
-            </form>
 
             <script>
                 $('#searchButton').click(function() {
@@ -125,9 +94,6 @@
                     }
                 });
             </script>
-
-
-        </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -151,6 +117,24 @@
     <% } %>
     <% include pagination %>
 </div>
+<script>
+    $(document).on('click', '.cover img', function () {
+        var src = $(this).attr('bigimg');
+        var img = '<img src="' + src + '" class="img-responsive"/>';
+        var album = $(this).attr('alt');
 
+        $('#myModal').modal();
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myModal #myModalLabel').html(album);
+            $('#myModal .modal-body').html(img);
+            $('#myModal .modal-footer a').attr("href", src);
+        });
+        $('#myModal').on('hidden.bs.modal', function () {
+            $('#myModal #myModalLabel').html('Album Title');
+            $('#myModal .modal-body').html('');
+            $('#myModal .modal-footer a').attr("href", "#");
+        });
+    });
+</script>
 </body>
 </html>
