@@ -134,11 +134,18 @@ app.get('/covers', function (req, res, next) {
 });
 
 app.get('/page', function (req, res, next) {
-
-    Cover.paginate({}, req.query.n, 30, function (error, pageCount, paginatedResults, itemCount) {
+    var currentPage = req.query.n;
+    Cover.paginate({}, currentPage, 30, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
+        if (currentPage<pageCount) {
+            var nextPageURL = "/page?n=".concat(parseInt(currentPage)+1);
+        }
+        else {
+            nextPageURL = "";
+        }
         res.locals.cvrs = paginatedResults;
-        res.render('index',{brand: "Cover Me"});
+        res.render('index',{brand: "Cover Me", next: nextPageURL, cvrs: paginatedResults});
+
         next();
     });
 });
