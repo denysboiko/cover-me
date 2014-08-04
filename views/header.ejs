@@ -1,0 +1,32 @@
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="coverme.svg" class="logo" alt="<%- brand %>"/></a>
+        </div>
+        <div class="vert-sep"></div>
+        <form role="search">
+            <div class="searchForm">
+                <input  id="searchBox" type="text" placeholder="Search cover"/><!--class="form-control" -->
+                <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
+            </div>
+        </form>
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <script>
+            $('#searchButton').click(function() {
+                location.href = this.href + ('/search?q=') + $('#searchBox').val();
+                return false;
+            });
+            $("#searchBox").keypress(function(event){
+                if(event.keyCode == 13){
+                    event.preventDefault();
+                    $("#searchButton").click();
+                }
+            });
+        </script>
+    </div>
+    <!-- /.container-fluid -->
+</nav>
