@@ -114,7 +114,7 @@ figcaption .album-title {
 
 h2, small {
     margin:0px;
-    width: 100px;
+   /* width: 100px;*/
 }
 
 #searchBox {
