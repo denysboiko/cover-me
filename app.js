@@ -172,11 +172,11 @@ app.get('/search', function (req, res, next) {
     });
 
     Cover.search({ query: req.query.q, fuzziness: 0.7, hydrate: true}, function (err, results) {
-    //console.log('search results', results.hits);
+    console.log('search results', results);
 
            // res.locals.cvrs = results.hits;
 
-        res.render('main', {seqrchresults: results.hits});
+        res.render('main', {seqrchresults: results});
         //return results;
     });
 });
