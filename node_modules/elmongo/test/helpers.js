@@ -3,9 +3,10 @@
  */
 var helpers = require('../lib/helpers'),
 	ObjectID = require('mongodb').ObjectID,
-	assert = require('assert')
+	assert = require('assert'),
+    Cat = require('./models').Cat
 
-describe('elmongo helpers', function () {
+describe('elmongo helpers.serialize', function () {
 	it('`helpers.serialize` leaves primitives and null untouched', function (done) {
         assert.equal(undefined, helpers.serialize(undefined))
         assert.equal(null, helpers.serialize(null))
@@ -56,5 +57,120 @@ describe('elmongo helpers', function () {
         assert.equal(serialized.c.g[0].i, 'hello')
 
         done()
+    })
+})
+
+describe('elmongo helpers.mergeModelOptions', function () {
+    it('when no options specified, uses default options', function () {
+        var mergedOptions = helpers.mergeModelOptions(undefined, Cat)
+
+        assert.equal(mergedOptions.protocol, 'http')
+        assert.equal(mergedOptions.host, 'localhost')
+        assert.equal(mergedOptions.port, 9200)
+        assert.equal(mergedOptions.prefix, '')
+        assert.equal(mergedOptions.type, 'cats')
+    })
+
+    it('when options.url specified, parses it correctly', function () {
+        // https url
+        var options = {
+            url: 'https://127.0.0.1:7890'
+        }
+
+        var mergedOptions = helpers.mergeModelOptions(options, Cat)
+
+        assert.equal(mergedOptions.protocol, 'https')
+        assert.equal(mergedOptions.host, '127.0.0.1')
+        assert.equal(mergedOptions.port, 7890)
+        assert.equal(mergedOptions.prefix, '')
+        assert.equal(mergedOptions.type, 'cats')
+
+        // http url
+        var options = {
+            url: 'http://127.0.0.1:7890'
+        }
+
+        var mergedOptions = helpers.mergeModelOptions(options, Cat)
+
+        assert.equal(mergedOptions.protocol, 'http')
+        assert.equal(mergedOptions.host, '127.0.0.1')
+        assert.equal(mergedOptions.port, 7890)
+        assert.equal(mergedOptions.prefix, '')
+        assert.equal(mergedOptions.type, 'cats')
+
+        // url without protocol
+        var options = {
+            url: 'foo.bar.com:7890',
+            protocol: 'https',
+            prefix: 'test'
+        }
+
+        var mergedOptions = helpers.mergeModelOptions(options, Cat)
+
+        assert.equal(mergedOptions.protocol, 'https')
+        assert.equal(mergedOptions.host, 'foo.bar.com')
+        assert.equal(mergedOptions.port, 7890)
+        assert.equal(mergedOptions.prefix, 'test')
+        assert.equal(mergedOptions.type, 'cats')
+
+        // url with hostname fails - must specify host and port
+        var options = {
+            url: 'foo1.bar.io'
+        }
+
+        assert.throws(function () {
+            var mergedOptions = helpers.mergeModelOptions(options, Cat)
+        }, Error)
+
+        // url with different protocol than options.protocol fails
+        var options = {
+            url: 'http://foo1.bar.io',
+            protocol: 'https'
+        }
+
+        assert.throws(function () {
+            var mergedOptions = helpers.mergeModelOptions(options, Cat)
+        }, Error)
+
+        // url with different port than options.protocol fails
+        var options = {
+            url: 'http://foo1.bar.io:9200',
+            port: 9300
+        }
+
+        assert.throws(function () {
+            var mergedOptions = helpers.mergeModelOptions(options, Cat)
+        }, Error)
+    })
+
+    it('when no options.url specified, assigns host/port/protocol/prefix from options', function () {
+        var options = {
+            host: 'foo1.bar.io.baz',
+            port: 4321,
+            protocol: 'https'
+        }
+
+        var mergedOptions = helpers.mergeModelOptions(options, Cat)
+
+        assert.equal(mergedOptions.protocol, 'https')
+        assert.equal(mergedOptions.host, 'foo1.bar.io.baz')
+        assert.equal(mergedOptions.port, 4321)
+        assert.equal(mergedOptions.prefix, '')
+        assert.equal(mergedOptions.type, 'cats')
+
+        var options = {
+            host: 'foo1.bar.io.baz',
+            port: 4321,
+            protocol: 'http',
+            prefix: 'tolgatest'
+        }
+
+        var mergedOptions = helpers.mergeModelOptions(options, Cat)
+
+        assert.equal(mergedOptions.protocol, 'http')
+        assert.equal(mergedOptions.host, 'foo1.bar.io.baz')
+        assert.equal(mergedOptions.port, 4321)
+        assert.equal(mergedOptions.prefix, 'tolgatest')
+        assert.equal(mergedOptions.type, 'cats')
     })
 })

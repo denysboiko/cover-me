@@ -1,34 +1,30 @@
 var mongoose = require('libs/mongoose');
 var Schema = mongoose.Schema;
 var mongoosePaginate = require('mongoose-paginate');
-var elmongo = require('elmongo');
+var mongoosastic = require('mongoosastic');
 
 
 var schema = new Schema({
     artist: {
         type: String,
-        unique: false,
-        required: true
+        required: true,
+        es_indexed:true
     },
     album: {
         type: String,
-        unique: false,
-        required: true
+        required: true,
+        es_indexed:true
     },
     year: {
         type: String,
-        unique: false,
-        required: true
+        required: true,
+        es_indexed:true
     },
     sPicture: {
-        type: String,
-        unique: true,
-        required: true
+        type: String
     },
     bPicture: {
-        type: String,
-        unique: true,
-        required: true
+        type: String
     },
     created: {
         type: Date,
@@ -36,9 +32,23 @@ var schema = new Schema({
     }
 });
 
-
-schema.plugin(elmongo);
-
+schema.plugin(mongoosastic);
 schema.plugin(mongoosePaginate);
+
+
+var Cover = mongoose.model('Cover', schema)
+    , stream = Cover.synchronize()
+    , count = 0;
+
+stream.on('data', function(err, doc){
+    count++;
+});
+stream.on('close', function(){
+    console.log('indexed ' + count + ' documents!');
+});
+stream.on('error', function(err){
+    console.log(err);
+});
+
 
 exports.Cover = mongoose.model('Cover', schema);

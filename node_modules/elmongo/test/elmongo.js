@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 	async = require('async'),
 	util = require('util'),
 	elmongo = require('../lib/elmongo'),
+	helpers = require('../lib/helpers'),
 	testHelper = require('./testHelper')
 
 // connect to DB
@@ -34,7 +35,7 @@ describe('elmongo plugin', function () {
 					assert(body)
 
 					var parsedBody = JSON.parse(body)
-					assert.equal(parsedBody.ok, true)
+					assert.equal(helpers.elasticsearchBodyOk(parsedBody), true)
 					assert.equal(parsedBody.status, 200)
 
 					return next()

@@ -1,4 +1,5 @@
 var assert = require('assert'),
+	helpers = require('../lib/helpers'),
 	testHelper = require('./testHelper'),
 	models = require('./models'),
 	async = require('async'),
@@ -29,7 +30,7 @@ describe('Model.sync()', function () {
 					assert(body)
 
 					var parsedBody = JSON.parse(body)
-					assert.equal(parsedBody.ok, true)
+					assert.equal(helpers.elasticsearchBodyOk(parsedBody), true)
 					assert.equal(parsedBody.status, 200)
 
 					return next()
@@ -43,7 +44,7 @@ describe('Model.sync()', function () {
 
 					try {
 						var parsedBody = JSON.parse(body)
-						assert(parsedBody.ok || parsedBody.status === 404)
+						assert(helpers.elasticsearchBodyOk(parsedBody) || parsedBody.status === 404)
 					} catch (err) {
 						console.log('error with body', body)
 						throw err
