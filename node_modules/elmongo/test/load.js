@@ -11,6 +11,7 @@ var mongoose = require('mongoose'),
 	ObjectID = mongodb.ObjectID,
 	util = require('util'),
 	elmongo = require('../lib/elmongo'),
+	helpers = require('../lib/helpers'),
 	testHelper = require('./testHelper')
 
 var connStr = 'mongodb://localhost/elmongo-test'
@@ -39,7 +40,7 @@ describe('elmongo load tests', function () {
 					assert(body)
 
 					var parsedBody = JSON.parse(body)
-					assert.equal(parsedBody.ok, true)
+					assert.equal(helpers.elasticsearchBodyOk(parsedBody), true)
 					assert.equal(parsedBody.status, 200)
 
 					return next()

@@ -1,7 +1,7 @@
 var mongoose = require('libs/mongoose');
+var elmongo = require('elmongo');
 var Schema = mongoose.Schema;
 var mongoosePaginate = require('mongoose-paginate');
-var elmongo = require('elmongo');
 
 
 var schema = new Schema({
@@ -37,8 +37,15 @@ var schema = new Schema({
 });
 
 
-schema.plugin(elmongo);
+schema.plugin(elmongo, { host: 'localhost', port: 9200, prefix: 'test'});
 
 schema.plugin(mongoosePaginate);
 
-exports.Cover = mongoose.model('Cover', schema);
+var Cover = mongoose.model('Cover', schema);
+
+Cover.sync(function (err, numSynced) {
+    if (err) console.log(err)
+    console.log('number of docs synced:', numSynced);
+});
+
+exports.Cover = Cover;

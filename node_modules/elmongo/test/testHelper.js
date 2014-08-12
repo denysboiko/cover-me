@@ -7,7 +7,8 @@ var assert = require('assert'),
     util = require('util'),
 	request = require('request'),
 	async = require('async'),
-	models = require('./models')
+	models = require('./models'),
+	helpers = require('../lib/helpers')
 
 /**
  * Force a refresh on all indices so we an expect elasticsearch to be up-to-date
@@ -18,7 +19,7 @@ exports.refresh = function (cb) {
 	request.post('http://localhost:9200/_refresh', function (err, res, body) {
 		assert.equal(err, null)
 		var parsedBody = JSON.parse(body)
-		assert.equal(parsedBody.ok, true)
+		assert.equal(helpers.elasticsearchBodyOk(parsedBody), true)
 		return cb()
 	})
 }
@@ -42,7 +43,7 @@ exports.deleteIndices = function (cb) {
 
 	request(reqOpts, function (err, res, body) {
 	    assert.equal(err, null)
-	    assert(body.ok || body.status === 404)
+	    assert(helpers.elasticsearchBodyOk(body) || body.status === 404)
 
 	    return cb()
 	})
@@ -84,7 +85,8 @@ exports.saveDocs = function (docs, cb) {
 		}
 
 		doc.once('elmongo-indexed', function (esearchBody) {
-			if (!esearchBody || !esearchBody.ok) {
+			var bodyOk = helpers.elasticsearchBodyOk(esearchBody)
+			if (!bodyOk) {
 				var error = new Error('elmongo-index error: '+util.inspect(esearchBody, true, 10, true))
 				error.esearchBody = esearchBody
 
@@ -119,7 +121,9 @@ exports.removeDocs = function (docs, cb) {
 		}
 
 		doc.once('elmongo-unindexed', function (esearchBody) {
-			if (!esearchBody || !esearchBody.ok) {
+			var bodyOk = helpers.elasticsearchBodyOk(esearchBody)
+
+			if (!bodyOk) {
 				var error = new Error('elmongo-unindex error: '+util.inspect(esearchBody, true, 10, true))
 				error.esearchBody = esearchBody
 

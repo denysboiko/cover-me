@@ -115,7 +115,7 @@ module.exports = function (schema, options, cb) {
                     return cb(err)
                 }
 
-                if (!body || !body.ok) {
+                if (!helpers.elasticsearchBodyOk(body)) {
                     var error = new Error('Unexpected index creation reply: '+util.inspect(body, true, 10, true))
                     error.body = body
 
@@ -222,7 +222,7 @@ module.exports = function (schema, options, cb) {
                     return next(err)
                 }
 
-                if (!body || !body.ok) {
+                if (!helpers.elasticsearchBodyOk(body)) {
                     var error = new Error('Elasticsearch index refresh error:'+util.inspect(body, true, 10, true))
                     error.reqOpts = reqOpts
                     error.elasticsearchReply = body
@@ -294,7 +294,7 @@ module.exports = function (schema, options, cb) {
                         return next(err)
                     }
 
-                    if (!body || !body.ok) {
+                    if (!helpers.elasticsearchBodyOk(body)) {
                         var error = new Error('Alias deletion error. Elasticsearch reply:'+util.inspect(body, true, 10, true))
                         error.elasticsearchReply = body
                         error.elasticsearchRequestBody = requestBody
@@ -324,7 +324,7 @@ module.exports = function (schema, options, cb) {
                             return parNext(err)
                         }
 
-                        if (!body || !body.ok) {
+                        if (!helpers.elasticsearchBodyOk(body)) {
                             var error = new Error('Index deletion error for index '+indexToRemove+'. Elasticsearch reply:'+util.inspect(body, true, 10, true))
                             error.elasticsearchReply = body
 
