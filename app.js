@@ -175,7 +175,6 @@ app.get('/search', function (req, res, next) {
            // res.locals.cvrs = results.hits;
 
        res.render('main', {seqrchresults: results.hits});
-        //return results;
     });
 });
 
