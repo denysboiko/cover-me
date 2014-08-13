@@ -159,3 +159,6 @@ h2, small {
 .navbar-header {
     width: 150px !important;
 }
+* {
+    box-sizing: content-box !important;
+}

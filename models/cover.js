@@ -1,7 +1,7 @@
 var mongoose = require('libs/mongoose');
-var elmongo = require('elmongo');
 var Schema = mongoose.Schema;
 var mongoosePaginate = require('mongoose-paginate');
+var mongoosastic = require('mongoosastic');
 
 
 var schema = new Schema({
@@ -36,16 +36,23 @@ var schema = new Schema({
     }
 });
 
-
-schema.plugin(elmongo, { host: 'localhost', port: 9200, prefix: 'test'});
-
+schema.plugin(mongoosastic);
 schema.plugin(mongoosePaginate);
 
-var Cover = mongoose.model('Cover', schema);
 
-Cover.sync(function (err, numSynced) {
-    if (err) console.log(err)
-    console.log('number of docs synced:', numSynced);
+
+var Cover = mongoose.model('Cover', schema)
+    , stream = Cover.synchronize()
+    , count = 0;
+
+stream.on('data', function(err, doc){
+    count++;
+});
+stream.on('close', function(){
+    console.log('indexed ' + count + ' documents!');
+});
+stream.on('error', function(err){
+    console.log(err);
 });
 
 exports.Cover = Cover;

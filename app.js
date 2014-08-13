@@ -168,16 +168,8 @@ app.get('/page', function (req, res, next) {
 
 app.get('/search', function (req, res, next) {
 
-    Cover.sync(function (err, numSynced) {
-    });
-
-    Cover.search({ query: req.query.q, fuzziness: 0.7, hydrate: true}, function (err, results) {
-    //console.log('search results', results.hits);
-
-           // res.locals.cvrs = results.hits;
-
-        res.render('main', {seqrchresults: results.hits});
-        //return results;
+    Cover.search({ query: req.query.q}, {hydrate: true}, function (err, results) {
+       res.render('main', {seqrchresults: results.hits});
     });
 });
 
