@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var dir = "./public/img/";
+var dir = "public/img/";
 
 function getFiles(dir, files_) {
     files_ = files_ || [];
@@ -21,6 +21,7 @@ function getFiles(dir, files_) {
 }
 
 var allcovers = getFiles(dir);
+console.log(allcovers);
 
 function outputNames() {
 
