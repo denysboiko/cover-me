@@ -7,24 +7,28 @@ var mongoosastic = require('mongoosastic');
 var schema = new Schema({
     artist: {
         type: String,
-        required: true,
-        es_indexed:true
+        unique: false,
+        required: true
     },
     album: {
         type: String,
-        required: true,
-        es_indexed:true
+        unique: false,
+        required: true
     },
     year: {
         type: String,
-        required: true,
-        es_indexed:true
+        unique: false,
+        required: true
     },
     sPicture: {
-        type: String
+        type: String,
+        unique: true,
+        required: true
     },
     bPicture: {
-        type: String
+        type: String,
+        unique: true,
+        required: true
     },
     created: {
         type: Date,
@@ -34,6 +38,7 @@ var schema = new Schema({
 
 schema.plugin(mongoosastic);
 schema.plugin(mongoosePaginate);
+
 
 
 var Cover = mongoose.model('Cover', schema)
@@ -50,5 +55,4 @@ stream.on('error', function(err){
     console.log(err);
 });
 
-
-exports.Cover = mongoose.model('Cover', schema);
+exports.Cover = Cover;

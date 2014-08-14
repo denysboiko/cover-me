@@ -168,4 +168,8 @@ h2, small {
     display: inline-block;
     vertical-align: middle;
     float: none;
+    width: 150px !important;
+}
+* {
+    box-sizing: content-box !important;
 }

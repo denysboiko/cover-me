@@ -1,5 +1,7 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="padding-top: 0px; width: 100%">
-    <div class="container-fluid" style="border: 1px green solid;">
+
+<nav class="navbar navbar-fixed-top" role="navigation">
+
+    <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header" style="border: 1px red solid;">
             <a class="navbar-brand" href="#"><img src="coverme.svg" class="logo vcenter" alt=""/></a>
@@ -8,6 +10,13 @@
         <form role="search">
             <input class="input-large" id="searchBox" type="text" placeholder="Search cover"/><!--class="form-control" -->
             <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
+            <div class="searchForm">
+                <div class="bs-example">
+                    <input type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false">
+                </div>
+                <input  id="searchBox" type="text" placeholder="Search cover"/><!--class="form-control" -->
+                <a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a>
+            </div>
         </form>
         </div>
 
