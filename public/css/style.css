@@ -31,7 +31,7 @@ ul li img {
 
 #container {
     padding: 0;
-    margin: 150px 0 0;
+    margin: 0 0 0;
     width: 100%;
     background: #000;
 }
@@ -198,4 +198,12 @@ h2, small {
     background-color: white;
     border: 1px solid white;
     border-radius: 4px;
+}
+
+.navbar-brand {
+    float: left;
+    padding: 0px;
+    font-size: 28px;
+    line-height: 30px;
+    /*height: 150px;*/
 }
