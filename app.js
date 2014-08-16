@@ -129,7 +129,8 @@ app.use(function(req, res) {
 app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
-       res.json(covers);
+        for (i=0;i=5;i++){
+       res.json(covers)};
     })
 });
 
@@ -168,8 +169,14 @@ app.get('/page', function (req, res, next) {
 
 app.get('/search', function (req, res, next) {
 
-    Cover.search({ query: req.query.q}, {hydrate: true}, function (err, results) {
-       res.render('main', {seqrchresults: results.hits});
+    Cover.search({ query: req.query.q}, {hydrate: false}, function (err, results) {
+       //res.render('main', {seqrchresults: results.hits});
+/*var albums = new Array
+        for (i=0;i=9;i++){
+           albums.push(results.hits.hits[9]._source.album);
+        }*/
+
+        res.json(require('public/countries.json'));
     });
 });
 

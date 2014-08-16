@@ -54,7 +54,8 @@
         $(document).ready(function(){
                 $('#searchBox').typeahead({
                     name: 'Search',
-                    prefetch: 'countries.json'
+                    remote: '/search?q=%QUERY'
+                    ,limit: 10
                 });
         });
     </script>
