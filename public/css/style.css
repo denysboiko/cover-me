@@ -29,13 +29,16 @@ ul li img {
     padding: 0 !important;
 }
 
-.container {
+#container {
     padding: 0;
     margin: 150px 0 0;
     width: 100%;
     background: #000;
 }
-
+#header {
+    width: 100%;
+    padding: 0;
+}
 
 .cover-item {
     position: relative;
@@ -63,6 +66,22 @@ ul li img {
 
 }
 
+.navbar-brand {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+div.searchForm {
+    float: left;
+    width: 75%;
+}
+form#searchForm {
+    float: left;
+}
+#serchButton {
+    position: absolute;
+    margin-left: -100px;
+}
 
 figcaption {
     padding: 10px 15px;
@@ -78,7 +97,6 @@ figcaption .album-title {
 
 .navbar {
     background: #fff;
-    padding-top: 30px;
     box-sizing: border-box;
 }
 
@@ -87,14 +105,11 @@ figcaption .album-title {
 }
 
 .navbar-brand {
-    padding: 0 0 0 50px;
-    float: left;
-
+    padding: 0;
 }
 
 .navbar-header {
     height: 150px;
-    overflow: hidden;
 }
 
 
@@ -160,9 +175,6 @@ h2, small {
     background: #000
 }
 
-.navbar-header {
-    width: 200px !important;
-}
 
 .vcenter {
     display: inline-block;
