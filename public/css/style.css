@@ -37,7 +37,6 @@ ul li img {
 }
 #header {
     width: 100%;
-    padding: 0;
 }
 
 .cover-item {
@@ -95,10 +94,9 @@ figcaption .album-title {
     font-size: 14px;
 }
 
-/*.navbar {
-    background: #fff;
-    box-sizing: border-box;
-}*/
+.navbar {
+
+}
 /*
 .navbar-brand a {
     padding: 0;
@@ -107,11 +105,11 @@ figcaption .album-title {
 .navbar-brand {
     padding: 0;
 }
-
+*/
 .navbar-header {
-    height: 150px;
+    background: #fff;
 }
-
+/*
 
 .logo {
     width: 150px;
@@ -132,12 +130,10 @@ h2, small {
    /* width: 100px;*/
 }
 
-/*
+
 #searchBox {
-    display: block;
-    */
-/*padding: 30px*//*
-;
+    /*display: block;
+    padding: 30px;
     height: 50px;
     color: #555;
     border: 0;
@@ -145,9 +141,8 @@ h2, small {
     border-radius: 0px;
     box-shadow: none;
     width: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box;*/
 }
-*/
 
 .container-fluid {
     margin: 0;
@@ -182,11 +177,11 @@ h2, small {
     float: none;
     width: 150px !important;
 }
-/*
+
 * {
     box-sizing: content-box !important;
 }
-*/
+
 
 .navbar-default {
     background-color: #ffffff;
