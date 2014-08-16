@@ -37,6 +37,7 @@ ul li img {
 }
 #header {
     width: 100%;
+    margin: 0;
 }
 
 .cover-item {
@@ -140,8 +141,12 @@ h2, small {
     border-left: 1px #000;
     border-radius: 0px;
     box-shadow: none;
-    width: 100%;
     box-sizing: border-box;*/
+    width: 100% !important;
+}
+
+.twitter-typeahead {
+    width: 100%
 }
 
 .container-fluid {
