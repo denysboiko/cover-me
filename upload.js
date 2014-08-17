@@ -55,8 +55,6 @@ app.get('/', function (req, res){
 
 app.listen(3001);
 
-jj
-
 /*
 gm('./uploads/90125.jpeg')
     .resize(300, 300)
