@@ -207,8 +207,80 @@ h2, small {
 
 .navbar-brand {
     float: left;
-    padding: 0px;
+    /*padding: 0px;*/
     font-size: 28px;
     line-height: 30px;
-    /*height: 150px;*/
+}
+
+.form-control {
+     display: block;
+     width: 100%;
+     height: 50px;
+     padding: 12px 18px;
+     font-size: 36px;
+     line-height: 1.42857;
+     color: #555;
+     background-color: #FFF;
+     background-image: none;
+     border: 2px solid white;
+     border-radius: 0;
+     box-shadow: 0 2px 1px -1px cornflowerblue;
+     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+ }
+
+.form-control:focus {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 12px 18px;
+    font-size: 36px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 2px solid white;
+    border-radius: 0;
+    box-shadow: 0 2px 1px -1px cornflowerblue;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.btn-default {
+    color: deeppink;
+    background-color: white;
+    border-color: white;
+}
+.btn-default:hover {
+    color: gray;
+    background-color: white;
+    border-color: white;
+}
+
+.input-group-addon, .input-group-btn {
+    width: 3%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.navbar-form .input-group > .form-control {
+    width: 95%;
+}
+
+.navbar-form {
+    margin: 8px -15px;
+    padding: 20px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1) inset, 0px 1px 0px rgba(255, 255, 255, 0.1);
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 30px;
 }
