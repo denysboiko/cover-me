@@ -181,7 +181,7 @@ app.get('/auto', function (req, res, next) {
          for (i=0;i=9;i++){
          albums.push(results.hits.hits[9]._source.album);
          }*/
-        res.send(['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen']);
+        res.send(['Audi','BMW','Bugatti','Ferrari','Ford','Lamborghini','Mercedes Benz','Porsche','Rolls-Royce','Volkswagen']);
         //res.json(require('public/countries.json'));
     });
 });
