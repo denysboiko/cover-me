@@ -170,13 +170,19 @@ app.get('/page', function (req, res, next) {
 app.get('/search', function (req, res, next) {
 
     Cover.search({ query: req.query.q}, {hydrate: false}, function (err, results) {
-       //res.render('main', {seqrchresults: results.hits});
-/*var albums = new Array
-        for (i=0;i=9;i++){
-           albums.push(results.hits.hits[9]._source.album);
-        }*/
+       res.render('main', {searchResults: results.hits.hits});
+    });
+});
 
-        res.json(require('public/countries.json'));
+app.get('/auto', function (req, res, next) {
+
+    Cover.search({ query: req.query.q}, {hydrate: false}, function (err, results) {
+        /*var albums = new Array
+         for (i=0;i=9;i++){
+         albums.push(results.hits.hits[9]._source.album);
+         }*/
+        res.send(['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen']);
+        //res.json(require('public/countries.json'));
     });
 });
 

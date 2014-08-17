@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%- brand %></title>
+    <title>Cover Me</title>
 
 
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/js/jquery-1.8.3.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="jquery-ias.min.js"></script>
@@ -43,29 +43,19 @@
     <link rel="shortcut icon" href="favicon.ico"/>
 
 
-    <script>
-        $('#searchButton').click(function() {
-            location.href = this.href + ('/search?q=') + $('#searchBox').val();
-            return false;
-        });
-        $("#searchBox").keypress(function(event){
-            if(event.keyCode == 13){
-                event.preventDefault();
-                $("#searchButton").click();
-            }
-        });
-    </script>
+
 
 
 
 
     <script type="text/javascript">
         $(document).ready(function(){
-                $('#searchBox').typeahead({
-                    name: 'Search',
-                    remote: '/search?q=%QUERY'
-                    ,limit: 10
-                });
+            $('#searchBox').typeahead({
+                name: 'Search',
+                //prefetch: 'countries.json'
+                remote: '/auto?q=%QUERY',
+                limit: 30
+            });
         });
     </script>
     <style type="text/css">
@@ -74,25 +64,22 @@
             position: relative;
             margin: 100px;
         }
-        /* .tt-query, .tt-hint {
-            border: 2px solid #CCCCCC;
-            font-size: 24px;
-            height: 30px;
-            line-height: 30*px;
-            outline: medium none;
-            padding: 8px 12px;
-            width: 396px;
-        }
-        .typeahead {
-            background-color: #FFFFFF;
-        }
-        .typeahead:focus {
-            border: 2px solid #0097CF;
-        }*/
+            /* .tt-query, .tt-hint {
+                border: 2px solid #CCCCCC;
+                font-size: 24px;
+                height: 30px;
+                line-height: 30*px;
+                outline: medium none;
+                padding: 8px 12px;
+                width: 396px;
+            }
+            .typeahead {
+                background-color: #FFFFFF;
+            }
+            .typeahead:focus {
+                border: 2px solid #0097CF;
+            }*/
 
-        .tt-query {
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-        }
         .tt-hint {
             color: #999999;
         }
@@ -166,6 +153,7 @@
     </ul>
     <% } %>
     <% include pagination %>
+
 </div>
 <script>
     $(document).on('click', '.cover img', function () {
