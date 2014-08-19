@@ -175,14 +175,21 @@ app.get('/search', function (req, res, next) {
 });
 
 app.get('/auto', function (req, res, next) {
-
-    Cover.search({ query: req.query.q}, {hydrate: false}, function (err, results) {
-        /*var albums = new Array
+/*    Cover.search({ query: req.query.q}, {hydrate: false}, function (err, results) {
+        *//*var albums = new Array
          for (i=0;i=9;i++){
          albums.push(results.hits.hits[9]._source.album);
-         }*/
+         }*//*
         res.send(['Audi','BMW','Bugatti','Ferrari','Ford','Lamborghini','Mercedes Benz','Porsche','Rolls-Royce','Volkswagen']);
         //res.json(require('public/countries.json'));
+    });*/
+    Cover.find().or([{artist: new RegExp('^'+req.query.q, "i")},{album: new RegExp('^'+req.query.q, "i")}]).sort({'artist': 1}).exec(function(err, covers) {
+        if (err) return next(err);
+        var artists = new Array
+        /*for (i=0; i=covers.length; i++) {
+            artists[i]=covers[i].artist
+        }*/
+        res.json(covers);
     });
 });
 

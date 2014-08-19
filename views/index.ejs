@@ -52,12 +52,13 @@
         $(document).ready(function(){
             $('#searchBox').typeahead({
                 name: 'Search',
-                //prefetch: 'countries.json'
-                remote: '/auto?q=%QUERY',
-                limit: 30
+                prefetch: 'countries.json'
+                //remote: '/auto?q=%QUERY',
+                //limit: 30
             });
         });
     </script>
+
     <style type="text/css">
         .bs-example{
             font-family: sans-serif;
@@ -124,8 +125,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="" class="btn btn-primary" role="button" download="img.jpg">Download <span
-                            class="glyphicon glyphicon-download"></span></a>
+                <a href="" class="btn btn-primary" role="button" download="img.jpg">Download <span class="glyphicon glyphicon-download"></span></a>
             </div>
         </div>
     </div>
