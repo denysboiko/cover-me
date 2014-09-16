@@ -52,8 +52,8 @@
         $(document).ready(function(){
             $('#searchBox').typeahead({
                 name: 'Search',
-                prefetch: 'countries.json'
-                //remote: '/auto?q=%QUERY',
+                //prefetch: 'countries.json'
+                remote: '/auto?q=%QUERY',
                 //limit: 30
             });
         });

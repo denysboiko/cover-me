@@ -55,13 +55,11 @@ app.get('/', function (req, res){
 
 app.listen(3001);
 
-/*
-gm('./uploads/90125.jpeg')
+gm('./uploads/96286445.jpg')
     .resize(300, 300)
-    .write('./uploads/small/90125-300x300.jpeg', function (err) {
+    .write('./uploads/small/96286445.jpg', function (err) {
         if (err) throw err
         else
         console.log(' hooray! ');
     });
-*/
 

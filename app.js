@@ -186,10 +186,10 @@ app.get('/auto', function (req, res, next) {
     Cover.find().or([{artist: new RegExp('^'+req.query.q, "i")},{album: new RegExp('^'+req.query.q, "i")}]).sort({'artist': 1}).exec(function(err, covers) {
         if (err) return next(err);
         var artists = new Array
-        /*for (i=0; i=covers.length; i++) {
+        for (i=0; i<covers.length; i++) {
             artists[i]=covers[i].artist
-        }*/
-        res.json(covers);
+        }
+        res.send(artists);
     });
 });
 

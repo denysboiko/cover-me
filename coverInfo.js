@@ -10,12 +10,16 @@ function getFiles(dir, files_) {
         if (!files.hasOwnProperty(i)) continue;
         var name = 'img/' + files[i];
         files_.push(name);
-        /*if (fs.statSync(name).isDirectory()){
-         getFiles(name,files_);
-         } else {
-         files_.push(name);
+    /*
 
-         }*/
+
+        if (fs.statSync(name).isDirectory()){
+        getFiles(name,files_);
+        } else {
+        files_.push(name);
+
+         }
+    */
     }
     return files_;
 }
