@@ -42,13 +42,8 @@ function requireModels(callback) {
 
 function createCovers(callback) {
     var covers = new Array;
-    /*    var covers = [
-     {artist: 'Tim Minchin', album: 'Darkside', year: '2008', sPicture: 'smaaaal.jpg', bPicture: 'biiiiig.jpg'},
-     {artist: 'Oasis', album: 'SOTSOG', year: '2004', sPicture: 'smaaaal1.jpg', bPicture: 'biiiiig2.jpg'}
-     ];*/
-
     for (var i = 0; i < coverinfo.AlbumInfo[0].length; i++) {
-        covers[i] = {artist: coverinfo.AlbumInfo[1][i], album: coverinfo.AlbumInfo[0][i], year: '2008', sPicture: coverinfo.allcovers[i], bPicture: coverinfo.allcovers[i]}
+        covers[i] = {artist: coverinfo.AlbumInfo[1][i], album: coverinfo.AlbumInfo[0][i], year: '2008', sPicture: coverinfo.allcovers[i].replace('img','small'), bPicture: coverinfo.allcovers[i]}
     }
 
     async.each(covers, function (coverData, callback) {
