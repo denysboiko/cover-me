@@ -168,7 +168,7 @@
         <% cvrs.forEach(function(cover){ %>
         <li class="col-md-2 col-sm-2 col-xs-3 cover">
 
-            <figure class="cover-item emerge"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
+            <figure class="cover-item emerge"><img class="emerge" alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
                                             bigimg="<%= cover.get('bPicture') %>">
                 <figcaption><span class="album-title"><%= cover.get('album') %></span><br>
                     by <span class="artist-name"><%= cover.get('artist') %></span></figcaption>
