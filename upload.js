@@ -4,11 +4,15 @@ var express = require("express"),
     util = require('util'),
     fs   = require('fs-extra'),
     qt   = require('quickthumb'),
-    easyimg = require("easyimage");
+    easyimg = require("easyimage"),
+    path = require('path');
 var gm = require('gm').subClass({ imageMagick: true });
 
 // Use quickthumb
 app.use(qt.static(__dirname + '/'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 
 app.post('/upload', function (req, res){
     var form = new formidable.IncomingForm();
@@ -47,14 +51,18 @@ app.post('/upload', function (req, res){
 
 // Show the upload form
 app.get('/', function (req, res){
-    res.writeHead(200, {'Content-Type': 'text/html' });
-    /* Display the file upload form. */
+
+
+    res.render('mini-upload-form/index');
+    /*res.writeHead(200, {'Content-Type': 'text/html' });
+    *//* Display the file upload form. *//*
     form = '<form action="/upload" enctype="multipart/form-data" method="post">' + '<input name="title" type="text" />' + '<input multiple="multiple" name="upload" type="file" />' + '<input type="submit" value="Upload" />' + '</form>';
-    res.end(form);
+    res.end(form);*/
 });
 
 app.listen(3001);
 
+/*
 gm('./uploads/96286445.jpg')
     .resize(300, 300)
     .write('./uploads/small/96286445.jpg', function (err) {
@@ -63,3 +71,4 @@ gm('./uploads/96286445.jpg')
         console.log(' hooray! ');
     });
 
+*/
