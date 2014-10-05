@@ -4,7 +4,7 @@ if (jQuery) {
   
   (function ($) {
 
-    $(document).ajaxComplete( function () {
+    $( function () {
       
       // from waitForImages
       $.expr[':'].uncached = function (obj) {
