@@ -173,7 +173,7 @@
 <div class="container" id="container" style="">
 
     <% if (cvrs.length) { %>
-    <ul class="row emerge" id="covers" style="width: 100%; margin: 0">
+    <ul class="row" id="covers" style="width: 100%; margin: 0">
 
         <% cvrs.forEach(function(cover){ %>
         <li class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover">
@@ -197,7 +197,7 @@
 <script>
     $(document).on('click', '.cover img', function () {
         var src = $(this).attr('bigimg');
-        var img = '<img src="' + src + '" class="img-responsive"/>';
+        var img = '<img src="' + src + '" class="img-responsive main-cover emerge"/>';
         var album = $(this).attr('alt');
 
         $('#myModal').modal();

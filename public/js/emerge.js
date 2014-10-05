@@ -4,7 +4,7 @@ if (jQuery) {
   
   (function ($) {
 
-    $ (function () {
+    $(document).ajaxComplete( function () {
       
       // from waitForImages
       $.expr[':'].uncached = function (obj) {
@@ -111,7 +111,7 @@ if (jQuery) {
               }
               
             } else {
-              fire ($el)
+              $(document).ajaxComplete(fire ($el));
             }
           }
           
@@ -277,10 +277,10 @@ if (jQuery) {
           
           // css properties with images
           for (var i=0; i<cssImageProps.length; ++i) {
-            var key = cssImageProps[i]
-            var value = element.css (key)
-            var pos = -1
-            var match
+            var key = cssImageProps[i];
+            var value = element.css (key);
+            var pos = -1;
+            var match;
             if (value && ((pos = value.indexOf ('url(')) >= 0)) {
               while ((match = cssUrlRegex.exec (value)) !== null) {
                 innerImagesSrcs[match[2]] = true
@@ -351,7 +351,7 @@ if (jQuery) {
       
     })
   
-  }) (jQuery)
+  })(jQuery);
   
   document.write ('<style>.emerge { opacity: 0; }</style>')
   

@@ -1,5 +1,4 @@
 var fs = require('fs');
-
 var dir = "public/img/";
 
 function getFiles(dir, files_) {

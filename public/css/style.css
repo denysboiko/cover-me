@@ -295,3 +295,8 @@ h2, small {
     border-radius: 0 !important;
     box-shadow: 0 !important;
 }
+
+.main-cover {
+    width: 600px;
+    height: 600px;
+}
