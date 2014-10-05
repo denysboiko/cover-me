@@ -175,18 +175,10 @@ app.get('/search', function (req, res, next) {
 });
 
 app.get('/auto', function (req, res, next) {
-/*    Cover.search({ query: req.query.q}, {hydrate: false}, function (err, results) {
-        *//*var albums = new Array
-         for (i=0;i=9;i++){
-         albums.push(results.hits.hits[9]._source.album);
-         }*//*
-        res.send(['Audi','BMW','Bugatti','Ferrari','Ford','Lamborghini','Mercedes Benz','Porsche','Rolls-Royce','Volkswagen']);
-        //res.json(require('public/countries.json'));
-    });*/
     Cover.find().or([{artist: new RegExp('^'+req.query.q, "i")},{album: new RegExp('^'+req.query.q, "i")}]).sort({'artist': 1}).exec(function(err, covers) {
         if (err) return next(err);
         var artists = new Array
-        for (i=0; i<covers.length; i++) {
+        for (var i=0; i<covers.length; i++) {
             artists[i]=covers[i].artist
         }
         res.send(artists);
@@ -196,3 +188,5 @@ app.get('/auto', function (req, res, next) {
 http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + config.get('port'));
 });
+
+
