@@ -8,6 +8,15 @@ var Cover = require('./models/cover').Cover;
 var mongoose = require('libs/mongoose');
 
 
+
+/*  Upload */
+var formidable = require('formidable');
+var util = require('util');
+var fs   = require('fs-extra');
+var qt   = require('quickthumb');
+
+
+
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -15,6 +24,8 @@ app.set('view engine', 'ejs');
 
 //app.use(paginate.middleware(30, 30));
 //app.use(express.favicon());
+
+app.use(qt.static(__dirname + '/'));
 
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -184,6 +195,40 @@ app.get('/auto', function (req, res, next) {
         res.send(artists);
     });
 });
+
+
+
+
+app.post('/upload', function (req, res){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        res.writeHead(200, {'content-type': 'text/plain'});
+        res.write('received upload:\n\n');
+        res.end(util.inspect({fields: fields, files: files}));
+    });
+
+    form.on('end', function(fields, files) {
+        /* Temporary location of our uploaded file */
+        var temp_path = this.openedFiles[0].path;
+        /* The file name of the uploaded file */
+        var file_name = this.openedFiles[0].name;
+        /* Location where we want to copy the uploaded file */
+        var new_location = 'uploads/';
+
+        fs.copy(temp_path, new_location + file_name, function(err) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log("success!")
+            }
+        });
+    });
+});
+
+app.get('/upload', function (req, res){
+    res.render('mini-upload-form/index');
+});
+
 
 http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + config.get('port'));
