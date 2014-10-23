@@ -31,7 +31,7 @@ ul li img {
 
 #container {
     padding: 0;
-    margin: 107px 0 0 0;
+    margin: 0;
     width: 100%;
     background: #000;
 }
@@ -39,8 +39,9 @@ ul li img {
     width: 100%;
     margin: 0;
     height: 107px;
+    background: rgba(255, 255, 255, .4);
+    border-bottom:1px solid rgba(0, 0, 0, .2);
 }
-
 .cover-item {
     position: relative;
 }
@@ -124,13 +125,50 @@ figcaption .album-title {
 }
 */
 .navbar-header {
-    background: #fff;
+    background: rgba(255, 255, 255, .4);
+    height: 107px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    border-bottom:1px solid rgba(0, 0, 0, .2);
+    z-index: 1020;
+    display: none;
 }
-/*
 
+/*.blured {
+    height: 107px;
+    z-index: 1000;
+    overflow: hidden;
+    background: none repeat scroll 0% 0% #FFF;
+    left: 0px;
+}*/
+.blured {
+    height: 107px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    border-bottom:1px solid rgba(0, 0, 0, .2);
+    overflow: hidden;
+    z-index: 1000;
+    background: #fff;
+    left: 0;
+}
+/*header {
+    background: rgba(255, 255, 255, .4);
+    height: 88px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    border-bottom:1px solid rgba(0, 0, 0, .2);
+    z-index: 10000000000;
+    display: none;
+}*/
+
+/*
 .logo {
     width: 150px;
-}*/
+}
+*/
 
 .list-group li {
     list-style: none;
@@ -236,6 +274,10 @@ h2, small {
     border-color: #ffffff;
 }
 
+.navbar-brand {
+    padding: 15px 15px 0px;
+}
+
 .input-group-addon {
     padding: 6px 12px;
     font-size: 14px;
@@ -243,48 +285,23 @@ h2, small {
     line-height: 1;
     color: #555;
     text-align: center;
-    background-color: white;
-    border: 1px solid white;
-    border-radius: 4px;
+    background: transparent;
+    border: 0;
+    border-radius:0px;
 }
 
-.navbar-brand {
-    padding: 15px 15px 0px;
-}
-
-.form-control {
+.form-control, .form-control:focus, .tt-hint {
      display: block;
      width: 100%;
-     height: 80px;
-     padding: 12px 18px;
-     font-size: 36px;
-     line-height: 1.42857;
+     padding: 8px;
+     font-size: 14px;
      color: #555;
-     background-color: #FFF;
-     background-image: none;
-     border: 2px solid white;
+     background: transparent;
+     border: 1px solid white;
      border-radius: 0;
-     box-shadow: 0 2px 1px -1px cornflowerblue;
+     box-shadow: none;
      transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
  }
-
-.form-control:focus, .tt-hint {
-    display: block;
-    width: 100%;
-    height: 80px;
-    padding: 12px 18px;
-    font-size: 20px;
-    line-height: 1.42857;
-    color: #555;
-    background-color: #FFF;
-    background-image: none;
-    border: 2px solid white;
-    border-radius: 0;
-    box-shadow: 0 2px 1px -1px cornflowerblue;
-    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-}
-
-
 
 .input-group-addon, .input-group-btn {
     width: 3%;
@@ -298,9 +315,8 @@ h2, small {
 
 .navbar-form {
     margin: 0px -15px;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1) inset, 0px 1px 0px rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
+    /*box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1) inset, 0px 1px 0px rgba(255, 255, 255, 0.1);*/
 }
 
 #myModal .modal-content {
@@ -312,4 +328,16 @@ h2, small {
 .main-cover {
 /*    width: 600px;
     height: 600px;*/
+}
+
+#canvas {
+    opacity:1;
+    z-index: 100;
+    position: absolute;
+    display: block;
+    top: 3px;
+}
+
+.input-group {
+    width: 100%;
 }

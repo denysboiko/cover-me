@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://rawgit.com/abduzeedo/ios7-blur-html5/master/js/html2canvas.js"></script>
+    <script src="https://rawgit.com/abduzeedo/ios7-blur-html5/master/js/StackBlur.js"></script>
+    <style>
+        *, *:after, *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family:"HelveticaNeue-Light", sans-serif;
+            background: #ddd;
+        }
+        header, .blurheader {
+            background: rgba(255, 255, 255, .4);
+            height: 88px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            border-bottom:1px solid rgba(0, 0, 0, .2);
+            z-index: 10000000000;
+        }
+        header {
+            text-align: center;
+            display: none;
+            max-width: 1024px;
+        }
+        header h1 {
+            font-size: 24px;
+            font-family:"HelveticaNeue-Light", sans-serif;
+            font-weight: lighter;
+            line-height: 88px;
+            margin: 0;
+            padding: 0;
+        }
+        .blurheader {
+            background: transparent;
+            overflow: hidden;
+            z-index: 10000;
+            background: #fff;
+            left: 0;
+        }
+        section {
+            height: 100%;
+            position: relative;
+            display: block;
+            max-width: 1024px;
+            margin: 0 auto;
+            background: #fff;
+        }
+        article {
+            background: #fff;
+            width: 100%;
+            padding: 22px;
+            margin: 75px 0 0 0;
+            z-index: 100;
+            font-size: 16px;
+            line-height: 150%;
+        }
+
+        article h1 {
+            font-size: 32px;
+            font-family: sans-serif;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            padding: 0;
+            line-height: 32px;
+        }
+        article h3 {
+            line-height: 24px;
+            font-size: 24px;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-family:"HelveticaNeue-Light", sans-serif;
+            font-weight: normal;
+        }
+        article p {
+            margin: 0 0 15px 0;
+        }
+        article img {
+            width: 100%;
+            margin: 0 0 15px 0;
+        }
+        footer {
+            margin: 22px -22px -22px -22px;
+            padding: 22px;
+            background: #111;
+            color: #ccc;
+        }
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            border-bottom: 1px dotted #fff;
+        }
+    </style>
+    <script>
+        $(function () {
+            html2canvas($("body"), {
+                onrendered: function (canvas) {
+                    $(".blurheader").append(canvas);
+                    $("canvas").attr("id", "canvas");
+                    stackBlurCanvasRGB(
+                            'canvas',
+                            0,
+                            0,
+                            $("canvas").width(),
+                            $("canvas").height(),
+                            10);
+                }
+            });
+            vv = setTimeout(function () {
+                $("header").show();
+                clearTimeout(vv);
+            }, 200);
+        });
+
+        $(window).scroll(function () {
+            $("canvas").css(
+                    "-webkit-transform",
+                    "translatey(-" + $(window).scrollTop() + "px)");
+        });
+
+        window.onresize = function () {
+            $("canvas").width($(window).width());
+        };
+
+        $(document).bind('touchmove', function () {
+            $("canvas").css(
+                    "-webkit-transform",
+                    "translatey(-" + $(window).scrollTop() + "px)");
+        });
+
+        $(document).bind('touchend', function () {
+            $("canvas").css(
+                    "-webkit-transform",
+                    "translatey(-" + $(window).scrollTop() + "px)");
+        });
+    </script>
+</head>
+<body>
+<section>
+    <header>Хуй</header>
+    <div class="blurheader"></div>
+    <article>
+        <img src="../public/img/Beastie Boys - Licensed To Ill.jpeg">
+        <h1>iOS7 Frosted Glass Effect</h1>
+
+        <h3>by Nathan Allen</h3>
+
+        <p>With iOS7 Apple introduced a completely new design for the 6 year old OS. Among all the changes, one that really caught everyone's attention was the blurred background effect. Basically some parts of the UI get a nice frosted glass effect. There are a couple of ways to achieve this effect using HTML and CSS. The easiest way is to use CSS filters, however the performance on phones is far from usable. With that in mind I decided to experiment with Canvas and the result was quite good.</p>
+        <p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue. In turpis. Pellentesque posuere. Praesent turpis. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt libero. Phasellus dolor. Maecenas vestibulum mollis.</p>
+        <p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue. In turpis. Pellentesque posuere. Praesent turpis. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt libero. Phasellus dolor. Maecenas vestibulum mollis.</p>
+        <footer>
+            <p>Created by <b><a href="https://github.com/nallenscott">Nathan Allen</a></b>
+            </p>
+            <p>Credits:</p>
+            <ul>
+                <li><a href="http://jquery.com/">jQuery</a>
+                </li>
+                <li><a href="http://html2canvas.hertzen.com">html2canvas 0.4.1</a>
+                </li>
+                <li><a href="http://www.quasimondo.com/StackBlurForCanvas">Stackblur</a>
+                </li>
+            </ul>
+        </footer>
+    </article>
+</section>
+</body>
+</html>
