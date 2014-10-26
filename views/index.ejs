@@ -17,10 +17,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/jquery-2.1.1.min.js"></script>
     <!--<script src="http://fgnass.github.io/spin.js/spin.min.js"></script>-->
-    <script src="/js/jquery-1.8.3.min.js"></script>
     <!--<script src="/js/emerge.js"></script>-->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="jquery-ias.min.js"></script>
@@ -81,7 +80,7 @@
 
         $(window).scroll(function () {
             $("canvas").css(
-                    "-webkit-transform",
+                    "transform",
                     "translatey(-" + $(window).scrollTop() + "px)");
         });
 
@@ -91,13 +90,13 @@
 
         $(document).bind('touchmove', function () {
             $("canvas").css(
-                    "-webkit-transform",
+                    "transform",
                     "translatey(-" + $(window).scrollTop() + "px)");
         });
 
         $(document).bind('touchend', function () {
             $("canvas").css(
-                    "-webkit-transform",
+                    "transform",
                     "translatey(-" + $(window).scrollTop() + "px)");
         });
     </script>

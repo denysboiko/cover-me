@@ -3,6 +3,8 @@ var http = require('http');
 var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
+//var compression = require('compression');
+
 //var paginate = require('express-paginate');
 var Cover = require('./models/cover').Cover;
 var mongoose = require('libs/mongoose');
@@ -20,7 +22,7 @@ var qt   = require('quickthumb');
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+//app.use(compression());
 
 //app.use(paginate.middleware(30, 30));
 //app.use(express.favicon());
@@ -95,7 +97,6 @@ app.use(function (err, req, res, next) {
  app.use(express.methodOverride());
  app.use(express.cookieParser('your secret here'));
  app.use(express.session());
- app.use(app.router);
  app.use(express.static(path.join(__dirname, 'public')));
  */
 
