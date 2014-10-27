@@ -20,7 +20,7 @@
     <script src="/js/jquery-1.11.1.min.js"></script>
     <script src="/js/jquery-2.1.1.min.js"></script>
     <!--<script src="http://fgnass.github.io/spin.js/spin.min.js"></script>-->
-    <!--<script src="/js/emerge.js"></script>-->
+    <script src="/js/emerge.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="jquery-ias.min.js"></script>
     <script src="/js/typeahead.min.js"></script>
@@ -203,12 +203,12 @@
 <div class="container" id="container" style="">
 
     <% if (cvrs.length) { %>
-    <ul class="row" id="covers" style="width: 100%; margin: 0">
+    <ul class="row emerge" id="covers" style="width: 100%; margin: 0">
 
         <% cvrs.forEach(function(cover){ %>
         <li class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover">
 
-            <figure class="cover-item emerge"><img class="emerge" alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
+            <figure class="cover-item emerge"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
                                             bigimg="<%= cover.get('bPicture') %>">
                 <figcaption><span class="album-title"><%= cover.get('album') %></span><br>
                     by <span class="artist-name"><%= cover.get('artist') %></span></figcaption>

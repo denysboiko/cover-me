@@ -2,7 +2,7 @@
 
 if (jQuery) {
   
-  (function ($) {
+  $(document).on('load', function ($) {
 
     $( function () {
       
