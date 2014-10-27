@@ -203,12 +203,12 @@
 <div class="container" id="container" style="">
 
     <% if (cvrs.length) { %>
-    <ul class="row emerge" id="covers" style="width: 100%; margin: 0">
+    <ul class="row" id="covers" style="width: 100%; margin: 0">
 
         <% cvrs.forEach(function(cover){ %>
-        <li class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover">
+        <li class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge" data-continue="true">
 
-            <figure class="cover-item emerge"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
+            <figure class="cover-item"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
                                             bigimg="<%= cover.get('bPicture') %>">
                 <figcaption><span class="album-title"><%= cover.get('album') %></span><br>
                     by <span class="artist-name"><%= cover.get('artist') %></span></figcaption>
