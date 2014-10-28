@@ -48,18 +48,21 @@ ul li img {
 .cover-item figcaption {
     opacity: 0;
     -webkit-transition: opacity .5s ease-in;
-    -moz-transition: opacity .5s ease-in;
-    -o-transition: opacity .5s ease-in;
-    transition: opacity .5s ease-in;
+    font-size: 11px;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.5);
+    background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.7);
     color: #ffffff;
+
 }
 
 .cover-item:hover figcaption {
+    transition: all 200ms ease-in-out 0s;
+    -moz-transition: all 200ms ease-in-out 0s;
+    -o-transition: all 200ms ease-in-out 0s;
+    transition: all 200ms ease-in-out 0s;
     opacity: 1;
 }
 
@@ -72,15 +75,20 @@ ul li img {
     overflow-y:hidden;
     */
     cursor: pointer;
-
+/*
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -o-transform: scale(1);
-    transform: scale(1);
-    -webkit-box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1);*/
+/*    -webkit-box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);*/
 
+}
+
+.cover-item:hover figure {
+    z-index: 999;
+    background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.2);
 }
 
 /*.navbar-brand {
@@ -105,11 +113,10 @@ figcaption {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    font-size: 12px;
 }
 
 figcaption .album-title {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .navbar {
@@ -322,7 +329,7 @@ h2, small {
 #myModal .modal-content {
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 0 !important;
-    box-shadow: 0 !important;
+    box-shadow: none !important;
 }
 
 .main-cover {
