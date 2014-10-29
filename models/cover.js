@@ -40,7 +40,6 @@ schema.plugin(mongoosastic);
 schema.plugin(mongoosePaginate);
 
 
-
 var Cover = mongoose.model('Cover', schema)
     , stream = Cover.synchronize()
     , count = 0;
