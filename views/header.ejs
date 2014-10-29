@@ -3,18 +3,22 @@
 <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header" id="header">
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse"-target="#navbar-collapsible">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>-->
-            <a class="navbar-brand" href="#"><img src="coverme.svg" class="logo" alt="" style="width: 100px; padding: 0px 0px 0px 10px;"/></a>
             <div class="navbar">
+
+                <<div class="navbar-collapse collapse" style="margin-left: 20%; width: 800px;">
+
+                <a class="navbar-brand" href="#"><img src="cvrme.svg" class="logo" alt=""/></a>
                 <form class="navbar-form">
                     <div class="form-group" style="display:inline;">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="" id="searchBox"  autocomplete="off" spellcheck="false"/>
-                                <a id="searchButton" type="submit">
+                            <ul class="nav navbar-nav" style="position: absolute">
+                                <li class="active"><a href="#">Upload cover</a></li>
+                                <li><a href="#">About us</a></li>
+                            </ul>
+                                <!--<a id="searchButton" type="submit">
                                     <span><i class="fa fa-search"></i></span>
-                                </a>
+                                </a>-->
 
                             <!--<input type="text" class="form-control" placeholder="Search for Covers" id="searchBox" autocomplete="off" spellcheck="false"/>
                             <span class="input-group-addon"><a id="searchButton" class="btn btn-default" type="submit"><span>Search</span></a><span class="glyphicon glyphicon-search"></span>-->
@@ -23,6 +27,9 @@
                         </div>
                     </div>
                 </form>
+
+                </div>
+
             </div>
         </div>
         <div class="blured"></div>
