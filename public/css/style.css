@@ -42,8 +42,8 @@ ul li img {
     height: 107px;
     background: rgba(255, 255, 255, .4);
     border-bottom:1px solid rgba(0, 0, 0, .2);
-*/
-}
+
+}*/
 .cover-item {
     position: relative;
 }
@@ -139,7 +139,7 @@ figcaption .album-title {
     left: 0px;
 }*/
 .blured {
-    height: 107px;
+    height: 135px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -149,16 +149,16 @@ figcaption .album-title {
     background: #fff;
     left: 0;
 }
-/*header {
-    background: rgba(255, 255, 255, .4);
-    height: 88px;
+#header {
+    background: rgba(255, 255, 255, .2);
+    height: 135px;
     position: fixed;
-    width: 100%;
-    top: 0;
+    width: 80%;
     border-bottom:1px solid rgba(0, 0, 0, .2);
     z-index: 10000000000;
     display: none;
-}*/
+    padding-top: 50px
+}
 
 /*
 .logo {
@@ -177,8 +177,7 @@ figcaption .album-title {
 }
 
 h2, small {
-    margin:0px;
-   /* width: 100px;*/
+    margin:0;
 }
 
 
@@ -364,7 +363,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
     outline: -webkit-focus-ring-color none;
 }
 
-.btn {
+#header .btn {
     background: none;
     color: white;
 }
@@ -381,7 +380,7 @@ a:link {
 }
 
 .fromtop{
-    margin-top:-40px;
+    margin-top: -40px;
 }
 
 .input-group{
@@ -389,9 +388,9 @@ a:link {
     border-top:1px solid white;
     border-bottom:1px solid white;
     height: 50px;
-    position:absolute;
-    width: 60%;
-    margin-left: 82px;
+    /*position:absolute;*/
+    width: 90%;
+    margin-left: 80px;
     margin-top:-18px;
 }
 
