@@ -13,7 +13,6 @@ img {
     max-width: 100%;
 }
 
-/*
 ul {
     padding: 0;
     margin: 0;
@@ -21,7 +20,6 @@ ul {
 ul li {
     list-style: none;
 }
-*/
 
 ul li img {
     cursor: pointer;
@@ -37,13 +35,15 @@ ul li img {
     width: 100%;
     background: #000;
 }
-/*#header {
+/*
+#header {
     width: 100%;
     margin: 0;
     height: 107px;
     background: rgba(255, 255, 255, .4);
     border-bottom:1px solid rgba(0, 0, 0, .2);
-}*/
+*/
+}
 .cover-item {
     position: relative;
 }
@@ -85,6 +85,10 @@ ul li img {
 
 }
 
+.navbar-brand {
+    padding:5px;
+    height: 70px;
+}
 /*div.searchForm {
     float: left;
     width: 75%;
@@ -118,7 +122,14 @@ figcaption .album-title {
     padding: 0;
 }
 */
-
+/*.navbar-header {
+    position: fixed;
+    width: 80%;
+    top: 0;
+    border-bottom:1px solid rgba(0, 0, 0, .2);
+    z-index: 1020;
+    display: none;
+}*/
 
 /*.blured {
     height: 107px;
@@ -254,7 +265,7 @@ h2, small {
     padding: 0px;
 }*/
 
-.navbar-default {
+/*.navbar-default {
     background-color: #ffffff;
     border-color: #ffffff;
 }
@@ -297,8 +308,8 @@ h2, small {
 .navbar-form {
     margin: 0px -15px;
     border: 1px solid transparent;
-    /*box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1) inset, 0px 1px 0px rgba(255, 255, 255, 0.1);*/
-}
+    *//*box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1) inset, 0px 1px 0px rgba(255, 255, 255, 0.1);*//*
+}*/
 
 #myModal .modal-content {
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -322,6 +333,86 @@ h2, small {
 .input-group {
     width: 100%;
 }
-.cover-item {
+
+
+/*-------------------------------------NAVBAR CSS START-------------------------------------*/
+.onblur{
+    position: fixed;
+    z-index: 1020;
+}
+
+nav{
+    background: rgba(255, 255, 255, .4);
+    border-bottom:1px solid rgba(0, 0, 0, .5);
+}
+
+.form-control
+{
+    border-radius: 0px;
+    border: 0px;
+    background: none;
+    height:50px;
+    position: absolute;
+    margin-left: 10px;
+    outline: none;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-    input:focus {
+    border: none;
+    box-shadow: none;
+    outline: -webkit-box-shadow: none;
+    outline: -webkit-focus-ring-color none;
+}
+
+.btn {
+    background: none;
+    color: white;
+}
+
+a:link {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.navbar-nav{
+    margin-top: 38px;
+    margin-left: 15%;
+    /*position: absolute;*/
+}
+
+.fromtop{
+    margin-top:-40px;
+}
+
+.input-group{
+    border-right:1px solid white;
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+    height: 50px;
+    position:absolute;
+    width: 60%;
+    margin-left: 82px;
+    margin-top:-18px;
+}
+
+
+.collapsing, .in ul li a {color: #555 !important; }
+.collapsing, .in ul li a:hover {color: #f1f1f1 !important;}
+.collapsing, .in .input-group {position:relative; width:100%; margin-left: 0; margin-top:0; border:1px solid white;}
+.collapsing, .in .navbar-nav {margin-left: 0; margin-top:0;}
+
+.visible-xs{
+    margin-top:-50px;
+    padding-bottom: 5px;
+}
+
+.navbar-toggle
+{
+    margin-top: -20px !important;
+    border: 1px solid white;
+    border-radius: 0;
+    padding: 0;
 
 }
+
+/*-------------------------------------NAVBAR CSS END-------------------------------------*/
