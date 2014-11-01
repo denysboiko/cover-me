@@ -1,6 +1,6 @@
 <nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="navbar-header" id="header" style="width: 100%; background: rgba(255, 255, 255, .2); border-bottom:1px solid rgba(0, 0, 0, .2);">
     <div class="container" style="width: 80%;">
-
         <div class="navbar-header" id="header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -117,6 +117,7 @@
 
     <!---->
     </div>
+    </div>
     <div class="blured"></div>
 </nav>
 
@@ -172,5 +173,11 @@
                 $("#searchButton").click();
             }
         });
+    });
+</script>
+
+<script>
+    $(".menu-opener").click(function(){
+        $(".menu-opener, .menu-opener-inner, .menu").toggleClass("active");
     });
 </script>

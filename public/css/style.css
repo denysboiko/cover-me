@@ -85,10 +85,7 @@ ul li img {
 
 }
 
-.navbar-brand {
-    padding:5px;
-    height: 70px;
-}
+
 /*div.searchForm {
     float: left;
     width: 75%;
@@ -138,27 +135,7 @@ figcaption .album-title {
     background: none repeat scroll 0% 0% #FFF;
     left: 0px;
 }*/
-.blured {
-    height: 135px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    border-bottom:1px solid rgba(0, 0, 0, .2);
-    overflow: hidden;
-    z-index: 1000;
-    background: #fff;
-    left: 0;
-}
-#header {
-    background: rgba(255, 255, 255, .2);
-    height: 135px;
-    position: fixed;
-    width: 80%;
-    border-bottom:1px solid rgba(0, 0, 0, .2);
-    z-index: 10000000000;
-    display: none;
-    padding-top: 50px
-}
+
 
 /*
 .logo {
@@ -388,8 +365,8 @@ a:link {
     border-top:1px solid white;
     border-bottom:1px solid white;
     height: 50px;
-    /*position:absolute;*/
-    width: 90%;
+    position:absolute;
+    width: 85%;
     margin-left: 80px;
     margin-top:-18px;
 }
@@ -399,6 +376,7 @@ a:link {
 .collapsing, .in ul li a:hover {color: #f1f1f1 !important;}
 .collapsing, .in .input-group {position:relative; width:100%; margin-left: 0; margin-top:0; border:1px solid white;}
 .collapsing, .in .navbar-nav {margin-left: 0; margin-top:0;}
+
 
 .visible-xs{
     margin-top:-50px;
@@ -412,6 +390,41 @@ a:link {
     border-radius: 0;
     padding: 0;
 
+}
+
+.blured {
+    height: 135px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    border-bottom:1px solid rgba(0, 0, 0, .2);
+    overflow: hidden;
+    z-index: 1000;
+    background: #fff;
+    left: 0;
+}
+#header {
+    height: 135px;
+    position: fixed;
+    width: 80%;
+    z-index: 10000000000;
+    display: none;
+    padding-top: 25px
+}
+
+.navbar-brand {
+    padding:7px 5px;
+    height: 70px;
+}
+
+@media only screen and (max-width: 767px) {
+    .blured {
+        height: 75px;
+    }
+
+    #header {
+        height: 75px;
+    }
 }
 
 /*-------------------------------------NAVBAR CSS END-------------------------------------*/
