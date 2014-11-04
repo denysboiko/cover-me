@@ -54,7 +54,7 @@
 </svg>
 
                 </div>
-                <div class="navbar-brand visible-xs navbar-toggle" data-toggle="collapse"
+                <div class="navbar-brand visible-xs navbar-toggle collapsed" id="toggle" data-toggle="collapse"
                      data-target=".navbar-collapse">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="60px" height="60px"
@@ -190,26 +190,14 @@
     $(document).on('click', '.navbar-toggle', function () {
         if ($(".input-group").css("opacity")==1) {
             $(".input-group").css("opacity","0");
+            $("#header").css("height","75px");
+            $(".blured").css("height","75px");
         }
         else {
             $(".input-group").css("opacity","1");
+            $("#header").css("height","200px");
+            $(".blured").css("height","200px");
+
         }
-
-/*        var src = $(this).attr('bigimg');
-        var img = '<img src="' + src + '" class="img-responsive main-cover"/>';
-        var album = $(this).attr('alt');
-
-        $('#myModal').modal();
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myModal #myModalLabel').html(album);
-            $('#myModal .modal-body').html(img);
-            $('#myModal .modal-footer a').attr("href", src);
-
-        });
-        $('#myModal').on('hidden.bs.modal', function () {
-            $('#myModal #myModalLabel').html('Album Title');
-            $('#myModal .modal-body').html('');
-            $('#myModal .modal-footer a').attr("href", "#");
-        });*/
     });
 </script>
