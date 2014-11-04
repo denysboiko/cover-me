@@ -288,10 +288,6 @@ h2, small {
     top: 3px;
 }
 
-.input-group {
-    width: 100%;
-}
-
 
 /*-------------------------------------NAVBAR CSS START-------------------------------------*/
 .onblur{
@@ -299,7 +295,7 @@ h2, small {
     z-index: 1020;
 }
 
-nav{
+nav {
     background: rgba(255, 255, 255, .4);
     border-bottom:1px solid rgba(0, 0, 0, .5);
 }
@@ -309,11 +305,13 @@ nav{
     border-radius: 0px;
     border: 0px;
     background: none;
-    height:50px;
-    position: absolute;
+    /*height:50px;*/
     margin-left: 10px;
     outline: none;
     width:90% !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-    input:focus {
@@ -335,8 +333,6 @@ a:link {
 }
 
 .navbar-nav{
-    margin-top: 35px;
-    margin-left: 20%;
     color: white;
     /*position: absolute;*/
 }
@@ -351,20 +347,30 @@ a:link {
     /*position: absolute;*/
 }
 
+#searchBox, .tt-hint {
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 20px;
+    height: 100%;
+    border: 0px none transparent;
+    width: 100%;
+    margin-left: 10px;
 
-.fromtop{
-    margin-top: -40px;
 }
+
+/*.fromtop{
+    margin-top: -40px;
+}*/
 
 .input-group{
     border-right:1px solid white;
     border-top:1px solid white;
     border-bottom:1px solid white;
     height: 50px;
-    position:absolute;
-    width: 85%;
-    margin-left: 80px;
-    margin-top:-18px;
+    left: -7px;
+    margin-top: 25px;
+
 }
 
 
@@ -381,7 +387,6 @@ a:link {
 
 .navbar-toggle
 {
-    margin-top: -20px !important;
     border: 1px solid white;
     border-radius: 0;
     padding: 0;
@@ -402,25 +407,95 @@ a:link {
 #header {
     height: 135px;
     position: fixed;
-    width: 80%;
+    width: 100%;
+    /*padding-top: 25px;*/
     z-index: 10000000000;
     display: none;
-    padding-top: 25px
 }
 
+.navbar-fixed-top {
+
+}
 .navbar-brand {
-    padding:7px 5px;
-    height: 70px;
+    padding: 0;
+    height: auto;
 }
 
+.navbar-toggle {
+    position: relative;
+    float: left;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+.collapsed {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+#header {
+    /*width: 100%;*/
+    background: rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+#header .container {
+    width: 80%;
+    position: relative;
+    /*overflow: hidden;*/
+    padding: 10px 0 0;
+}
+
+svg {
+    display: block;
+}
+
+.navbar-form {
+
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+
+.navbar-nav {
+    margin: 0px auto;
+    width: 360px;
+    display: block;
+    float: none;
+}
 @media only screen and (max-width: 767px) {
+
     .blured {
         height: 75px;
     }
 
     #header {
         height: 75px;
+        margin-top: 0px;
+    }
+
+    #header .container {
+        padding: 0px;
+    }
+
+    .input-group {
+        height: 30px !important;
+        /*left: px !important;*/
+        left: -8px;
+        margin-top: 10px;
+        opacity: 1;
+    }
+    .navbar-toggle.collapsed + .input-group {
+        opacity: 0;
     }
 }
-
 /*-------------------------------------NAVBAR CSS END-------------------------------------*/
