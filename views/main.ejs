@@ -51,7 +51,7 @@
 </script>
 <% include header.ejs %>
 
-<div class="container" style="background-color: white; float: none; margin: 0 auto; max-width: 700px;">
+<div class="container" style="background-color: white; float: none; margin: 135px auto 0; max-width: 700px;">
     <ul class="list-group">
         <% for(var i=0; i<searchResults.length; i++) {%>
         <li>
@@ -65,7 +65,7 @@
                         <small><%=searchResults[i]._source.album%></small>
                     </div>
                     <div class="panel-rating pull-right">
-                        <a href="" class="btn btn-primary" role="button" download="img.jpg">Download <span class="glyphicon  glyphicon-download"></span></a>
+                        <a href="" class="btn btn-primary" role="button" download="<%=searchResults[i]._source.bPicture%>">Download <span class="glyphicon  glyphicon-download"></span></a>
                     </div>
 
                 </div>
