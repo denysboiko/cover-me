@@ -188,7 +188,7 @@
 
 <script>
     $(document).on('click', '.navbar-toggle', function () {
-        if ($(".input-group").css("opacity")==1) {
+        if ($("#toggle").hasClass("collapsed")) {
             $(".input-group").css("opacity","0");
             $("#header").css("height","75px");
             $(".blured").css("height","75px");
