@@ -516,9 +516,15 @@ svg {
         opacity: 1;
         left: -5px;
         margin-top: 15px;
+        -webkit-transition: opacity .35s ease;
+        -moz-transition: opacity .35s ease;
+        -ms-transition: opacity .35s ease;
+        -o-transition: opacity .35s ease;
+        transition: opacity .35s ease;
     }
     #toggle.collapsed + .input-group {
         opacity: 0;
+
     }
 
     #searchBox, .tt-hint {
