@@ -31,9 +31,11 @@ ul li img {
 
 #container {
     padding: 0;
-    margin: 0;
+    margin: 135px 0 auto;
     width: 100%;
     background: #000;
+}
+.container {
 }
 /*
 #header {
@@ -147,12 +149,32 @@ figcaption .album-title {
     list-style: none;
     max-width: 750px;
 }
-.panel-info, .panel-rating, .panel-more1 {
+
+.panel {
+    margin-bottom: 0;
+    background-color: #FFF;
+    border: 0 solid transparent;
+    border-bottom: 1px solid #DDD;
+    border-radius: 0;
+    box-shadow: none;
+}
+/*#search > .panel:last-child{
+    border-bottom: 0 !important;
+}*/
+.panel-body {
+    padding: 15px 0;
+}
+.panel-info, .panel-rating, .panel-more {
     float: left;
-    margin: 0 5px;
+    margin: 0;
     max-width: 750px;
 }
-
+.panel-info > h4 {
+    margin: 0;
+}
+.panel-info {
+    margin-left: 15px;
+}
 h2, small {
     margin:0;
 }
@@ -334,6 +356,8 @@ a:link {
 
 .navbar-nav{
     color: white;
+    font-size: 12px;
+    letter-spacing: 1px;
     /*position: absolute;*/
 }
 
@@ -470,7 +494,7 @@ a:link {
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 #header .container {
-    width: 80%;
+    width: 60%;
     position: relative;
     /*overflow: hidden;*/
     padding: 10px 0 0;
@@ -492,8 +516,9 @@ svg {
 
 .navbar-nav {
     margin: 0px auto;
-    width: 90%;
+    width: 460px;
     display: block;
+    text-align: center;
     float: none;
 }
 @media only screen and (max-width: 767px) {
@@ -509,6 +534,7 @@ svg {
 
     #header .container {
         padding: 5px 0 0;
+        width: 80% !important;
     }
 
     .input-group {
@@ -542,11 +568,45 @@ svg {
         padding: 3px 12px;
     }
     .navbar-collapse {
-        /*padding-right: 15px;
-        padding-left: 15px;*/
+        padding: 0 !important;
         border-top: 0 solid transparent !important;
         box-shadow: none !important;
+        width: 100% !important;
+        margin: 10px 0 0 !important;
+
     }
 
+    .navbar-nav {
+        width: 250px !important;
+        position: relative;
+    }
+    .navbar-nav > li {
+        display: block !important;
+    }
+   /* .navbar-nav > li > a:before {
+*//*        content: "";
+        height: 1px;
+        width: 30px;
+        background: #fff;*//*
+
+        position: absolute;
+        content: "";
+        border-right: 5px solid transparent;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(255,255,255,0.5) transparent transparent;
+        border-image: none;
+        cursor: pointer;
+        margin-top: 0px;
+        top: 50%;
+        margin-left: 0;
+        width: 50px;
+    }*/
+
+}
+
+.navbar-nav > li {
+    float: none;
+    display: inline-block;
 }
 /*-------------------------------------NAVBAR CSS END-------------------------------------*/

@@ -52,16 +52,16 @@
 <% include header.ejs %>
 
 <div class="container" style="background-color: white; float: none; margin: 135px auto 0; max-width: 700px;">
-    <ul class="list-group">
+    <ul id="search" class="list-group">
         <% for(var i=0; i<searchResults.length; i++) {%>
         <li>
-            <div class="panel panel-default" style="border-radius: 0px; border-bottom: 1px solid #DDD;">
+            <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="panel-more1">
+                    <div class="panel-more">
                         <img class="emerge" src="<%=searchResults[i]._source.bPicture%>" style="width: 100px">
                     </div>
                     <div class="panel-info">
-                        <h2><strong><%=searchResults[i]._source.artist%></strong></h2>
+                        <h4><strong><%=searchResults[i]._source.artist%></strong></h4>
                         <small><%=searchResults[i]._source.album%></small>
                     </div>
                     <div class="panel-rating pull-right">
