@@ -48,7 +48,7 @@
                 </svg>
 
             </div>
-            <div class="navbar-brand visible-xs navbar-toggle collapsed" id="toggle" data-toggle="collapse"
+            <button class="navbar-brand visible-xs navbar-toggle collapsed" id="toggle" data-toggle="collapse"
                  data-target=".navbar-collapse">
                 <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      width="60px" height="60px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
@@ -88,7 +88,7 @@
 </svg>
 
 
-            </div>
+            </button>
 
 
             <div class=".col-xs-12 .col-sm-6 .col-lg-8">
@@ -173,8 +173,12 @@
         });
     });
 </script>
-
+<!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
 <script>
+
+/*    $(document).on('event', function() {
+        $('.navbar-toggle').addClass('collapsed').trigger('classChange');
+    });*/
     $(document).on('click', '.navbar-toggle', function () {
         if ($("#toggle").hasClass("collapsed")) {
             $(".input-group").css("opacity", "0");
@@ -188,4 +192,17 @@
 
         }
     });
+   $('.navbar-toggle').bind('touchend', function () {
+                if ($("#toggle").hasClass("collapsed")) {
+                    $(".input-group").css("opacity", "0");
+                    $("#header").css("height", "75px");
+                    $(".blured").css("height", "75px");
+                }
+                else {
+                    $(".input-group").css("opacity", "1");
+                    $("#header").css("height", "200px");
+                    $(".blured").css("height", "200px");
+                }
+            }
+    );
 </script>

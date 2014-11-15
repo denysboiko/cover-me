@@ -33,7 +33,7 @@ ul li img {
     padding: 0;
     margin: 135px 0 auto;
     width: 100%;
-    background: #000;
+    background: url('../img/starry-sky.jpg');
 }
 .container {
 }
