@@ -49,18 +49,13 @@
     ga('send', 'pageview');
 
 </script>
+
 <% include header.ejs %>
 
-<<<<<<< Updated upstream
 <div class="container" style="background-color: white; float: none; margin: 135px auto 0; max-width: 700px;">
-<<<<<<< Updated upstream
     <ul id="search" class="list-group">
-=======
-=======
-<div class="container" style="background-color: white; float: none; margin: 0 auto; max-width: 700px; padding-top:140px;">
->>>>>>> Stashed changes
+<div class="container" style="background-color: white; float: none; margin: 0 auto; max-width: 700px">
     <ul class="list-group">
->>>>>>> Stashed changes
         <% for(var i=0; i<searchResults.length; i++) {%>
         <li>
             <div class="panel panel-default">
@@ -87,3 +82,10 @@
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function(){
+        $('#navbar').css('background-color', 'darkturquoise');
+        $('#header').css('display', 'block');
+    });
+</script>
