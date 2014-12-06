@@ -24,7 +24,7 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="jquery-ias.min.js"></script>
     <script src="/js/typeahead.min.js"></script>
-    <script src="/js/blur.min.js"></script>
+    <!--<script src="/js/blur.min.js"></script>-->
     <!--<script>
         var opts = {
             lines: 13, // The number of lines to draw
@@ -246,3 +246,20 @@
 </script>
 </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+        $('#navbar').css('background-color', 'darkturquoise');
+        var scroll_start = 0;
+        var startchange = $('#startchange');
+        var offset = startchange.offset();
+        $(document).scroll(function() {
+            scroll_start = $(this).scrollTop();
+            if(scroll_start > offset.top) {
+                $('#navbar').css('background-color', 'transparent');
+            } else {
+                $('#navbar').css('background-color', 'darkturquoise');
+            }
+        });
+    });
+</script>

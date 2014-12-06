@@ -35,6 +35,21 @@ ul li img {
     width: 100%;
     background: #000;
 }
+
+@media screen and (max-width: 768px) {
+    #container { margin: 75px 0 auto; }
+}
+
+.navbar{
+    height: 135px !important;
+}
+
+@media screen and (max-width: 768px) {
+.navbar{
+    height: 75px !important;
+}
+}
+
 .container {
 }
 /*
@@ -419,7 +434,7 @@ a:link {
 
 }
 
-.blured {
+/*.blured {
     height: 135px;
     position: fixed;
     width: 100%;
@@ -434,7 +449,7 @@ a:link {
     -ms-transition: height .35s ease;
     -o-transition: height .35s ease;
     transition: height .35s ease;
-}
+}*/
 #header {
     height: 135px;
     position: fixed;
@@ -462,7 +477,9 @@ a:link {
 }
 
 .navbar-fixed-top {
-
+    /*background-color: lightseagreen !important;
+    z-index: auto;*/
+    /*height:135px;*/
 }
 .navbar-brand {
     padding: 0;
@@ -523,9 +540,9 @@ svg {
 }
 @media only screen and (max-width: 767px) {
 
-    .blured {
+    /*.blured {
         height: 75px;
-    }
+    }*/
 
     #header {
         height: 75px;
@@ -608,5 +625,6 @@ svg {
 .navbar-nav > li {
     float: none;
     display: inline-block;
+    /*color: darkturquoise;*/
 }
 /*-------------------------------------NAVBAR CSS END-------------------------------------*/
