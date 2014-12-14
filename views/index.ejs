@@ -184,6 +184,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
                             class="sr-only">Close</span></button>
+
                 <h4 class="modal-title" id="myModalLabel">Album title</h4>
             </div>
             <div class="modal-body">
@@ -191,7 +192,7 @@
             </div>
             <div class="modal-footer">
                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                <a href="" class="buttonsstyle" role="button" download="img.jpg">Download <span class="glyphicon glyphicon-download"></span></a>
+                <a href="" class="buttonsstyle" role="button" download="img.jpg">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
             </div>
         </div>
     </div>
@@ -249,7 +250,7 @@
 
 <script>
     $(document).ready(function(){
-        $('#navbar').css('background-color', 'darkturquoise');
+        $('#navbar').css('background-color', '#33CC99');
         var scroll_start = 0;
         var startchange = $('#startchange');
         var offset = startchange.offset();
@@ -258,7 +259,7 @@
             if(scroll_start > offset.top) {
                 $('#navbar').css('background-color', 'transparent');
             } else {
-                $('#navbar').css('background-color', 'darkturquoise');
+                $('#navbar').css('background-color', '#33CC99');
             }
         });
     });

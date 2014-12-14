@@ -640,8 +640,15 @@ svg {
 
 .modal-footer {
     margin-top: 0px;
-    text-align: right;
-    border-top: 1px solid white;
+    text-align: center;
+    border-top: none;
+    padding: 0px;
+
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12pt;
+    font-weight: 100 !important;
 }
 
 .buttonsstyle {
@@ -657,7 +664,9 @@ svg {
     /*box-shadow: 0 2px #0093c4;*/
     background: #33CC99;
     transition: all 0.5s ease 0s;
-    padding: 11px 20px;
+    padding: 20px 30px;
+    width: 100%;
+    height: 60px;
 }
 
 .buttonsstyle:hover {
@@ -673,4 +682,3 @@ a:hover, a:focus {
     color: white;
     text-decoration: none;
 }
-/*-------------------------------------MODAL CSS END-------------------------------------*/
