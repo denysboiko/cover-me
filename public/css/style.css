@@ -506,7 +506,7 @@ a:link {
 
 #header {
     /*width: 100%;*/
-    background: rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .4);
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 #header .container {
@@ -627,3 +627,50 @@ svg {
     /*color: darkturquoise;*/
 }
 /*-------------------------------------NAVBAR CSS END-------------------------------------*/
+
+/*
+.modal-content {
+    background-color: rgba(255,255,255,0.7) ;
+}*/
+
+/*-------------------------------------MODAL CSS START-------------------------------------*/
+.modal-body {
+    padding: 0px;
+}
+
+.modal-footer {
+    margin-top: 0px;
+    text-align: right;
+    border-top: 1px solid white;
+}
+
+.buttonsstyle {
+    color: white;
+    font-family: 'Open Sans';
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+    display: inline-block;
+    /*border-radius: 3px;
+    /*background: rgb(64,199,129);
+    box-shadow: 0 2px rgb(53,167,110);*/
+    /*box-shadow: 0 2px #0093c4;*/
+    background: #33CC99;
+    transition: all 0.5s ease 0s;
+    padding: 11px 20px;
+}
+
+.buttonsstyle:hover {
+    background: #1fe0a0;
+}
+
+.buttonsstyle:active {
+    position: relative;
+    top: 1px;
+}
+
+a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+}
+/*-------------------------------------MODAL CSS END-------------------------------------*/
