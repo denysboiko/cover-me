@@ -192,7 +192,7 @@
             </div>
             <div class="modal-footer">
                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                <a href="" class="buttonsstyle" role="button" download="img.jpg">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
+                <a href="" class="buttonsstyle" role="button" download="">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
             </div>
         </div>
     </div>
@@ -236,12 +236,14 @@
             $('#myModal #myModalLabel').html(album);
             $('#myModal .modal-body').html(img);
             $('#myModal .modal-footer a').attr("href", src);
+            $('#myModal .modal-footer a').attr("download", src.replace("img/", ""));
 
-        });
+    });
         $('#myModal').on('hidden.bs.modal', function () {
             $('#myModal #myModalLabel').html('Album Title');
             $('#myModal .modal-body').html('');
             $('#myModal .modal-footer a').attr("href", "#");
+            $('#myModal .modal-footer a').attr("download", "");
         });
     });
 </script>
