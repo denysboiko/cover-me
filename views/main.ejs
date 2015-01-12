@@ -52,7 +52,7 @@
 
 <% include header %>
 
-<div class="container" style="background-color: white; float: none; margin: 135px auto 0; max-width: 700px;">
+<div class="container" id="container"  style="max-width: 700px; margin-right: auto !important; margin-left: auto !important">
     <ul id="search" class="list-group">
 <div class="container" style="background-color: white; float: none; margin: 0 auto; max-width: 700px">
     <ul class="list-group">
@@ -68,7 +68,7 @@
                         <small><%=searchResults[i]._source.album%></small>
                     </div>
                     <div class="panel-rating pull-right">
-                        <a href="" class="btn btn-primary" role="button" download="<%=searchResults[i]._source.bPicture%>">Download <span class="glyphicon  glyphicon-download"></span></a>
+                        <a href="" class="buttonsstyle" role="button" download="<%=searchResults[i]._source.bPicture%>">Download<!-- <span class="glyphicon  glyphicon-download"></span>--></a>
                     </div>
 
                 </div>
