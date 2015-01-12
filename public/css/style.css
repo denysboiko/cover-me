@@ -178,7 +178,14 @@ figcaption .album-title {
 h2, small {
     margin:0;
 }
-
+#searchButton {
+    padding: 10px 20px;
+    background: none;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1;
+    border-radius: 50px;
+}
 #searchButton {
     color: #34495E;
 }
@@ -347,12 +354,6 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
     outline: -webkit-focus-ring-color none;
 }
 
-#header .btn {
-    background: none;
-    color: #aaa;
-    /* color: white; */
-}
-
 a:link {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
@@ -405,6 +406,7 @@ a:link {
     height: 50px;
     left: -7px;
     margin-top: 25px;
+    border-radius: 0px 50px 50px 0px;
 
 }
 
@@ -577,9 +579,7 @@ svg {
         margin-left: 10px;
 
     }
-    #searchButton {
-        padding: 3px 12px;
-    }
+
     .navbar-collapse {
         padding: 0 !important;
         border-top: 0 solid transparent !important;
