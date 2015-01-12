@@ -68,7 +68,7 @@
                         <small><%=searchResults[i]._source.album%></small>
                     </div>
                     <div class="panel-rating pull-right">
-                        <a href="" class="buttonsstyle" role="button" download="<%=searchResults[i]._source.bPicture%>">Download<!-- <span class="glyphicon  glyphicon-download"></span>--></a>
+                        <a href="" class="buttonsstyle" role="button" download="<%= (searchResults[i]._source.bPicture).replace("img/","") %>">Download<!-- <span class="glyphicon  glyphicon-download"></span>--></a>
                     </div>
 
                 </div>
