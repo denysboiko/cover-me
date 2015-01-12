@@ -9,22 +9,13 @@ function getFiles(dir, files_) {
         if (!files.hasOwnProperty(i)) continue;
         var name = 'img/' + files[i];
         files_.push(name);
-    /*
-
-
-        if (fs.statSync(name).isDirectory()){
-        getFiles(name,files_);
-        } else {
-        files_.push(name);
-
-         }
-    */
     }
     return files_;
 }
 
+
 var allcovers = getFiles(dir);
-console.log(allcovers);
+//console.log(allcovers);
 
 function outputNames() {
 
@@ -49,10 +40,9 @@ function outputNames() {
             album[i] = (split[1].split('.png'))[0];
         }
     }
-
     return [album, artist];
 }
 var AlbumInfo = outputNames();
 
-exports.AlbumInfo = AlbumInfo;
-exports.allcovers = allcovers;
+
+console.log(AlbumInfo)

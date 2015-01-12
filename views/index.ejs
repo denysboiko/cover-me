@@ -105,13 +105,13 @@
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel='stylesheet' href='/css/style.css'/>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" type="image/png" href="favicon.png"/>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#searchBox').typeahead({
                 name: 'Search',
-                remote: '/auto?q=%QUERY'
-                //limit: 30
+                remote: '/auto?q=%QUERY',
+                limit: 30
             });
         });
     </script>
@@ -250,16 +250,16 @@
 
 <script>
     $(document).ready(function(){
-        $('#navbar').css('background-color', '#33CC99');
+        $('#navbar').css('background-color', '#efefef');
         var scroll_start = 0;
         var startchange = $('#startchange');
         var offset = startchange.offset();
         $(document).scroll(function() {
             scroll_start = $(this).scrollTop();
             if(scroll_start > offset.top) {
-                $('#navbar').css('background-color', 'transparent');
+                $('#navbar').css('background-color', 'rgba(255,255,255,0.9)');
             } else {
-                $('#navbar').css('background-color', '#33CC99');
+                $('#navbar').css('background-color', '#efefef');
             }
         });
     });

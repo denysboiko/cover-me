@@ -4,6 +4,7 @@ var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
 //var compression = require('compression');
+var gm = require('gm').subClass({ imageMagick: true }); // Для thumbs можно удалить
 
 //var paginate = require('express-paginate');
 var Cover = require('./models/cover').Cover;
@@ -97,7 +98,6 @@ app.use(function (err, req, res, next) {
  app.use(express.methodOverride());
  app.use(express.cookieParser('your secret here'));
  app.use(express.session());
- app.use(express.static(path.join(__dirname, 'public')));
  */
 
 //app.locals(require('express-pagination'));
@@ -144,6 +144,10 @@ app.get('/covers', function (req, res, next) {
         for (i=0;i=5;i++){
        res.json(covers)};
     })
+});
+
+app.get('/device', function (req, res, next) {
+    res.render('device');
 });
 
 
@@ -226,13 +230,61 @@ app.post('/upload', function (req, res){
     });
 });
 
+app.get('/thumbs', function (req, res){
+    res.render('mini-upload-form/index');
+});
+
+app.post('/thumbs', function (req, res){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        res.writeHead(200, {'content-type': 'text/plain'});
+        res.write('received upload:\n\n');
+        res.end(util.inspect({fields: fields, files: files}));
+    });
+
+    form.on('end', function(fields, files) {
+        /* Temporary location of our uploaded file */
+        var temp_path = this.openedFiles[0].path;
+        /* The file name of the uploaded file */
+        var file_name = this.openedFiles[0].name;
+        /* Location where we want to copy the uploaded file */
+        var new_location = 'uploads/';
+
+        fs.copy(temp_path, new_location + file_name, function(err) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(file_name)
+            }
+        });
+
+        gm('uploads/EIdtWFxl.jpg')
+            .resize(300, 300, "^")
+            .autoOrient()
+            .gravity('Center')
+            .extent(300, 300)
+            .write('uploads/thumbs/EIdtWFxl.jpg', function (err) {
+                if (err) throw err
+                else
+                    console.log(' hooray! ');
+            });
+
+    });
+});
+
 app.get('/upload', function (req, res){
     res.render('mini-upload-form/index');
 });
 
 
+
+
+
 http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + config.get('port'));
 });
+
+
+
 
 

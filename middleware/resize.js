@@ -7,7 +7,7 @@ Cover.find({}).sort({'artist': 1}).exec(function(err, covers) {
 
         gm('./public/'.concat(covers[i].bPicture))
             .compress('Lossless')
-            //.resize(300, 300)
+            .resize(300, 300)
             .write(''.concat(covers[i].bPicture.replace('img/',"")), function (err) {
                 if (err) throw err
                 else

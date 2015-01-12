@@ -1,8 +1,8 @@
 $(function(){
 
-    var ul = $('#upload ul');
+    var ul = $("#upload ul");
 
-    $('#drop a').click(function(){
+    $("#drop a").click(function(){
         // Simulate a click on the file input button
         // to show the file browser dialog
         $(this).parent().find('input').click();
@@ -74,6 +74,14 @@ $(function(){
     $(document).on('drop dragover', function (e) {
         e.preventDefault();
     });
+
+    $("#drop").on('dragover', function (e) {
+        $("#drop").css('background','#52575d');
+    });
+    $("#drop").on('dragleave drop', function (e) {
+        $("#drop").css('background','#2E3134');
+    });
+
 
     // Helper function that formats the file sizes
     function formatFileSize(bytes) {
