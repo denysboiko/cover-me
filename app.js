@@ -231,18 +231,24 @@ app.post('/upload', function (req, res){
 });
 
 app.get('/thumbs', function (req, res){
-    res.render('mini-upload-form/index');
+    res.render('mini-upload-form/thumbs');
 });
 
 app.post('/thumbs', function (req, res){
     var form = new formidable.IncomingForm();
+    var h;
+    var w;
     form.parse(req, function(err, fields, files) {
         res.writeHead(200, {'content-type': 'text/plain'});
         res.write('received upload:\n\n');
         res.end(util.inspect({fields: fields, files: files}));
+        h = fields.height;
+        w = fields.width;
+        console.log(fields)
     });
 
     form.on('end', function(fields, files) {
+
         /* Temporary location of our uploaded file */
         var temp_path = this.openedFiles[0].path;
         /* The file name of the uploaded file */
@@ -258,12 +264,12 @@ app.post('/thumbs', function (req, res){
             }
         });
 
-        gm('uploads/EIdtWFxl.jpg')
-            .resize(300, 300, "^")
+        gm(new_location + file_name)
+            .resize(h, h, "^")
             .autoOrient()
             .gravity('Center')
-            .extent(300, 300)
-            .write('uploads/thumbs/EIdtWFxl.jpg', function (err) {
+            .extent(h, h)
+            .write(new_location + 'thumbs/' + file_name, function (err) {
                 if (err) throw err
                 else
                     console.log(' hooray! ');

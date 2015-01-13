@@ -2,8 +2,6 @@
 <html>
 <head>
     <title></title>
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,41 +49,9 @@
 </script>
 
 <% include header %>
-
-<div class="container" id="container"  style="max-width: 700px; margin-right: auto !important; margin-left: auto !important">
-    <ul id="search" class="list-group">
-<div class="container" style="background-color: white; float: none; margin: 0 auto; max-width: 700px">
-    <ul class="list-group">
-        <% for(var i=0; i<searchResults.length; i++) {%>
-        <li>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="panel-more">
-                        <img class="emerge" src="<%=searchResults[i]._source.bPicture%>" style="width: 100px">
-                    </div>
-                    <div class="panel-info">
-                        <h4><strong><%=searchResults[i]._source.artist%></strong></h4>
-                        <small><%=searchResults[i]._source.album%></small>
-                    </div>
-                    <div class="panel-rating pull-right">
-                        <a href="" class="buttonsstyle" role="button" download="<%= (searchResults[i]._source.bPicture).replace("img/","") %>">Download<!-- <span class="glyphicon  glyphicon-download"></span>--></a>
-                    </div>
-
-                </div>
-            </div>
-        </li>
-        <% } %>
-
-    </ul>
-</div>
+<% include search %>
 
 </body>
 
 </html>
 
-<script>
-    $(document).ready(function(){
-        $('#navbar').css('background-color', '#33CC99');
-        $('#header').css('display', 'block');
-    });
-</script>

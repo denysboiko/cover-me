@@ -19,6 +19,14 @@ ul {
 }
 ul li {
     list-style: none;
+    display: block
+}
+ul li:hover {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);;
 }
 
 ul li img {
@@ -299,7 +307,7 @@ h2, small {
 }*/
 
 #myModal .modal-content {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 0;
     border-radius: 0 !important;
     box-shadow: 0 !important;
 }
