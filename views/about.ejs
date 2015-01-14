@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cover Me</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .pace {
+            -webkit-pointer-events: none;
+            pointer-events: none;
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .pace-inactive {
+            display: none;
+        }
+
+        .pace .pace-progress {
+            background: #29d;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 100%;
+            width: 100%;
+            height: 2px;
+        }
+
+    </style>
+    <script src="/js/pace.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <!--<script src="http://fgnass.github.io/spin.js/spin.min.js"></script>-->
+    <script src="/js/emerge.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="jquery-ias.min.js"></script>
+    <script src="/js/typeahead.min.js"></script>
+    <!--<script src="/js/blur.min.js"></script>-->
+    <!--<script>
+        var opts = {
+            lines: 13, // The number of lines to draw
+            length: 20, // The length of each line
+            width: 10, // The line thickness
+            radius: 30, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            rotate: 0, // The rotation offset
+            direction: 1, // 1: clockwise, -1: counterclockwise
+            color: '#000', // #rgb or #rrggbb or array of colors
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: '50%', // Top position relative to parent
+            left: '50%' // Left position relative to parent
+        };
+        var target = document.getElementById('covers');
+        var spinner = new Spinner(opts).spin(target);
+    </script>-->
+    <script>
+        var ias = $.ias({
+            container:  '#covers',
+            item:       '.cover',
+            pagination: '#pagination',
+            next:       '.next'
+        });
+    </script>
+    <script src="https://rawgit.com/abduzeedo/ios7-blur-html5/master/js/html2canvas.js"></script>
+    <script src="https://rawgit.com/abduzeedo/ios7-blur-html5/master/js/StackBlur.js"></script>
+    <script>
+        $(function () {
+            html2canvas($("body"), {
+                onrendered: function (canvas) {
+                    $(".blured").append(canvas);
+                    $("canvas").attr("id", "canvas");
+                    stackBlurCanvasRGB(
+                            'canvas',
+                            0,
+                            0,
+                            $("canvas").width(),
+                            $("canvas").height(),
+                            30);
+                }
+            });
+            vv = setTimeout(function () {
+                $("#header").show();
+                clearTimeout(vv);
+            }, 200);
+        });
+
+        $(window).scroll(function () {
+            $("canvas").css(
+                    "transform",
+                    "translatey(-" + $(window).scrollTop() + "px)");
+        });
+
+        window.onresize = function () {
+            $("canvas").width($(window).width());
+        };
+
+        $(document).bind('touchmove', function () {
+            $("canvas").css(
+                    "transform",
+                    "translatey(-" + $(window).scrollTop() + "px)");
+        });
+
+        $(document).bind('touchend', function () {
+            $("canvas").css(
+                    "transform",
+                    "translatey(-" + $(window).scrollTop() + "px)");
+        });
+    </script>
+
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel='stylesheet' href='/css/style.css'/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+</head>
+
+
+<%include header%>
+
+<div class="container-fluid" id="container">
+    <div class="container center-block" id="about" name="about" style="max-width: 600px !important">
+        <!--<div class="row white wow bounceInUp">-->
+            <br>
+
+            <h1 class="centered">WE ARE COVERME</h1>
+            <hr>
+
+            <div class="col-lg-12 wow bounceInUp">
+                <p>Our purpose is to help people enjoy their music passion in its entirety.
+                </p>
+
+                <p>We are enthusiasts who had problems with finding album covers of acceptable
+                    quality for our music libraries. iTunes wasn't and still isn't a solution.
+                </p>
+
+                <p>On this resource you can download any of album covers for free, just in one click,
+                    no matter what device or platform you use.
+                </p>
+
+                <p>Please, help us enlarge this public album covers collection, <a href="http://localhost:3000/upload">upload a cover</a>.
+
+                <p>We are opened to any comments, suggestions & collaboration offers, <a href="http://localhost:3000/upload">contact us</a>.
+                </p>
+
+                </p>
+
+            </div>
+        </div>
+
+    <svg style="margin-right: auto!important; margin-left:auto!important; margin-top: 20px" version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="60px" height="60px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<g opacity="0.99">
+    <circle fill="#AAA" cx="49.999" cy="50.079" r="2.765"/>
+    <g>
+        <path fill="none" d="M50,81.354c-17.246,0-31.276-14.03-31.276-31.275c0-17.246,14.03-31.276,31.276-31.276"/>
+        <path fill="none" d="M50,14.334c-19.709,0-35.745,16.035-35.745,35.745c0,19.709,16.036,35.744,35.745,35.744"/>
+        <path fill="none" d="M64.907,30.986C60.79,27.764,55.622,25.823,50,25.823c-13.374,0-24.255,10.881-24.255,24.256
+			c0,13.374,10.881,24.254,24.255,24.254c6.343,0,12.106-2.468,16.433-6.467"/>
+        <path fill="#AAA" d="M50,91.567c-22.878,0-41.489-18.612-41.489-41.488C8.511,27.202,27.122,8.59,50,8.59
+			c12.445,0,23.62,5.516,31.231,14.224l1.176-0.59C74.559,13.104,62.947,7.312,50,7.312c-23.581,0-42.766,19.184-42.766,42.767
+			C7.234,73.66,26.419,92.844,50,92.844c13.628,0,25.776-6.415,33.613-16.375l-1.165-0.584C74.843,85.432,63.128,91.567,50,91.567z"
+                />
+        <path fill="#AAA" d="M50,85.823c-19.709,0-35.745-16.035-35.745-35.744c0-19.71,16.036-35.745,35.745-35.745
+			c10.186,0,19.382,4.289,25.898,11.148l1.194-0.597C70.327,17.616,60.688,13.058,50,13.058c-20.414,0-37.022,16.608-37.022,37.021
+			c0,20.412,16.608,37.021,37.022,37.021c11.374,0,21.563-5.162,28.36-13.263l-1.176-0.588C70.622,80.936,60.875,85.823,50,85.823z"
+                />
+        <path fill="#AAA" d="M50,80.078c-16.542,0-30-13.456-30-29.999c0-16.542,13.458-30.001,30-30.001
+			c7.915,0,15.12,3.088,20.485,8.114l1.212-0.606C66.069,22.153,58.422,18.803,50,18.803c-17.246,0-31.276,14.03-31.276,31.276
+			c0,17.245,14.03,31.275,31.276,31.275c9.118,0,17.337-3.925,23.058-10.172l-1.191-0.597C66.389,76.423,58.616,80.078,50,80.078z"
+                />
+        <path fill="#AAA" d="M50,74.333c-13.374,0-24.255-10.88-24.255-24.254c0-13.375,10.881-24.256,24.255-24.256
+			c5.622,0,10.79,1.94,14.907,5.163l1.274-0.638C61.774,26.726,56.138,24.547,50,24.547c-14.079,0-25.532,11.455-25.532,25.532
+			C24.468,64.155,35.921,75.61,50,75.61c6.851,0,13.065-2.726,17.654-7.134l-1.222-0.61C62.106,71.865,56.343,74.333,50,74.333z"/>
+    </g>
+    <path fill="#AAA" d="M49.999,71.143c-11.615,0-21.063-9.45-21.063-21.063c0-11.615,9.448-21.063,21.063-21.063
+		s21.064,9.448,21.064,21.063C71.063,61.692,61.614,71.143,49.999,71.143z M49.999,31.568c-10.207,0-18.511,8.304-18.511,18.511
+		c0,10.206,8.304,18.511,18.511,18.511S68.51,60.285,68.51,50.079C68.51,39.872,60.206,31.568,49.999,31.568z"/>
+    <path fill="#AAA" d="M49.999,64.759c-8.096,0-14.681-6.586-14.681-14.68c0-8.096,6.585-14.681,14.681-14.681
+		S64.68,41.983,64.68,50.079C64.68,58.173,58.095,64.759,49.999,64.759z M49.999,39.228c-5.984,0-10.851,4.868-10.851,10.852
+		c0,5.982,4.867,10.851,10.851,10.851c5.983,0,10.852-4.868,10.852-10.851C60.851,44.096,55.982,39.228,49.999,39.228z"/>
+    <path fill="#AAA" d="M49.999,99.787C22.546,99.787,0.212,77.453,0.212,50c0-27.452,22.334-49.787,49.787-49.787
+		S99.787,22.548,99.787,50C99.787,77.453,77.452,99.787,49.999,99.787z M49.999,4.042C24.657,4.042,4.041,24.659,4.041,50
+		c0,25.342,20.616,45.958,45.958,45.958S95.956,75.342,95.956,50C95.956,24.659,75.341,4.042,49.999,4.042z"/>
+</g>
+</svg>
+
+
+            <!-- col-lg-6 -->
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#header').css('display', 'block');
+    });
+</script>
+
+</html>

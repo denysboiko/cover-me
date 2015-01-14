@@ -282,6 +282,10 @@ app.get('/upload', function (req, res){
     res.render('mini-upload-form/index');
 });
 
+app.get('/about', function (req, res){
+    res.render('about');
+});
+
 
 
 
