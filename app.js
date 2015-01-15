@@ -286,7 +286,9 @@ app.get('/about', function (req, res){
     res.render('about');
 });
 
-
+app.get('/legal', function (req, res){
+    res.render('legal');
+});
 
 
 
