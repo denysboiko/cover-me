@@ -1,25 +1,24 @@
-<div class="container" id="container"  style="max-width: 700px; margin-right: auto !important; margin-left: auto !important">
-    <ul id="search" class="list-group">
-        <% for(var i=0; i<searchResults.length; i++) {%>
-        <li>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="panel-more">
-                        <img class="emerge" src="<%=searchResults[i]._source.bPicture%>" style="width: 100px">
-                    </div>
-                    <div class="panel-info">
-                        <h4><strong><%=searchResults[i]._source.artist%></strong></h4>
-                        <small><%=searchResults[i]._source.album%></small>
-                    </div>
-                    <div class="panel-rating pull-right">
-                        <a href="" class="buttonsstyle" role="button" download="<%= (searchResults[i]._source.bPicture).replace("img/","") %>">Download<!-- <span class="glyphicon  glyphicon-download"></span>--></a>
-                    </div>
+<div class="container" id="container"  style="max-width: 1200px; margin-right: auto !important; margin-left: auto !important">
 
+    <% for(var i=0; i<searchResults.length; i++) {%>
+    <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4" id="search">
+        <div class="modal-dialog" style="max-width: 380px;>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><strong><%=searchResults[i]._source.artist%></strong></h4>
+                    <small><%=searchResults[i]._source.album%></small>
+                </div>
+                <div class="modal-body">
+                    <img class="emerge" src="<%=searchResults[i]._source.bPicture%>">
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                    <a href="" class="buttonsstyle" role="button" "<%= (searchResults[i]._source.bPicture).replace("img/","") %>">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
                 </div>
             </div>
-        </li>
-        <% } %>
-    </ul>
+        </div>
+    <!--</div>-->
+    <% } %>
 </div>
 
 <script>
