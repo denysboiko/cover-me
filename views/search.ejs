@@ -1,23 +1,23 @@
-<div class="container" id="container"  style="max-width: 1200px; margin-right: auto !important; margin-left: auto !important">
-
-    <% for(var i=0; i<searchResults.length; i++) {%>
+<% layout('layout') %>
+<div class="container" id="container" style="max-width: 1200px; margin-right: auto !important; margin-left: auto !important">
+    <% for(var i = 0; i < searchResults.length; i++) { %>
     <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4" id="search">
-        <div class="modal-dialog" style="max-width: 380px;>
-            <div class="modal-content">
+        <div class="modal-dialog" style="max-width: 380px;">
+            <div> <!--class="modal-content"-->
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel"><strong><%=searchResults[i]._source.artist%></strong></h4>
-                    <small><%=searchResults[i]._source.album%></small>
+                    <h4 class="modal-title" id="myModalLabel"><strong><%= searchResults[i]._source.artist %></strong></h4>
+                    <small><%= searchResults[i]._source.album %></small>
                 </div>
                 <div class="modal-body">
-                    <img class="emerge" src="<%=searchResults[i]._source.bPicture%>">
+                    <img class="emerge" src="<%= searchResults[i]._source.bPicture %>">
                 </div>
                 <div class="modal-footer">
                     <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                    <a href="" class="buttonsstyle" role="button" "<%= (searchResults[i]._source.bPicture).replace("img/","") %>">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
+                    <a href="<%= (searchResults[i]._source.bPicture) %>" class="buttonsstyle" role="button" download="<%= (searchResults[i]._source.bPicture).replace("img/", "") %>">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
                 </div>
             </div>
         </div>
-    <!--</div>-->
+    </div>
     <% } %>
 </div>
 
@@ -26,3 +26,11 @@
         $('#header').css('display', 'block');
     });
 </script>
+
+
+
+
+
+
+
+

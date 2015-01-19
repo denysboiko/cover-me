@@ -18,9 +18,10 @@ var util = require('util');
 var fs   = require('fs-extra');
 var qt   = require('quickthumb');
 
-
+var crypto = require('crypto');
 
 var app = express();
+app.engine('ejs', require('ejs-locals'))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(compression());
@@ -183,11 +184,16 @@ app.get('/page', function (req, res, next) {
 });
 
 
+
+
+
 app.get('/search', function (req, res, next) {
 
-    Cover.search({ query: req.query.q}, {hydrate: false}, function (err, results) {
-       res.render('main', {searchResults: results.hits.hits});
+    Cover.search({ query: req.query.q, size:50}, {hydrate: false}, function (err, results) {
+       res.render('search', {searchResults: results.hits.hits});
+       console.log(results.hits.hits.length)
     });
+
 });
 
 app.get('/auto', function (req, res, next) {
@@ -202,14 +208,30 @@ app.get('/auto', function (req, res, next) {
 });
 
 
+app.get('/add', function (req, res, next) {
+    var coverData= {artist: 'ras', album: 'rasdva', year: '2008', sPicture: 'sm-rasdva.jpg', bPicture: 'rasdva.jpg'}
+    var cover = new mongoose.models.Cover(coverData);
+    cover.save();
+    res.send(coverData)
+});
 
+app.get('/upload', function (req, res){
+    res.render('mini-upload-form/thumbs');
+});
 
 app.post('/upload', function (req, res){
     var form = new formidable.IncomingForm();
+    var artist;
+    var album;
+    var year;
     form.parse(req, function(err, fields, files) {
         res.writeHead(200, {'content-type': 'text/plain'});
         res.write('received upload:\n\n');
         res.end(util.inspect({fields: fields, files: files}));
+        artist = fields.artist;
+        album = fields.album;
+        year = fields.year;
+        console.log(fields)
     });
 
     form.on('end', function(fields, files) {
@@ -227,6 +249,10 @@ app.post('/upload', function (req, res){
                 console.log("success!")
             }
         });
+
+        var coverData= {artist: artist, album: album, year: year, sPicture: new_location + file_name, bPicture: new_location + file_name}
+        var cover = new mongoose.models.Cover(coverData);
+        cover.save();
     });
 });
 
@@ -265,10 +291,10 @@ app.post('/thumbs', function (req, res){
         });
 
         gm(new_location + file_name)
-            .resize(h, h, "^")
+            .resize(w, h, "^")
             .autoOrient()
             .gravity('Center')
-            .extent(h, h)
+            .extent(w, h)
             .write(new_location + 'thumbs/' + file_name, function (err) {
                 if (err) throw err
                 else
@@ -276,10 +302,6 @@ app.post('/thumbs', function (req, res){
             });
 
     });
-});
-
-app.get('/upload', function (req, res){
-    res.render('mini-upload-form/index');
 });
 
 app.get('/about', function (req, res){

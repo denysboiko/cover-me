@@ -1,0 +1,45 @@
+<script src="https://rawgit.com/abduzeedo/ios7-blur-html5/master/js/html2canvas.js"></script>
+<script src="https://rawgit.com/abduzeedo/ios7-blur-html5/master/js/StackBlur.js"></script>
+<script>
+    $(function () {
+        html2canvas($("body"), {
+            onrendered: function (canvas) {
+                $(".blured").append(canvas);
+                $("canvas").attr("id", "canvas");
+                stackBlurCanvasRGB(
+                        'canvas',
+                        0,
+                        0,
+                        $("canvas").width(),
+                        $("canvas").height(),
+                        30);
+            }
+        });
+        vv = setTimeout(function () {
+            $("#header").show();
+            clearTimeout(vv);
+        }, 200);
+    });
+
+    $(window).scroll(function () {
+        $("canvas").css(
+                "transform",
+                "translatey(-" + $(window).scrollTop() + "px)");
+    });
+
+    window.onresize = function () {
+        $("canvas").width($(window).width());
+    };
+
+    $(document).bind('touchmove', function () {
+        $("canvas").css(
+                "transform",
+                "translatey(-" + $(window).scrollTop() + "px)");
+    });
+
+    $(document).bind('touchend', function () {
+        $("canvas").css(
+                "transform",
+                "translatey(-" + $(window).scrollTop() + "px)");
+    });
+</script>

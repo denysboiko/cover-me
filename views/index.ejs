@@ -1,5 +1,4 @@
-<% include header %>
-
+<% layout('layout') %>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -56,7 +55,7 @@
             $('#myModal .modal-footer a').attr("href", src);
             $('#myModal .modal-footer a').attr("download", src.replace("img/", ""));
 
-    });
+        });
         $('#myModal').on('hidden.bs.modal', function () {
             $('#myModal #myModalLabel').html('Album Title');
             $('#myModal .modal-body').html('');
@@ -80,6 +79,6 @@
             }
         });
     });
+    $("document").ready(function(){console.info("Loaded")});
+    ias.on('rendered', function(){console.info("Loaded")});
 </script>
-</body>
-</html>

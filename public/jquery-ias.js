@@ -64,6 +64,7 @@ IASCallbacks.prototype = {add: function (a, b) {
             var e, f, g = this, h = [], i = +new Date;
             d = d || this.defaultDelay;
             var j = {url: b};
+
             return g.fire("load", [j]), a.get(j.url, null, a.proxy(function (b) {
                 e = a(this.itemsContainerSelector, b).eq(0), 0 === e.length && (e = a(b).filter(this.itemsContainerSelector).eq(0)), e && e.find(this.itemSelector).each(function () {
                     h.push(this)
@@ -71,6 +72,7 @@ IASCallbacks.prototype = {add: function (a, b) {
                     c.call(g, b, h)
                 }, d - f) : c.call(g, b, h))
             }, g), "html")
+
         }, this.render = function (b, c) {
             var d = this, e = this.getLastItem(), f = 0, g = this.fire("render", [b]);
             g.done(function () {
