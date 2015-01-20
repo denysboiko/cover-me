@@ -1,12 +1,12 @@
 <% layout('layout') %>
 <div class="container" id="container" style="max-width: 1200px; margin-right: auto !important; margin-left: auto !important">
     <% for(var i = 0; i < searchResults.length; i++) { %>
-    <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4" id="search">
-        <div class="modal-dialog" style="max-width: 380px;">
+    <div class="col-xs-12 col-sm-4 col-lg-3 col-md-3" id="search">
+        <div class="modal-dialog" style="max-width: 280px;">
             <div> <!--class="modal-content"-->
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel"><strong><%= searchResults[i]._source.artist %></strong></h4>
-                    <small><%= searchResults[i]._source.album %></small>
+                <div class="modal-header" style="border:1px #EFEFEF solid; background-color: #FBFBFB">
+                    <h4 class="modal-title" id="myModalLabel"><strong><%= searchResults[i]._source.album %></strong></h4>
+                    <small><%= searchResults[i]._source.artist %></small>
                 </div>
                 <div class="modal-body">
                     <img class="emerge" src="<%= searchResults[i]._source.bPicture %>">
