@@ -4,8 +4,9 @@ if (jQuery) {
 
     (function ($) {
 
-        $(function () {
 
+        $(function () {
+            function emerge () {
             // from waitForImages
             $.expr[':'].uncached = function (obj) {
 
@@ -109,16 +110,11 @@ if (jQuery) {
                             }
 
                             if ($el.data('_waitFor').data('_fired') || deadlock) {
-
-                                $(document).ready(function(){fire($el)})
-                                $("#covers").on('load', function(){fire($el)});
+                                fire($el)
                             }
 
                         } else {
-
-                            $(document).ready(function(){fire($el)})
-                                $("#covers").on('load', function(){fire($el)});
-
+                            fire($el)
                         }
                     }
 
@@ -356,6 +352,26 @@ if (jQuery) {
 
 
             })
+
+            } //конец emrge()
+
+
+            $(document).ready(function(){
+                emerge()
+            })
+
+            if (ias) {
+                ias.on('load', function(event) {
+                    $('.emerge').each(function () {
+                        $(this).removeClass('emerge')
+                    })
+                })
+                ias.on('rendered', function(){
+                    emerge()
+                }); //конец иас он рендеред
+            }   // конец ифа с иасом
+
+
 
         })
 
