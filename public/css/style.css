@@ -20,6 +20,9 @@ h1{
     font-weight: 100;
 }
 
+h4{
+    font-size: 12pt;
+}
 
 .centered{
     text-align: center;
@@ -73,7 +76,8 @@ ul li img {
     }
 }
 
-.container {
+.cover {
+    background-color: #33CC99
 }
 /*
 #header {
@@ -86,18 +90,24 @@ ul li img {
 }*/
 .cover-item {
     position: relative;
+    top:0;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
 }
 .cover-item figcaption {
     opacity: 0;
-    -webkit-transition: opacity .5s ease-in;
-    -moz-transition: opacity .5s ease-in;
-    -o-transition: opacity .5s ease-in;
-    transition: opacity .5s ease-in;
+    -webkit-transition: opacity .2s ease-in;
+    -moz-transition: opacity .2s ease-in;
+    -o-transition: opacity .2s ease-in;
+    transition: opacity .2s ease-in;
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: #1fe0a0;
     color: #ffffff;
 }
 
@@ -109,6 +119,7 @@ ul li img {
     z-index: 999;
     overflow: hidden;
     cursor: pointer;
+    top: 10px;
 }
 
 
@@ -669,7 +680,7 @@ svg {
     font-size: 12pt;
     font-weight: 100 !important;
 }
-.modal-footer button {
+.modal-footer .buttonsstyle {
     width: 100%;
     padding: 20px 30px;
     height: 60px;
@@ -689,7 +700,6 @@ svg {
     background: #33CC99;
     transition: all 0.5s ease 0s;
     padding: 0.8em 1.5em;
-
 }
 
 .buttonsstyle:hover {
