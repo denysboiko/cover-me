@@ -7,7 +7,8 @@ $(function(){
         // to show the file browser dialog
         $(this).parent().find('input').click();
     });
-
+    var jqXHR;
+    var ff;
     // Initialize the jQuery File Upload plugin
     $('#upload').fileupload({
 
@@ -17,17 +18,16 @@ $(function(){
         // This function is called when a file is added to the queue;
         // either via the browse button, or via drag/drop:
         add: function (e, data) {
-
+            $('#myModal').modal();
+            ff = data;
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
                 ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span></span></li>');
-
             // Append the file name and file size
             tpl.find('p').text(data.files[0].name)
-                         .append('<i>' + formatFileSize(data.files[0].size) + '</i>');
+                .append('<i>' + formatFileSize(data.files[0].size) + '</i>');
 
             // Add the HTML to the UL element
             data.context = tpl.appendTo(ul);
-
             // Initialize the knob plugin
             tpl.find('input').knob();
 
@@ -45,7 +45,6 @@ $(function(){
             });
 
             // Automatically upload the file once it is added to the queue
-            var jqXHR = data.submit();
         },
 
         progress: function(e, data){
@@ -68,7 +67,13 @@ $(function(){
         }
 
     });
-
+    $("#go").on('click', function (e) {
+        e.preventDefault();
+        ff.formData = {artist: $("#artist").val(), album: $("#album").val(), year: $("#year").val()};
+        //ff.formData = {height: $("#height").val(), width: $("#width").val()};
+        jqXHR = ff.submit()
+        $('#myModal').modal('hide')
+    });
 
     // Prevent the default action when a file is dropped on the window
     $(document).on('drop dragover', function (e) {
