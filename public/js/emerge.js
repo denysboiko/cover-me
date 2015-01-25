@@ -362,9 +362,7 @@ if (jQuery) {
 
             if (ias) {
                 ias.on('load', function(event) {
-                    $('.emerge').each(function () {
-                        $(this).removeClass('emerge')
-                    })
+                    $('.emerge').removeClass('emerge')
                 })
                 ias.on('rendered', function(){
                     emerge()
