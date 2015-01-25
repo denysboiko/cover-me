@@ -1,27 +1,22 @@
-<!DOCTYPE html>
-<html>
+<% layout('../layout') %>
 
-	<head>
-		<meta charset="utf-8"/>
-		<title>Upload</title>
 
-		<!-- Google web fonts -->
-		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+<div class="container-fluid" id="container">
+    <div class="container center-block" id="about" name="about" style="max-width: 750px !important">
+        <!--<div class="row white wow bounceInUp">-->
+        <br>
 
-		<!-- The main CSS file -->
-		<link href="public/upload-assets/css/style.css" rel="stylesheet" />
-
-        <script src="/js/jquery-2.1.1.min.js"></script>
-        <script src="/bootstrap/js/bootstrap.min.js"></script>
-        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	</head>
+        <h1 class="centered">COVERS UPLOAD</h1>
+        <hr>
+    </div>
+</div>
 
 	<body>
 		<form id="upload" method="post" action="/upload" enctype="multipart/form-data">
-			<div id="drop">
-				Drop Here
-
-				<a>Browse</a>
+			<div id="drop" style="">
+				<p style="margin-top: 10%">Drop Here</p>
+                <p>Or</p>
+				<a class="buttonsstyle">Browse</a>
 
 				<input type="file" name="upl" multiple />
 			</div>

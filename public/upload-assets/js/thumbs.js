@@ -21,7 +21,7 @@ $(function(){
             $('#myModal').modal();
             ff = data;
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
-                ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span></span></li>');
+                ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#1FE0A0" /><p></p><span></span></li>');
             // Append the file name and file size
             tpl.find('p').text(data.files[0].name)
                 .append('<i>' + formatFileSize(data.files[0].size) + '</i>');
@@ -80,12 +80,14 @@ $(function(){
         e.preventDefault();
     });
 
-    $("#drop").on('dragover', function (e) {
-        $("#drop").css('background','#52575d');
-    });
     $("#drop").on('dragleave drop', function (e) {
-        $("#drop").css('background','#2E3134');
+        $("#drop").css('background-color','#FBFBFB');
     });
+    $("#drop").on('dragover', function (e) {;
+        $("#drop").css('background-color','#FEFEFE');
+        $("#drop").css('border','1px #FBFBFB dashed');
+    });
+
 
 
     // Helper function that formats the file sizes

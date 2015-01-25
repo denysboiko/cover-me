@@ -36,13 +36,13 @@ ul li {
     list-style: none;
     display: block
 }
-ul li:hover {
+/*ul li:hover {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1);;
-}
+}*/
 
 ul li img {
     cursor: pointer;
@@ -539,6 +539,7 @@ a:link {
     position: relative;
     /*overflow: hidden;*/
     padding: 10px 0 0;
+    color: #FBFBFB;
 }
 
 svg {
@@ -624,7 +625,7 @@ svg {
     }
 
     #header {
-        background-color: #EFEFEF !important;
+        background-color: #FBFBFB !important;
     }
 
     /* .navbar-nav > li > a:before {
@@ -688,7 +689,7 @@ svg {
 
 .buttonsstyle {
     color: white;
-    font-family: 'Open Sans';
+    font-family: "Open Sans", "Segoe UI", Helvetica, Arial, sans-serif;
     text-decoration: none;
     user-select: none;
     outline: none;
@@ -700,6 +701,7 @@ svg {
     background: #33CC99;
     transition: all 0.5s ease 0s;
     padding: 0.8em 1.5em;
+    cursor: pointer;
 }
 
 .buttonsstyle:hover {
@@ -798,3 +800,4 @@ a:hover, a:focus {
     background-color: #ededed !important;
     color: #333 !important;
 }*/
+
