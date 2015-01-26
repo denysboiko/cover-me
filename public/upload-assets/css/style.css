@@ -57,7 +57,7 @@ section, footer, header, aside{
     background-image:linear-gradient(top, #373a3d, #313437);*/
 
     width:720px;
-    height:600px;
+    height:500px;
 
     padding:30px;
     /*border-radius:3px;*/
@@ -225,4 +225,8 @@ section, footer, header, aside{
     position: relative;
     float: left;
     margin-top: 11px;
+}
+
+label{
+    margin-top: 10px;
 }

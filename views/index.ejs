@@ -9,10 +9,10 @@
 
                 <h4 class="modal-title" id="myModalLabel">Album title</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body_flat">
 
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer_flat">
                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                 <a href="" class="buttonsstyle" role="button" download="">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
             </div>
@@ -51,16 +51,16 @@
         $('#myModal').modal();
         $('#myModal').on('shown.bs.modal', function () {
             $('#myModal #myModalLabel').html(album);
-            $('#myModal .modal-body').html(img);
-            $('#myModal .modal-footer a').attr("href", src);
-            $('#myModal .modal-footer a').attr("download", src.replace("img/", ""));
+            $('#myModal .modal-body_flat').html(img);
+            $('#myModal .modal-footer_flat a').attr("href", src);
+            $('#myModal .modal-footer_flat a').attr("download", src.replace("img/", ""));
 
         });
         $('#myModal').on('hidden.bs.modal', function () {
             $('#myModal #myModalLabel').html('Album Title');
-            $('#myModal .modal-body').html('');
-            $('#myModal .modal-footer a').attr("href", "#");
-            $('#myModal .modal-footer a').attr("download", "");
+            $('#myModal .modal-body_flat').html('');
+            $('#myModal .modal-footer_flat a').attr("href", "#");
+            $('#myModal .modal-footer_flat a').attr("download", "");
         });
     });
 </script>
