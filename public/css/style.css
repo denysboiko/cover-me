@@ -1,8 +1,51 @@
 body {
   padding: 0;
   margin: 0;
-  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-  line-height: 120%;
+  font-family: 'Open Sans', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+}
+
+p{
+    line-height: 120%;
+}
+
+a {
+    color: #3C9;
+}
+
+a:hover, a:focus {
+    color: #1FE0A0;
+    text-decoration: none;
+}
+.form-control:focus {
+    border-color: #1FE0A0;
+}
+/*textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-    input:focus {
+   *//* border: none;
+    outline: -webkit-box-shadow: none;
+    outline: -webkit-focus-ring-color none;*//*
+    box-shadow: none;
+    color: #AAA;
+}*/
+
+.ddsh {
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ddsh .fa {
+    padding: 5px;
+}
+.ddsh .fa:hover {
+    background: pink
+}
+
+#search .modal-body_flat {
+    padding: 15px;
+    border: 1px solid #E5E5E5;
+    background: none repeat scroll 0% 0% #FBFBFB;
 }
 
 img {
@@ -14,8 +57,7 @@ img {
 }
 
 h1{
-    font-family: 'Open Sans', sans-serif; !important;
-    color: #1fe0a0;
+    color: #3C9;
     letter-spacing: 2pt;
     font-weight: 100;
 }
@@ -116,7 +158,7 @@ ul li img {
 }
 
 .cover-item:hover {
-    z-index: 999;
+
     overflow: hidden;
     cursor: pointer;
     top: 10px;
@@ -212,20 +254,6 @@ figcaption .album-title {
 }
 h2, small {
     margin:0;
-}
-#searchButton {
-    padding: 10px 20px;
-    background: none;
-    color: #aaa;
-    font-size: 18px;
-    line-height: 1;
-    border-radius: 50px;
-}
-#searchButton {
-    color: #34495E;
-}
-#searchButton :hover {
-    opacity: 0.5;
 }
 
 /*#searchButton .fa {
@@ -397,19 +425,7 @@ nav {
     transition: all .5s ease;
 
 }
-/*textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-    input:focus {
-   *//* border: none;
-    outline: -webkit-box-shadow: none;
-    outline: -webkit-focus-ring-color none;*//*
 
-    *//*box-shadow: none;*//*
-    color: #AAA;
-}*/
-
-a:link {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-}
 
 .navbar-nav{
     color: white;
@@ -429,8 +445,7 @@ a:link {
 
 .nav a:hover{
     background-color: transparent ! important;
-    opacity: 0.5 ! important;
-    color: #33CC99;
+    color: #1fe0a0;
     /*position: absolute;*/
 }
 
@@ -567,6 +582,74 @@ svg {
     text-align: center;
     float: none;
 }
+
+#searchButton {
+    padding: 10px 20px;
+    background: none;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1;
+    border-radius: 50px;
+}
+
+#searchButton :hover {
+    opacity: 0.5;
+}
+
+
+#searchBox{
+    color: #696969;
+}
+
+#searchBox, .tt-hint {
+    margin: 0 0 0 10px;
+    padding: 8px 12px;
+    font-size: 24px;
+    line-height: 20px;
+    height: 45px;
+    border: 0px none transparent;
+    width: 100%;
+}
+
+.tt-hint {
+    color: #999999;
+}
+.tt-dropdown-menu {
+    background-color: #33CC99;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 3px;
+    padding: 8px 0;
+    width: 110%;
+}
+.tt-suggestion {
+    font-size: 20px;
+    line-height: 24px;
+    padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+    color: white !important;
+    background-color: #1fe0a0;
+}
+.tt-suggestion p {
+    margin: 0;
+    color: white;
+}
+
+/*.tt-dropdown-menu {
+    border: 0px !important;
+    border-radius: 0px !important;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    width: 350px !important;
+    color: #333 !important;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+    background-color: #ededed !important;
+    color: #333 !important;
+}*/
+
+
 @media only screen and (max-width: 767px) {
 
     /*.blured {
@@ -586,8 +669,8 @@ svg {
     .input-group {
         height: 30px;
         opacity: 1;
-        left: -12px;
-        margin-top: 8px;
+        left: -5px;
+        margin-top: 15px;
         -webkit-transition: opacity .35s ease;
         -moz-transition: opacity .35s ease;
         -ms-transition: opacity .35s ease;
@@ -599,15 +682,23 @@ svg {
 
     }
 
+    #searchButton {
+        padding: 3px 10px;
+        background: none;
+        color: #aaa;
+        font-size: 14px;
+        line-height: 1;
+        border-radius: 50px;
+    }
+
     #searchBox, .tt-hint {
-        margin: 6px 0px 0px 10px;
+        margin: 0 0 0 10px;
         padding: 3px 6px;
         font-size: 18px;
         line-height: 18px;
         height: 25px;
         border: 0 none transparent;
         width: 100%;
-        margin-left: 10px;
 
     }
 
@@ -675,25 +766,22 @@ svg {
 
 .modal-footer_flat {
     margin-top: 0px;
-    text-align: center;
     border-top: none;
     padding: 0px;
-
-    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 12pt;
-    font-weight: 100 !important;
 }
 .modal-footer_flat .buttonsstyle {
     width: 100%;
     padding: 20px 30px;
     height: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12pt;
+    font-weight: 100 !important;
+    text-align: center;
 }
 
 .buttonsstyle {
     color: white;
-    font-family: "Open Sans", "Segoe UI", Helvetica, Arial, sans-serif;
     text-decoration: none;
     user-select: none;
     outline: none;
@@ -710,22 +798,17 @@ svg {
 
 .buttonsstyle:hover {
     background: #1fe0a0;
-}
-
-.buttonsstyle:active {
-    position: relative;
-    top: 1px;
-}
-
-a:hover, a:focus {
     color: white;
-    text-decoration: none;
+}
+
+.buttonsstyle:active, .buttonsstyle:focus {
+    position: relative;
+    color: white;
 }
 
 .pace {
     -webkit-pointer-events: none;
     pointer-events: none;
-
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -736,7 +819,7 @@ a:hover, a:focus {
 }
 
 .pace .pace-progress {
-    background: #29d;
+    background: #33CC99;
     position: fixed;
     z-index: 2000;
     top: 0;
@@ -746,7 +829,7 @@ a:hover, a:focus {
 }
 
 .bs-example{
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
     position: relative;
     margin: 100px;
 }
@@ -765,58 +848,3 @@ a:hover, a:focus {
 .typeahead:focus {
     border: 2px solid #0097CF;
 }*/
-
-#searchBox{
-    color: #696969;
-}
-
-#searchBox, .tt-hint {
-    margin: 0;
-    padding: 8px 12px;
-    font-size: 24px;
-    line-height: 20px;
-    height: 45px;
-    border: 0px none transparent;
-    width: 100%;
-    margin-left: 10px;
-}
-
-.tt-hint {
-    color: #999999;
-}
-.tt-dropdown-menu {
-    background-color: #33CC99;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 3px;
-    padding: 8px 0;
-    width: 110%;
-}
-.tt-suggestion {
-    font-family: "Open Sans", "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    padding: 3px 20px;
-}
-.tt-suggestion.tt-is-under-cursor {
-    color: white !important;
-    background-color: #1fe0a0;
-}
-.tt-suggestion p {
-    margin: 0;
-    color: white;
-}
-
-/*.tt-dropdown-menu {
-    border: 0px !important;
-    border-radius: 0px !important;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    width: 350px !important;
-    color: #333 !important;
-}
-
-.tt-suggestion.tt-is-under-cursor {
-    background-color: #ededed !important;
-    color: #333 !important;
-}*/
-
