@@ -3,14 +3,12 @@
 
 <div class="container-fluid" id="container">
     <div class="container center-block" id="about" name="about" style="max-width: 750px !important">
-        <!--<div class="row white wow bounceInUp">-->
         <br>
 
         <h1 class="centered">COVERS UPLOAD</h1>
         <hr>
     </div>
 </div>
-
 	<body>
 		<form id="upload" method="post" action="/upload" enctype="multipart/form-data">
 			<div id="drop" style="">
@@ -20,19 +18,9 @@
 
 				<input type="file" name="upl" multiple />
 			</div>
-
-			<ul>
-				<!-- The file uploads will be shown here -->
-			</ul>
-
+			<ul></ul>
 		</form>
-
         <div id="ui">
-<!--            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                Resize
-            </button>-->
-
-
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -57,22 +45,17 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-
-
         </div>
 
-
-
 		<!-- JavaScript Includes -->
-		<!--<script src="js/jquery-2.1.1.min.js"></script>-->
-		<script src="public/upload-assets/js/jquery.knob.js"></script>
+		<script src="js/jquery.knob.js"></script>
 
 		<!-- jQuery File Upload Dependencies -->
-		<script src="public/upload-assets/js/jquery.ui.widget.js"></script>
-		<script src="public/upload-assets/js/jquery.iframe-transport.js"></script>
-		<script src="public/upload-assets/js/jquery.fileupload.js"></script>
+		<script src="js/jquery.ui.widget.js"></script>
+		<script src="js/jquery.iframe-transport.js"></script>
+		<script src="js/jquery.fileupload.js"></script>
 
 		<!-- Our main JS file -->
-		<script src="public/upload-assets/js/upload.js"></script>
+		<script src="js/upload.js"></script>
 	</body>
 </html>

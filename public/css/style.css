@@ -1,8 +1,19 @@
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('../fonts/FiraSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+
+
 body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
 }
 
 p{
@@ -40,7 +51,7 @@ img {
 h1{
     color: #3C9;
     letter-spacing: 2pt;
-    font-family: "Fira Sans";
+    font-family: 'Fira Sans', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h4{
@@ -591,7 +602,7 @@ svg {
     height: 45px;
     border: 0px none transparent;
     width: 100%;
-    font-family: Fira Sans;
+    font-family: 'Fira Sans', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .tt-hint {
@@ -845,7 +856,7 @@ section, footer, header, aside{
 
 
 #upload{
-    font-family:"Open Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color:white;
 
     /*background-image:-webkit-linear-gradient(top, #373a3d, #313437);
@@ -874,7 +885,7 @@ section, footer, header, aside{
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     border-radius: 3px;
-    border-image: url("../upload-assets/img/border-light.png") 25 25 25 25 repeat repeat;
+    border-image: url("../images/border-light.png") 25 25 25 25 repeat repeat;
     padding: 50px 30px;
     margin-bottom: 30px;
     /*border: 20px solid rgba(0, 0, 0, 0);*/
@@ -896,24 +907,8 @@ section, footer, header, aside{
 
 #drop.dragover {
     background-color: #FAFAFA;
-    border-image: url("../upload-assets/img/border-grey.png") 25 25 25 25 repeat repeat;
+    border-image: url("../images/border-grey.png") 25 25 25 25 repeat repeat;
 }
-
-/*#drop a{
-    background-color:#007a96;
-    padding:12px 26px;
-    color:#fff;
-    font-size:14px;
-    border-radius:2px;
-    cursor:pointer;
-    display:inline-block;
-    margin-top:12px;
-    line-height:1;
-}
-
-#drop a:hover{
-    background-color:#0986a3;
-}*/
 
 #drop input{
     display:none;
@@ -922,8 +917,6 @@ section, footer, header, aside{
 #upload ul{
     list-style:none;
     margin:0 -30px;
-    /* border-top:1px solid rgba(0, 0, 0, .2);
-     border-bottom:1px solid rgba(0, 0, 0, .2);*/
 }
 
 #upload ul li{
@@ -973,7 +966,7 @@ section, footer, header, aside{
 #upload ul li span{
     width: 15px;
     height: 12px;
-    background: url('../upload-assets/img/icons.png') no-repeat;
+    background: url('../images/icons.png') no-repeat;
     position: absolute;
     top: 34px;
     right: 33px;

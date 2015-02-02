@@ -24,7 +24,7 @@
     <div class="row" id="covers" style="width: 100%; margin: 0">
 
         <% cvrs.forEach(function(cover){ %>
-        <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge" data-spin="true">
+        <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge">
             <figure class="cover-item">
                 <img src="<%= cover.get('sPicture') %>" data-source="<%= cover.get('bPicture') %>" data-title="<%= cover.get('album') %>">
                 <div class="screen" style="height: 100%"></div>
@@ -85,7 +85,7 @@
               }
         }
     </style>
-    <div class="ias-spinner" style="background: #fff;padding: 15px 0px;margin:0"><!--<img src="Preloader_7.gif" style="margin: 0 auto;"/>-->
+    <div class="ias-spinner" style="background: #fff;padding: 15px 0px;margin:0">
         <div class="spinner">
             <div class="bounce1"></div>
             <div class="bounce2"></div>
