@@ -9,74 +9,111 @@
 
                 <h4 class="modal-title" id="myModalLabel">Album title</h4>
             </div>
-            <div class="modal-body_flat">
+            <div class="modal-body modal-body_flat">
 
             </div>
-            <div class="modal-footer_flat">
-                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                <a href="" class="buttonsstyle" role="button" download="">Download <!--<span class="glyphicon glyphicon-download"></span>--></a>
+            <div class="modal-footer modal-footer_flat">
+                <a href="" class="buttonsstyle dd-button" role="button" download="">Download</a>
             </div>
         </div>
     </div>
 </div>
+
 <div class="container" id="container">
     <% if (cvrs.length) { %>
-    <ul class="row" id="covers" style="width: 100%; margin: 0">
+    <div class="row" id="covers" style="width: 100%; margin: 0">
 
         <% cvrs.forEach(function(cover){ %>
-        <li class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge">
-
-            <figure class="cover-item"><img alt="<%= cover.get('album') %>" src="<%= cover.get('sPicture') %>"
-                                            bigimg="<%= cover.get('bPicture') %>"><div class="screen" style="height: 100%"></div>
-                <figcaption><span class="album-title"><%= cover.get('album') %></span><br>
-                    by <span class="artist-name"><%= cover.get('artist') %></span></figcaption>
-
+        <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge" data-spin="true">
+            <figure class="cover-item">
+                <img src="<%= cover.get('sPicture') %>" data-source="<%= cover.get('bPicture') %>" data-title="<%= cover.get('album') %>">
+                <div class="screen" style="height: 100%"></div>
+                <figcaption>
+                    <span class="album-title"><%= cover.get('album') %></span><br>
+                    by <span class="artist-name"><%= cover.get('artist') %></span>
+                </figcaption>
             </figure>
-        </li>
+        </div>
         <% }) %>
 
 
-    </ul>
+    </div>
     <% } %>
-    <div class="ias-spinner" style="background: #fff;padding: 15px 0px;margin:0"><img src="Preloader_7.gif" style="margin: 0 auto;"/></div>
+    <style>
+        .spinner {
+            margin: auto;
+            width: 70px;
+            text-align: center;
+        }
+
+        .spinner > div {
+            width: 10px;
+            height: 10px;
+            background-color: #1FE0A0;
+
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+            animation: bouncedelay 1.4s infinite ease-in-out;
+            /* Prevent first frame from flickering when animation starts */
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        .spinner .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .spinner .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        @-webkit-keyframes bouncedelay {
+            0%, 80%, 100% { -webkit-transform: scale(0.0) }
+            40% { -webkit-transform: scale(1.0) }
+        }
+
+        @keyframes bouncedelay {
+            0%, 80%, 100% {
+                transform: scale(0.0);
+                -webkit-transform: scale(0.0);
+            } 40% {
+                  transform: scale(1.0);
+                  -webkit-transform: scale(1.0);
+              }
+        }
+    </style>
+    <div class="ias-spinner" style="background: #fff;padding: 15px 0px;margin:0"><!--<img src="Preloader_7.gif" style="margin: 0 auto;"/>-->
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
     <% include pagination %>
 
 </div>
 <script>
     $(document).on('click', '.cover img', function () {
-        var src = $(this).attr('bigimg');
+        var src = $(this).data('source');
         var img = '<img src="' + src + '" class="img-responsive main-cover"/>';
-        var album = $(this).attr('alt');
+        var album = $(this).data('title');
 
         $('#myModal').modal();
         $('#myModal').on('shown.bs.modal', function () {
             $('#myModal #myModalLabel').html(album);
-            $('#myModal .modal-body_flat').html(img);
-            $('#myModal .modal-footer_flat a').attr("href", src);
-            $('#myModal .modal-footer_flat a').attr("download", src.replace("img/", ""));
+            $('#myModal .modal-body').html(img);
+            $('#myModal .modal-footer a').attr("href", src);
+            $('#myModal .modal-footer a').attr("download", src.replace("img/", ""));
 
         });
         $('#myModal').on('hidden.bs.modal', function () {
             $('#myModal #myModalLabel').html('Album Title');
-            $('#myModal .modal-body_flat').html('');
-            $('#myModal .modal-footer_flat a').attr("href", "#");
-            $('#myModal .modal-footer_flat a').attr("download", "");
-        });
-    });
-</script>
-<script>
-    $(document).ready(function(){
-        $('#navbar').css('background-color', '#efefef');
-        var scroll_start = 0;
-        var startchange = $('#startchange');
-        var offset = startchange.offset();
-        $(document).scroll(function() {
-            scroll_start = $(this).scrollTop();
-            if(scroll_start > offset.top) {
-                $('#navbar').css('background-color', 'rgba(255,255,255,0.9)');
-            } else {
-                $('#navbar').css('background-color', '#efefef');
-            }
+            $('#myModal .modal-body').html('');
+            $('#myModal .modal-footer a').attr("href", "#");
+            $('#myModal .modal-footer a').attr("download", "");
         });
     });
 </script>

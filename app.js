@@ -61,6 +61,8 @@ app.use(function (err, req, res, next) {
     }
 });
 
+
+
 // development only
 /*
  if ('development' == app.get('env')) {
@@ -81,6 +83,7 @@ app.use(function (err, req, res, next) {
  next();
  }
  });
+
 
  app.use(function(req, res, next) {
  if (req.url == '/test') {
@@ -136,7 +139,7 @@ app.use(function (err, req, res, next) {
 })*/
 
 app.use(function(req, res) {
-    res.send(404, "Page Not Found Sorry");
+    res.render("404");
 });
 
 app.get('/covers', function (req, res, next) {
@@ -216,7 +219,7 @@ app.get('/add', function (req, res, next) {
 });
 
 app.get('/upload', function (req, res){
-    res.render('mini-upload-form/upload');
+    res.render('upload');
 });
 
 app.post('/upload', function (req, res){

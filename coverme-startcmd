@@ -1,2 +1,0 @@
-mongod --dbpath /usr/local/Cellar/mongodb/data/db/
-elasticsearch

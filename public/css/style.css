@@ -16,6 +16,7 @@ a {
 a:hover, a:focus {
     color: #1FE0A0;
     text-decoration: none;
+    outline: none;
 }
 .form-control:focus {
     border-color: #1FE0A0;
@@ -28,26 +29,6 @@ a:hover, a:focus {
     color: #AAA;
 }*/
 
-.ddsh {
-    float: right;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.ddsh .fa {
-    padding: 5px;
-}
-.ddsh .fa:hover {
-    background: pink
-}
-
-#search .modal-body_flat {
-    padding: 15px;
-    border: 1px solid #E5E5E5;
-    background: none repeat scroll 0% 0% #FBFBFB;
-}
-
 img {
     display: block;
     text-align: center;
@@ -59,7 +40,7 @@ img {
 h1{
     color: #3C9;
     letter-spacing: 2pt;
-    font-weight: 100;
+    font-family: "Fira Sans";
 }
 
 h4{
@@ -434,20 +415,20 @@ nav {
     /*position: absolute;*/
 }
 
-.nav a{
-    /*color: white;*/
+#header a{
+    background-color: transparent;
     color: #AAA;
 }
+#header a:hover{
+    color: #1fe0a0;
+}
+
 #logo {
     fill: #aaa !important;
 }
 
 
-.nav a:hover{
-    background-color: transparent ! important;
-    color: #1fe0a0;
-    /*position: absolute;*/
-}
+
 
 /*.fromtop{
     margin-top: -40px;
@@ -549,8 +530,9 @@ nav {
 
 #header {
     width: 100%;
-    background: rgba(255, 255, 255, .4);
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    /*background: rgba(255,255,255,0.4); for blured*/
+    background: rgba(255,255,255,0.9);
+    border-bottom: 1px solid #eee;
 }
 
 #header .container {
@@ -609,6 +591,7 @@ svg {
     height: 45px;
     border: 0px none transparent;
     width: 100%;
+    font-family: Fira Sans;
 }
 
 .tt-hint {
@@ -776,7 +759,7 @@ svg {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 12pt;
-    font-weight: 100 !important;
+    /*font-weight: 100 !important;*/
     text-align: center;
 }
 
@@ -819,7 +802,7 @@ svg {
 }
 
 .pace .pace-progress {
-    background: #33CC99;
+    background: #1FE0A0;
     position: fixed;
     z-index: 2000;
     top: 0;
@@ -848,3 +831,217 @@ svg {
 .typeahead:focus {
     border: 2px solid #0097CF;
 }*/
+
+
+
+section, footer, header, aside{
+    display: block;
+}
+
+
+/*----------------------------
+    The file upload form
+-----------------------------*/
+
+
+#upload{
+    font-family:"Open Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color:white;
+
+    /*background-image:-webkit-linear-gradient(top, #373a3d, #313437);
+    background-image:-moz-linear-gradient(top, #373a3d, #313437);
+    background-image:linear-gradient(top, #373a3d, #313437);*/
+
+    width:720px;
+    height:500px;
+
+    padding:30px;
+    /*border-radius:3px;*/
+
+    margin:-20px auto 100px;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+}
+
+#drop {
+    height:400px;
+    /*order: 1px #FBFBFB solid;*/
+    /*background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAEUlEQVQYlWNgIA4YjyqisyIAlxIB/2n+IBUAAAAASUVORK5CYII=) repeat;*/
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-radius: 3px;
+    border-image: url("../upload-assets/img/border-light.png") 25 25 25 25 repeat repeat;
+    padding: 50px 30px;
+    margin-bottom: 30px;
+    /*border: 20px solid rgba(0, 0, 0, 0);*/
+    /* border-radius: 3px;*/
+    text-align: center;
+    text-transform: uppercase;
+
+    font-size:16px;
+    /*font-weight:bold;*/
+    color:#7f858a;
+
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+
+#drop.dragover {
+    background-color: #FAFAFA;
+    border-image: url("../upload-assets/img/border-grey.png") 25 25 25 25 repeat repeat;
+}
+
+/*#drop a{
+    background-color:#007a96;
+    padding:12px 26px;
+    color:#fff;
+    font-size:14px;
+    border-radius:2px;
+    cursor:pointer;
+    display:inline-block;
+    margin-top:12px;
+    line-height:1;
+}
+
+#drop a:hover{
+    background-color:#0986a3;
+}*/
+
+#drop input{
+    display:none;
+}
+
+#upload ul{
+    list-style:none;
+    margin:0 -30px;
+    /* border-top:1px solid rgba(0, 0, 0, .2);
+     border-bottom:1px solid rgba(0, 0, 0, .2);*/
+}
+
+#upload ul li{
+    background-color:white;
+
+    border-top:1px solid rgba(0, 0, 0, .2);
+    border-bottom:1px solid rgba(0, 0, 0, .2);
+    padding:15px;
+    height: 75px;
+
+    position: relative;
+}
+
+#upload ul li:hover{
+    background-color:#FEFEFE;
+}
+
+#upload ul li input{
+    display: none;
+}
+
+#upload ul li p{
+    width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 25px;
+    left: 100px;
+}
+
+#upload ul li i{
+    font-weight: normal;
+    font-style:normal;
+    color:#7f7f7f;
+    display:block;
+}
+
+#upload ul li canvas{
+    top: 15px;
+    left: 32px;
+    position: absolute;
+}
+
+#upload ul li span{
+    width: 15px;
+    height: 12px;
+    background: url('../upload-assets/img/icons.png') no-repeat;
+    position: absolute;
+    top: 34px;
+    right: 33px;
+    cursor:pointer;
+}
+
+#upload ul li.working span{
+    height: 16px;
+    background-position: 0 -12px;
+}
+
+#upload ul li.error p{
+    color:red;
+}
+
+#tzine-download{
+    opacity:0.9;
+    background-color:#257691;
+    font-size:11px;
+    text-align:center;
+    text-transform:uppercase;
+    width:150px;
+    height:28px;
+    line-height:28px;
+    text-decoration:none !important;
+
+    display: inline-block;
+    border-radius: 2px;
+    color: #fff !important;
+    font-weight: bold;
+    box-shadow: 0 -1px 2px #1e5e74 inset;
+
+    border-top:1px solid #26849c;
+
+    text-shadow:1px 1px 1px #1e6176;
+    margin-top:6px;
+}
+
+#tzine-download:hover{
+    opacity:1;
+}
+
+#tzine-actions{
+    position:absolute;
+    top:0;
+    width:500px;
+    right:50%;
+    margin-right:-420px;
+    text-align:right;
+}
+
+#tzine-actions iframe{
+    display: inline-block;
+    height: 21px;
+    width: 95px;
+    position: relative;
+    float: left;
+    margin-top: 11px;
+}
+
+label{
+    margin-top: 10px;
+}
+
+.search-item strong {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}

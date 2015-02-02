@@ -357,15 +357,18 @@ if (jQuery) {
 
 
             $(document).ready(function(){
-                emerge()
+                emerge();
+                console.log("Emerge Ready!");
             })
 
             if (ias) {
                 ias.on('load', function(event) {
-                    $('.emerge').removeClass('emerge')
-                })
+                    $('.emerge').removeClass('emerge');
+                });
+
                 ias.on('rendered', function(){
-                    emerge()
+                    emerge();
+                    console.log("Emerge Ready!")
                 }); //конец иас он рендеред
             }   // конец ифа с иасом
 

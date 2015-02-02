@@ -1,21 +1,18 @@
 <% layout('layout') %>
 <div class="container" id="container" style="max-width: 1200px; margin-right: auto !important; margin-left: auto !important">
     <% for(var i = 0; i < searchResults.length; i++) { %>
-    <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3" id="search">
+    <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3 search-item">
         <div class="modal-dialog" style="max-width: 280px; margin-left: auto; margin-right: auto">
             <div> <!--class="modal-content"-->
                 <div class="modal-header" style="border:1px #EFEFEF solid; background-color: #FBFBFB">
                     <h4 class="modal-title" id="myModalLabel"><strong><%= searchResults[i]._source.album %></strong></h4>
                     <small><%= searchResults[i]._source.artist %></small>
-                    <a href="<%= (searchResults[i]._source.bPicture) %>" class="ddsh" role="button" download="<%= (searchResults[i]._source.bPicture).replace("img/", "") %>"><i class="fa fa-share"></i><i class="fa fa-download"></i> <!--<span class="glyphicon glyphicon-download"></span>--></a>
                 </div>
-                <div class="modal-body_flat"> <!--style="border-left:1px #EFEFEF solid; border-right:1px #EFEFEF solid;"-->
+                <div class="modal-body modal-body_flat"> <!--style="border-left:1px #EFEFEF solid; border-right:1px #EFEFEF solid;"-->
                     <img class="emerge" src="<%= searchResults[i]._source.bPicture %>">
                 </div>
-                <div class="modal-footer_flat">
-                    <h4 class="modal-title" id="myModalLabel"><strong><%= searchResults[i]._source.album %></strong></h4>
-                    <small><%= searchResults[i]._source.artist %></small>
-                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <div class="modal-footer modal-footer_flat">
+                    <a href="<%= (searchResults[i]._source.bPicture) %>" class="buttonsstyle" role="button" download="<%= (searchResults[i]._source.bPicture).replace("img/", "") %>">Download</a>
 
                 </div>
             </div>
@@ -23,12 +20,6 @@
     </div>
     <% } %>
 </div>
-
-<script>
-    $(document).ready(function(){
-        $('#header').css('display', 'block');
-    });
-</script>
 
 
 
