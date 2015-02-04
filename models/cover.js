@@ -52,7 +52,7 @@ stream.on('close', function(){
     console.log('indexed ' + count + ' documents!');
 });
 stream.on('error', function(err){
-    console.log(err);
+    console.log("brat"+err);
 });
 
 exports.Cover = Cover;
