@@ -45,9 +45,11 @@ function createCovers(callback) {
     for (var i = 0; i < coverinfo.AlbumInfo[0].length; i++) {
         covers[i] = {artist: coverinfo.AlbumInfo[1][i], album: coverinfo.AlbumInfo[0][i], year: '2008', sPicture: coverinfo.allcovers[i].replace('img','small'), bPicture: coverinfo.allcovers[i]}
     }
-
+    console.log(covers)
     async.each(covers, function (coverData, callback) {
         var cover = new mongoose.models.Cover(coverData);
+        console.log(cover);
         cover.save(callback);
+
     }, callback);
 }
