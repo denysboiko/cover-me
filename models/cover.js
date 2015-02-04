@@ -46,7 +46,7 @@ var Cover = mongoose.model('Cover', schema)
 
 stream.on('data', function(err, doc){
     count++;
-    console.log('Ty pytalsia('+count);
+    console.log(doc);
 });
 stream.on('close', function(){
     console.log('indexed ' + count + ' documents!');
