@@ -24,7 +24,7 @@ function getFiles(dir, files_) {
 }
 
 var allcovers = getFiles(dir);
-console.log(allcovers);
+//console.log(allcovers);
 
 function outputNames() {
 
@@ -33,18 +33,20 @@ function outputNames() {
     var album = new Array(allcovers.length)
 
     for (var i = 0; i < allcovers.length; i++) {
+        var split = allcovers[i].split(' - ');
+        if (split[1] === undefined) {
+            console.log(allcovers[i])
+            continue;
+        }
         if (allcovers[i].substring(allcovers[i].length-4, allcovers[i].length)=="jpeg") {
-            var split = allcovers[i].split(' - ');
             artist[i] = (split[0].split('/'))[1];
             album[i] = (split[1].split('.jpeg'))[0];
         }
-        else if (allcovers[i].substring(allcovers[i].length-3, allcovers[i].length)=="jpg") {
-            var split = allcovers[i].split(' - ');
+        else if (allcovers[i].substring(allcovers[i].length-4, allcovers[i].length)==".jpg") {
             artist[i] = (split[0].split('/'))[1];
             album[i] = (split[1].split('.jpg'))[0];
         }
         else if (allcovers[i].substring(allcovers[i].length-3, allcovers[i].length)=="png") {
-            var split = allcovers[i].split(' - ');
             artist[i] = (split[0].split('/'))[1];
             album[i] = (split[1].split('.png'))[0];
         }

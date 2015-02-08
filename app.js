@@ -145,8 +145,7 @@ app.use(function(req, res) {
 app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
-        for (i=0;i=5;i++){
-       res.json(covers)};
+       res.json(covers);
     })
 });
 
