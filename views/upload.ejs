@@ -8,18 +8,18 @@
         <h1 class="centered">COVERS UPLOAD</h1>
         <hr>
     </div>
-</div>
-	<body>
-		<form id="upload" method="post" action="/upload" enctype="multipart/form-data">
-			<div id="drop" style="">
-				<p style="margin-top: 10%">Drop Here</p>
-                <p>Or</p>
-				<a class="buttonsstyle">Browse</a>
+    <form id="upload" class="col-md-5" method="post" action="/upload" enctype="multipart/form-data">
+        <div id="drop" style="">
+            <p style="margin-top: 10%">Drop Here</p>
+            <p>Or</p>
+            <a class="buttonsstyle">Browse</a>
 
-				<input type="file" name="upl" multiple />
-			</div>
-			<ul></ul>
-		</form>
+            <input type="file" name="upl" multiple />
+        </div>
+        <ul></ul>
+    </form>
+</div>
+
         <div id="ui">
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -57,5 +57,3 @@
 
 		<!-- Our main JS file -->
 		<script src="js/upload.js"></script>
-	</body>
-</html>

@@ -46,13 +46,12 @@ var Cover = mongoose.model('Cover', schema)
 
 stream.on('data', function(err, doc){
     count++;
-    //console.log(doc);
 });
 stream.on('close', function(){
-    console.log('indexed ' + count + ' documents!');
+    console.log('Indexed ' + count + ' documents');
 });
 stream.on('error', function(err){
-    console.log("brat"+err);
+    console.log(err);
 });
 
 exports.Cover = Cover;
