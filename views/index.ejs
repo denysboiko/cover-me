@@ -24,7 +24,7 @@
     <div class="row" id="covers" style="width: 100%; margin: 0">
 
         <% cvrs.forEach(function(cover){ %>
-        <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge">
+        <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge" data-contimue="true">
             <figure class="cover-item">
                 <img src="<%= cover.get('sPicture') %>" data-source="<%= cover.get('bPicture') %>" data-title="<%= cover.get('album') %>">
                 <div class="screen" style="height: 100%"></div>
