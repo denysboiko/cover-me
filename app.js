@@ -261,10 +261,10 @@ app.post('/upload', function (req, res){
                 console.error(err);
             } else {
                 console.log("success!")
+                rsz(600,new_location + file_name,"img");
+                rsz(300,new_location + file_name,"small");
             }
         });
-        rsz(600,new_location + file_name,"img");
-        rsz(300,new_location + file_name,"small");
         var coverData= {artist: artist, album: album, year: year, sPicture: "small/" + file_name, bPicture: "img/" + file_name}
         var cover = new mongoose.models.Cover(coverData);
         cover.save();
