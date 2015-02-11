@@ -260,7 +260,7 @@ app.post('/upload', function (req, res){
             if (err) {
                 console.error(err);
             } else {
-                console.log("success!")
+                console.log("success!");
                 rsz(600,new_location + file_name,"img");
                 rsz(300,new_location + file_name,"small");
             }
