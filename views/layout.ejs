@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content="Cover Me — High quality musical album art you’ve been looking for. Cover Me is a community driven website offering free high quality album covers for non-commercial use only. On this resource you can download any of album covers for free, just in one click.">
+    <meta name="keywords" content="album cover, album covers, album art, album arts exchange, music art, album artworks, album art download, high-quality album cover, album covers free download">
     <script src="/js/pace.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,15 +34,15 @@
         });
 
         ias.on('load', function(event) {
-            jQuery.ias().unbind();
-            /*jQuery.ias().off('scroll', function(){
+            //jQuery.ias().unbind();
+            jQuery.ias().off('scroll', function(){
                 console.log()
-            });*/
+            });
         })
 
         ias.on('rendered', function(data, items) {
-            jQuery.ias().bind();
-            /*jQuery.ias().on('scroll');*/
+            //jQuery.ias().bind();
+            jQuery.ias().on('scroll');
         })
 
         ias.on('noneLeft', function() {

@@ -30,13 +30,6 @@ a:hover, a:focus {
 .form-control:focus {
     border-color: #1FE0A0;
 }
-/*textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-    input:focus {
-   *//* border: none;
-    outline: -webkit-box-shadow: none;
-    outline: -webkit-focus-ring-color none;*//*
-    box-shadow: none;
-    color: #AAA;
-}*/
 
 img {
     display: block;
@@ -68,13 +61,6 @@ ul li {
     list-style: none;
     display: block
 }
-/*ul li:hover {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);;
-}*/
 
 ul li img {
     cursor: pointer;
