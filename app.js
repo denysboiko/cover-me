@@ -172,7 +172,7 @@ app.get('/', function (req, res, next) {
 app.get('/page', function (req, res, next) {
     var currentPage = req.query.n;
     var nextPageURL="";
-    Cover.paginate({}, currentPage, 72, function (error, pageCount, paginatedResults, itemCount) {
+    Cover.paginate({}, currentPage, 8/*72*/, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
         if (currentPage<pageCount) {
             nextPageURL = "/page?n=".concat(parseInt(currentPage)+1);
