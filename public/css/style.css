@@ -80,6 +80,13 @@ ul li img {
     #container { margin: 75px 0 auto; }
 }
 
+@media screen and (max-width: 620px) {
+    .modal-dialog {
+        margin: 10px;
+    }
+}
+
+
 .navbar{
     height: 135px !important;
 }
@@ -739,13 +746,13 @@ svg {
 
 /*-------------------------------------MODAL CSS START-------------------------------------*/
 .modal-body_flat {
-    padding: 0px;
+    padding: 0;
 }
 
 .modal-footer_flat {
-    margin-top: 0px;
+    margin-top: 0;
     border-top: none;
-    padding: 0px;
+    padding: 0;
 }
 .modal-footer_flat .buttonsstyle {
     width: 100%;

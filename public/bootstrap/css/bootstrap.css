@@ -5112,7 +5112,7 @@ button.close {
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 10px;
+  margin: 10px auto;
 }
 .modal-content {
   position: relative;
@@ -5195,7 +5195,7 @@ button.close {
 
 
     .modal-dialog {
-        width: 600px !important;
+        max-width: 600px;
     }
 
 .tooltip {
