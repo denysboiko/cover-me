@@ -5192,6 +5192,12 @@ button.close {
     width: 900px;
   }
 }
+
+
+    .modal-dialog {
+        width: 600px !important;
+    }
+
 .tooltip {
   position: absolute;
   z-index: 1030;

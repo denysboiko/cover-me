@@ -26,6 +26,7 @@
     <script src="/js/typeahead.min.js"></script>
 
     <script>
+
         var ias = $.ias({
             container:  '#covers',
             item:       '.cover',
@@ -34,21 +35,18 @@
         });
 
         ias.on('load', function(event) {
-            //jQuery.ias().unbind();
-            jQuery.ias().off('scroll', function(){
-                console.log()
+            ias.off('scroll', function(){
+                console.log("scroll-off");
             });
-        })
+        });
 
         ias.on('rendered', function(data, items) {
-            //jQuery.ias().bind();
-            jQuery.ias().on('scroll');
-        })
+            ias.on('scroll');
+        });
 
         ias.on('noneLeft', function() {
             $(".ias-spinner").hide();
-        })
-
+        });
 
     </script>
     <script src="/js/emerge.min.js"></script>

@@ -3,33 +3,44 @@ var http = require('http');
 var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
-//var compression = require('compression');
-var gm = require('gm').subClass({ imageMagick: true }); // Для thumbs можно удалить
 
+//var compression = require('compression');
 //var paginate = require('express-paginate');
+
+var resizeImage = require('./middleware/resizeImage');
+
+
 var Cover = require('./models/cover').Cover;
 var mongoose = require('libs/mongoose');
 
 
 
-/*  Upload */
-var formidable = require('formidable');
-var util = require('util');
-var fs   = require('fs-extra');
-var qt   = require('quickthumb');
-
+/*   Crypto   */
 var crypto = require('crypto');
 
 var app = express();
-app.engine('ejs', require('ejs-locals'))
+
+app.engine('ejs', require('ejs-locals'));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-//app.use(compression());
 
+//app.use(compression());
 //app.use(paginate.middleware(30, 30));
 //app.use(express.favicon());
 
-app.use(qt.static(__dirname + '/'));
+
+
+/*  Upload */
+
+var formidable = require('formidable');
+var util = require('util');
+var fs   = require('fs-extra');
+/*var qt   = require('quickthumb');
+
+app.use(qt.static(__dirname + '/'));*/
+
+
 
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -145,44 +156,46 @@ app.use(function(req, res) {
 /*app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
-       res.json(covers);
-    })
+        res.json(covers);
+    });
 });*/
 
-app.get('/device', function (req, res, next) {
+/*app.get('/device', function (req, res, next) {
     res.render('device');
-});
+});*/
+
+function paginateCovers (current, index, n, res, next) {
+    Cover.paginate({}, index, n, function (error, pageCount, paginatedResults, itemCount) {
+        if (error) console.log(error);
+        if (current<pageCount) {
+            var nextUrl = "/page?n=".concat((parseInt(current)+1).toString());
+        }
+        res.locals.cvrs = paginatedResults;
+        res.render('index',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
+
+        //var rnd=Math.random();
+        /*, { sortBy : { rnd : -1 } } */
+
+        next();
+    });
+}
 
 
 app.get('/', function (req, res, next) {
     var currentPage = 1;
-    var nextPageURL="";
-    Cover.paginate({}, currentPage, 72, function (error, pageCount, paginatedResults, itemCount) {
-        if (error) console.log(error);
-        if (currentPage<pageCount) {
-            nextPageURL = "/page?n=".concat(parseInt(currentPage)+1);
-        }
-        res.locals.cvrs = paginatedResults;
-        res.render('index',{brand: "Cover Me", next: nextPageURL, cvrs: paginatedResults});
 
-        next();
-    });
+    paginateCovers(currentPage, currentPage, 72, res, next);
+
 });
 
+
+
 app.get('/page', function (req, res, next) {
-    var currentPage = req.query.n;
-    var nextPageURL="";
-    Cover.paginate({}, currentPage, 8/*72*/, function (error, pageCount, paginatedResults, itemCount) {
-        if (error) console.log(error);
-        if (currentPage<pageCount) {
-            nextPageURL = "/page?n=".concat(parseInt(currentPage)+1);
-        }
+    var currentPage = parseInt(req.query.n);
+    var currentIndex = currentPage + 8;
 
-        res.locals.cvrs = paginatedResults;
-        res.render('index',{brand: "Cover Me", next: nextPageURL, cvrs: paginatedResults});
+    paginateCovers(currentPage, currentIndex, 8, res, next);
 
-        next();
-    });
 });
 
 
@@ -217,17 +230,6 @@ app.get('/auto', function (req, res, next) {
     res.send(coverData)
 });*/
 
-//var resize = require('middleware/resize');
-
-function rsz (x,image,dir) {
-    gm(image)
-        .compress('Lossless')
-        .resize(x, x)
-        .write('public/'.concat(image.replace('uploads/',dir+"/")), function (err) {
-            if (err) throw err
-        });
-}
-
 app.get('/upload', function (req, res){
     res.render('upload');
 });
@@ -251,7 +253,11 @@ app.post('/upload', function (req, res){
         /* Temporary location of our uploaded file */
         var temp_path = this.openedFiles[0].path;
         /* The file name of the uploaded file */
-        var file_name = this.openedFiles[0].name;
+
+        //var file_name = this.openedFiles[0].name;
+        var random = Math.random().toString();
+        var file_name = crypto.createHash('sha1').update(this.openedFiles[0].name + random).digest('hex') + '.jpg';
+
         /* Location where we want to copy the uploaded file */
         //var covers_dir = 'public/img/';
         //var cover_name = artist + ' - ' + album;
@@ -261,11 +267,11 @@ app.post('/upload', function (req, res){
                 console.error(err);
             } else {
                 console.log("success!");
-                rsz(600,new_location + file_name,"img");
-                rsz(300,new_location + file_name,"small");
+                resizeImage(600, new_location + file_name, "img");
+                resizeImage(300, new_location + file_name, "small");
             }
         });
-        var coverData= {artist: artist, album: album, year: year, sPicture: "small/" + file_name, bPicture: "img/" + file_name}
+        var coverData = { artist: artist, album: album, year: year, sPicture: "small/" + file_name, bPicture: "img/" + file_name };
         var cover = new mongoose.models.Cover(coverData);
         cover.save();
     });
