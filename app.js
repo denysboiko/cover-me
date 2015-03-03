@@ -150,8 +150,27 @@ app.use(function (err, req, res, next) {
 })*/
 
 app.use(function(req, res) {
+    res.status(404);
     res.render("404");
 });
+
+app.get('/*', function(req, res, next) {
+    if (req.headers.host.match(/^www/) !== null ) {
+        res.redirect(301, 'http://' + req.headers.host.replace(/^www\./, '') + req.url);
+    } else {
+        next();
+    }
+});
+
+app.use(function(req, res, next) {
+    if (req.path.substr(-1) == '/' && req.path.length > 1) {
+        var query = req.url.slice(req.path.length);
+        res.redirect(301, req.path.slice(0, -1) + query);
+    } else {
+        next();
+    }
+});
+
 
 /*app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
@@ -168,7 +187,7 @@ function paginateCovers (current, index, n, res, next) {
     Cover.paginate({}, index, n, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
         if (current<pageCount) {
-            var nextUrl = "/page?n=".concat((parseInt(current)+1).toString());
+            var nextUrl = "/".concat((parseInt(current)+1).toString());
         }
         res.locals.cvrs = paginatedResults;
         res.render('index',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
@@ -183,24 +202,17 @@ function paginateCovers (current, index, n, res, next) {
 
 app.get('/', function (req, res, next) {
     var currentPage = 1;
-
     paginateCovers(currentPage, currentPage, 72, res, next);
-
 });
 
 
 
-app.get('/page', function (req, res, next) {
-    var currentPage = parseInt(req.query.n);
+app.get('/:page', function (req, res, next) {
+    var currentPage = parseInt(req.params.page);
     var currentIndex = currentPage + 8;
-
     paginateCovers(currentPage, currentIndex, 8, res, next);
 
 });
-
-
-
-
 
 app.get('/search', function (req, res, next) {
 
