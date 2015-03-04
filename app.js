@@ -172,12 +172,12 @@ app.use(function(req, res, next) {
 });
 
 
-/*app.get('/covers', function (req, res, next) {
+app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
         res.json(covers);
     });
-});*/
+});
 
 /*app.get('/device', function (req, res, next) {
     res.render('device');
