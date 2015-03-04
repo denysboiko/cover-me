@@ -32,29 +32,3 @@ var coversData = [];
             console.log(id);
         }
     });
-/*Cover.update({_id: "54f739a366edd2351ab421b1"}, { sPicture: "hi.jpeg"}, function (err) {
-    if (err) console.log(err);
-});*/
-
-//76020891a6a067e10e50fe8357a299a9e1fe0748
-
-//54f736f3fa694afc19b5eeed
-
-/*
- ;*/
-//var file_name = this.openedFiles[0].name;
-
-/*fs.rename("public/small/Beastie Boys - Licensed To Ill-2.jpeg", "public/small/Beastie Boys - Licensed To Ill.jpeg", function (err) {
-    if (err) console.log(err);
-    console.log("good!")
-});*/
-
-
-
-
-/*app.get('/add', function (req, res, next) {
- var coverData= {artist: 'ras', album: 'rasdva', year: '2008', sPicture: 'sm-rasdva.jpg', bPicture: 'rasdva.jpg'}
- var cover = new mongoose.models.Cover(coverData);
- cover.save();
- res.send(coverData)
- });*/
