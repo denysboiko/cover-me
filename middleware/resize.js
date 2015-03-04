@@ -11,22 +11,18 @@ function resize (x,image) {
 }
 
 
-Cover.find({}).sort({'artist': 1}).exec(function(err, covers) {
+Cover.find({}).sort({'artist': 1}).exec(function(err, covers, next) {
     if (err) return next(err);
-/*    for (i=0;i<covers.length;i++){
-        resize (300,covers)
-    }*/
 
     var start=0
     var end=0
 
-    for (i=0;i<covers.length;i++){
+    for (var i=0;i<covers.length;i++){
         resize(300,covers[i].bPicture)
     }
-    console.log(' hooray! ');
+
+    console.log('hooray!');
 });
 
-
-//gm("img.png").compress(lossless)
 
 exports.resize = resize;

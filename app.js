@@ -187,7 +187,7 @@ function paginateCovers (current, index, n, res, next) {
     Cover.paginate({}, index, n, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
         if (current<pageCount) {
-            var nextUrl = "/".concat((parseInt(current)+1).toString());
+            var nextUrl = "/page/".concat((parseInt(current)+1).toString());
         }
         res.locals.cvrs = paginatedResults;
         res.render('index',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
@@ -207,7 +207,7 @@ app.get('/', function (req, res, next) {
 
 
 
-app.get('/:page', function (req, res, next) {
+app.get('/page/:page', function (req, res, next) {
     var currentPage = parseInt(req.params.page);
     var currentIndex = currentPage + 8;
     paginateCovers(currentPage, currentIndex, 8, res, next);
