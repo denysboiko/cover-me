@@ -163,12 +163,10 @@ app.get('/*', function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-    if (req.path.substr(-1) == '/' && req.path.length > 1) {
-        var query = req.url.slice(req.path.length);
-        res.redirect(301, req.path.slice(0, -1) + query);
-    } else {
+    if(req.url.substr(-1) == '/' && req.url.length > 1)
+        res.redirect(301, req.url.slice(0, -1));
+    else
         next();
-    }
 });
 
 
