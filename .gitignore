@@ -1,1 +1,3 @@
-*.xml, public/img
+*.xml
+public/img
+public/small
