@@ -1,24 +1,24 @@
 var Cover = require('models/cover').Cover;
 var gm = require('gm').subClass({ imageMagick: true });
 
+var dir = "200/";
+var dim = 200;
+
 function resize (x,image) {
-    gm('./public/'.concat(image))
-        .compress('Lossless')
+    var oldImg = './public/'.concat(image);
+    var newImg = './public/'.concat(image.replace('img/', dir));
+    gm(oldImg)
         .resize(x, x)
-        .write('./public/'.concat(image.replace('img/',"small/")), function (err) {
+        .write(newImg, function (err) {
             if (err) throw err
         });
 }
 
-
 Cover.find({}).sort({'artist': 1}).exec(function(err, covers, next) {
     if (err) return next(err);
 
-    var start=0
-    var end=0
-
     for (var i=0;i<covers.length;i++){
-        resize(300,covers[i].bPicture)
+        resize(dim, covers[i].bPicture)
     }
 
     console.log('hooray!');
