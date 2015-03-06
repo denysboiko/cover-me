@@ -29,7 +29,7 @@ app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(express.compress());
-//app.use(paginate.middleware(30, 30));
+
 //app.use(express.favicon());
 //app.use(qt.static(__dirname + '/'));
 
@@ -149,7 +149,7 @@ app.use(function(req, res, next) {
 });
 
 
-app.get('/covers', function (req, res, next) {
+/*app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
         res.json(covers);
@@ -158,19 +158,19 @@ app.get('/covers', function (req, res, next) {
 
 app.get('/device', function (req, res, next) {
     res.render('device');
-});
+});*/
 
 function paginateCovers (current, index, n, res, next) {
     Cover.paginate({}, index, n, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
-        if (current<pageCount) {
+        if (current < pageCount) {
             var nextUrl = "/page/".concat((parseInt(current)+1).toString());
         }
-
         res.render('index',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
-
+        //return paginatedResults;
         next();
     });
+
 }
 
 
