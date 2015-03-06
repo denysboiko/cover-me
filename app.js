@@ -20,12 +20,16 @@ var crypto = require('crypto');
 
 var app = express();
 
+
+
 app.engine('ejs', require('ejs-locals'));
-
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+//app.set('view options', { layout:false, root: __dirname + '/templates' } );
 
-//app.use(compression());
+
+//app.use(express.compress());
+
 //app.use(paginate.middleware(30, 30));
 //app.use(express.favicon());
 
@@ -187,7 +191,13 @@ function paginateCovers (current, index, n, res, next) {
         if (current<pageCount) {
             var nextUrl = "/page/".concat((parseInt(current)+1).toString());
         }
-        res.locals.cvrs = paginatedResults;
+
+        //res.locals.cvrs = paginatedResults;
+
+        //var ejs_file = fs.readFileSync('views/index.ejs', 'utf-8');
+        //var page_html = ejs.render(ejs_file, {brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
+        //res.send(page_html);
+
         res.render('index',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
 
         //var rnd=Math.random();

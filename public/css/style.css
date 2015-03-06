@@ -134,6 +134,8 @@ ul li img {
     right: 0;
     background-color: #1fe0a0;
     color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cover-item:hover figcaption {
@@ -170,8 +172,6 @@ figcaption {
 
 figcaption .album-title {
     font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /*
