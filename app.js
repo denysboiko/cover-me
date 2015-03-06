@@ -7,10 +7,10 @@ var log = require('libs/log')(module);
 //var compression = require('compression');
 //var paginate = require('express-paginate');
 
-var resizeImage = require('./middleware/resizeImage');
+var resizeImage = require('middleware/resizeImage');
 
 
-var Cover = require('./models/cover').Cover;
+var Cover = require('models/cover').Cover;
 var mongoose = require('libs/mongoose');
 
 
@@ -18,54 +18,29 @@ var mongoose = require('libs/mongoose');
 /*   Crypto   */
 var crypto = require('crypto');
 
-var app = express();
-
-
-
-app.engine('ejs', require('ejs-locals'));
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-//app.set('view options', { layout:false, root: __dirname + '/templates' } );
-
-
-//app.use(express.compress());
-
-//app.use(paginate.middleware(30, 30));
-//app.use(express.favicon());
-
-
-
 /*  Upload */
-
 var formidable = require('formidable');
 var util = require('util');
 var fs   = require('fs-extra');
-/*var qt   = require('quickthumb');
 
-app.use(qt.static(__dirname + '/'));*/
+var app = express();
 
-
+app.engine('ejs', require('ejs-locals'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+//app.use(express.compress());
+//app.use(paginate.middleware(30, 30));
+//app.use(express.favicon());
+//app.use(qt.static(__dirname + '/'));
 
 app.use(express.logger('dev'));
 app.use(express.json());
-
 app.use(express.urlencoded());
-
 app.use(express.cookieParser());
-
-
 app.use(require('middleware/getInfo'));
-
-
 app.use(app.router);
-
 require('routes')(app);
-
-
-
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 app.use(function (err, req, res, next) {
     // NODE_ENV = 'production'
     if (app.get('env') == 'development') {
@@ -174,16 +149,16 @@ app.use(function(req, res, next) {
 });
 
 
-/*app.get('/covers', function (req, res, next) {
+app.get('/covers', function (req, res, next) {
     Cover.find({}, function (err, covers) {
         if (err) return next(err);
         res.json(covers);
     });
-});*/
+});
 
-/*app.get('/device', function (req, res, next) {
+app.get('/device', function (req, res, next) {
     res.render('device');
-});*/
+});
 
 function paginateCovers (current, index, n, res, next) {
     Cover.paginate({}, index, n, function (error, pageCount, paginatedResults, itemCount) {
@@ -192,16 +167,7 @@ function paginateCovers (current, index, n, res, next) {
             var nextUrl = "/page/".concat((parseInt(current)+1).toString());
         }
 
-        //res.locals.cvrs = paginatedResults;
-
-        //var ejs_file = fs.readFileSync('views/index.ejs', 'utf-8');
-        //var page_html = ejs.render(ejs_file, {brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
-        //res.send(page_html);
-
         res.render('index',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
-
-        //var rnd=Math.random();
-        /*, { sortBy : { rnd : -1 } } */
 
         next();
     });
