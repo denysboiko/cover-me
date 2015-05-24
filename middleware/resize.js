@@ -1,7 +1,7 @@
 var Cover = require('models/cover').Cover;
 var gm = require('gm').subClass({ imageMagick: true });
 
-var dir = "200/";
+var dir = "xsmall/";
 var dim = 200;
 
 function resize (x,image) {
@@ -16,11 +16,9 @@ function resize (x,image) {
 
 Cover.find({}).sort({'artist': 1}).exec(function(err, covers, next) {
     if (err) return next(err);
-
-    for (var i=0;i<covers.length;i++){
+    for (var i=0;i<100;i++){
         resize(dim, covers[i].bPicture)
     }
-
     console.log('hooray!');
 });
 
