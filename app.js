@@ -4,6 +4,8 @@ var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
 
+
+var sm = require('sitemap');
 //var compression = require('compression');
 //var paginate = require('express-paginate');
 
@@ -173,7 +175,29 @@ function paginateCovers (current, index, n, res, next) {
 
 }
 
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /page\nDisallow: /search\nDisallow: /auto\nSitemap: http://cvrme.com/sitemap.xml");
+});
 
+var sitemap = sm.createSitemap ({
+    hostname: 'http://cvrme.com',
+    cacheTime: 600000,        // 600 sec - cache purge period
+    urls: [
+        { url: ''},
+        { url: '/upload'},
+        { url: '/about'},
+        { url: '/legal'}
+    ]
+});
+
+
+app.get('/sitemap.xml', function(req, res) {
+    sitemap.toXML( function (xml) {
+        res.header('Content-Type', 'application/xml');
+        res.send( xml );
+    });
+});
 app.get('/', function (req, res, next) {
     var currentPage = 1;
     paginateCovers(currentPage, currentPage, 72, res, next);
@@ -274,8 +298,3 @@ app.get('/legal', function (req, res){
 http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + config.get('port'));
 });
-
-
-
-
-
