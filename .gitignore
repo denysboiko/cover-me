@@ -1,7 +1,8 @@
 public/img
 public/small
 /node_modules/
-.idea/
+.idea
+.idea/*
 .DS_Store
 content/
 tmp/
