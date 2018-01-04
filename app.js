@@ -26,11 +26,11 @@ var util = require('util');
 var fs   = require('fs-extra');
 
 var app = express();
-
+app.use(express.compress());
 app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-//app.use(express.compress());
+
 
 //app.use(express.favicon());
 //app.use(qt.static(__dirname + '/'));
@@ -135,20 +135,20 @@ app.use(function(req, res) {
     res.render("404");
 });
 
-app.get('/*', function(req, res, next) {
+/*app.get('*//*', function(req, res, next) {
     if (req.headers.host.match(/^www/) !== null ) {
         res.redirect(301, 'http://' + req.headers.host.replace(/^www\./, '') + req.url);
     } else {
         next();
     }
-});
+});*/
 
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
     if(req.url.substr(-1) == '/' && req.url.length > 1)
         res.redirect(301, req.url.slice(0, -1));
     else
         next();
-});
+});*/
 
 
 /*app.get('/covers', function (req, res, next) {
@@ -163,13 +163,25 @@ app.get('/device', function (req, res, next) {
 });*/
 
 function paginateCovers (current, index, n, res, next) {
+
     Cover.paginate({}, index, n, function (error, pageCount, paginatedResults, itemCount) {
         if (error) console.log(error);
+
         if (current < pageCount) {
             var nextUrl = "/page/".concat((parseInt(current)+1).toString());
         }
-        res.render('index',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
-        //return paginatedResults;
+
+        /*app.render('index', {brand: "Cover Me", next: nextUrl, cvrs: paginatedResults}, function(err, html) {
+            page = html;
+        });
+
+        console.log(page);
+
+        res.set('Content-Type', 'text/html');
+        res.send(page);
+*/
+        res.render('page',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
+
         next();
     });
 
@@ -200,7 +212,29 @@ app.get('/sitemap.xml', function(req, res) {
 });
 app.get('/', function (req, res, next) {
     var currentPage = 1;
-    paginateCovers(currentPage, currentPage, 72, res, next);
+    Cover.find({})
+        .limit(72)
+        .exec(function (err, covers) {
+        if (err) return next(err);
+        res.render('index', {brand: "Cover Me", next: "/page/2", cvrs: covers});
+    });
+
+    //var coverData ="";m
+
+    /*function getCovers (fn) {
+
+    }
+
+     getCovers (function (covers) {
+     console.log(covers);
+     });*/
+
+    /*var coverData = Cover.find({});
+    console.log(coverData);*/
+    //res.render('index', {brand: "Cover Me", next: 2, cvrs: coverData})
+    //paginateCovers(currentPage, currentPage, 72, res, next);
+    /*res.json(coverData);
+    res.end();*/
 });
 
 
@@ -208,17 +242,22 @@ app.get('/', function (req, res, next) {
 app.get('/page/:page', function (req, res, next) {
     var currentPage = parseInt(req.params.page);
     var currentIndex = currentPage + 8;
-    paginateCovers(currentPage, currentIndex, 8, res, next);
+    //paginateCovers(currentPage, currentIndex, 8, res, next);
+    Cover.paginate({}, currentIndex, 8, function (error, pageCount, paginatedResults, itemCount) {
+        if (error) console.log(error);
 
+        if (currentPage < pageCount) {
+            var nextUrl = "/page/".concat((parseInt(currentPage)+1).toString());
+        }
+        res.render('page',{brand: "Cover Me", next: nextUrl, cvrs: paginatedResults});
+        next();
+    });
 });
 
 app.get('/search', function (req, res, next) {
-
     Cover.search({ query: req.query.q, size:50}, {hydrate: false}, function (err, results) {
        res.render('search', {searchResults: results.hits.hits});
-       console.log(results.hits.hits.length)
     });
-
 });
 
 app.get('/auto', function (req, res, next) {

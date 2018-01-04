@@ -1,0 +1,36 @@
+<div class="container" id="container">
+    <% if (cvrs.length) { %>
+    <div class="row" id="covers" style="width: 100%; margin: 0">
+
+        <% cvrs.forEach(function(cover){ %>
+        <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 cover emerge" data-continue="true">
+            <figure class="cover-item">
+                <img src="<%= cover.get('sPicture') %>" data-source="<%= cover.get('bPicture') %>" data-title="<%= cover.get('album') %>">
+                <div class="screen" style="height: 100%"></div>
+                <figcaption>
+                    <span class="album-title"><%= cover.get('album') %></span><br>
+                    by <span class="artist-name"><%= cover.get('artist') %></span>
+                </figcaption>
+            </figure>
+        </div>
+        <% }) %>
+
+
+    </div>
+    <% } %>
+    <div class="ias-spinner" style="background: #fff;padding: 15px 0px;margin:0">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <div class="text-center"  id="pagination">
+        <ul class="pagination">
+            <li><a href="#">« Previous</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="<%= next %>" class="next"> Next »</a></li>
+        </ul>
+    </div>
+</div>
