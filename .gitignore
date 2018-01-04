@@ -1,3 +1,8 @@
-*.xml
 public/img
 public/small
+/node_modules/
+.idea/
+.DS_Store
+content/
+tmp/
+uploads/
